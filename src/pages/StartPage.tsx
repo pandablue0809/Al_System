@@ -9,10 +9,12 @@ const StartPage: React.FC = () => {
       <div className='relative'>
         <Header />
         <div className=''>
-          <div className='w-full relative double-background'>
-            <div className='absolute flex h-full left-10 sm:left-36 items-center'>
-              <img src={Logo} alt='animate-logo' className='w-40 h-40 sm:w-auto sm:h-auto ease-in duration-500' />
-              <TextAnimation />
+          <div className='w-full double-background'>
+            <div className='container mx-auto flex gap-x-4 h-full items-center'>
+              <img src={Logo} alt='animate-logo' className='w-56 h-56 md:w-60 md:h-60 lg:w-80 lg:h-80 xl:w-auto xl:h-auto ease-in duration-500' />
+              <div className='flex'>
+                <TextAnimation>Connecting the AI world</TextAnimation>
+              </div>
             </div>
           </div>
         </div>

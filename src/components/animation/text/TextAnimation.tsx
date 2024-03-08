@@ -3,19 +3,22 @@ import gsap from 'gsap';
 import styled from '@emotion/styled';
 import SplitTextToChars from './SplitTextToChars';
 
+type TextAnimationData = {
+  children: React.ReactNode;
+};
+
 const TextStyled = styled.p`
-  font-size: 3rem;
   font-family: Poppins;
   font-weight: 800;
   margin: 0;
-  color: white;
+  color: #B75CFF;
   lineheight: 57.6;
   position: absolute;
   letterspacing: 5%;
   display: flex;
 `;
 
-const TextAnimation: React.FC = () => {
+const TextAnimation: React.FC<Partial<TextAnimationData>> = ({ children }) => {
   const wavyTextRef = useRef(null);
 
   useEffect(() => {
@@ -38,8 +41,8 @@ const TextAnimation: React.FC = () => {
   }, []);
 
   return (
-    <div className='text-center bg-transparent relative w-full h-16 m-0 p-0 justify-center align-middle' style={{ fontFamily: 'Poppins' }}>
-      <TextStyled ref={wavyTextRef}>ride the waaaaaaaave</TextStyled>
+    <div className='text-center bg-transparent w-full h-16 m-0 p-0 justify-center align-middle' style={{ fontFamily: 'Poppins' }}>
+      <TextStyled className='text-4xl md:text-5xl xl:text-7xl justify-start' ref={wavyTextRef}>{children}</TextStyled>
     </div>
   );
 };
