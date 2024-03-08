@@ -3,10 +3,11 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export type PasswordInputProps = {
   value?: string;
+  isSignUp?: boolean;
   onChange?: (newValue: string) => void;
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ value, onChange }) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({ value, isSignUp, onChange }) => {
   const [password, setPassword] = useState(value || '');
   const [securityLevel, setSecurityLevel] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -71,7 +72,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, onChange }) => {
   };
 
   return (
-    <div className="md:w-96 sm:w-72 m-2">
+    <div className="m-2">
       <div className="relative w-full">
         <input  
           type={showPassword ? 'text' : 'password'}
@@ -81,48 +82,49 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, onChange }) => {
         />
         {renderPasswordVisibilityToggle()}
         
-      <div className="mt-1 grid grid-cols-4 gap-2">
+        {isSignUp && <><div className="mt-1 grid grid-cols-4 gap-2">
           <div
-            className={`h-1 rounded-md ${
-              securityLevel === 'Strong'
-                  ? 'bg-green-600'
-                  : securityLevel === 'Midstrong'
+            className={`h-1 rounded-md ${securityLevel === 'Strong'
+                ? 'bg-green-600'
+                : securityLevel === 'Midstrong'
                   ? 'bg-yellow-300'
                   : securityLevel === 'Moderate'
-                  ? 'bg-orange-600'
-                  :  password?.length === 0
-                  ? 'bg-gray-300'
-                  : 'bg-red-600'
-            }`}
+                    ? 'bg-orange-600'
+                    : password?.length === 0
+                      ? 'bg-gray-300'
+                      : 'bg-red-600'
+              }`}
           ></div>
-            <div
-            className={`h-1 rounded-md ${
-              securityLevel === 'Strong'
+          <div
+            className={`h-1 rounded-md ${securityLevel === 'Strong'
                 ? 'bg-green-600'
                 : securityLevel === 'Midstrong'
-                ? 'bg-yellow-300'
-                : securityLevel === 'Moderate'
-                ? 'bg-orange-600'
-                : 'bg-gray-300'
-            }`}
-            ></div>
-              <div
-            className={` h-1 rounded-md  ${
-              securityLevel === 'Strong'
+                  ? 'bg-yellow-300'
+                  : securityLevel === 'Moderate'
+                    ? 'bg-orange-600'
+                    : 'bg-gray-300'
+              }`}
+          ></div>
+          <div
+            className={` h-1 rounded-md  ${securityLevel === 'Strong'
                 ? 'bg-green-600'
                 : securityLevel === 'Midstrong'
-                 ? 'bg-yellow-300'
-                : ' bg-gray-300'
-            }`}
-              ></div>
-                <div
-            className={` h-1 rounded-md  ${
-              securityLevel === 'Strong'
+                  ? 'bg-yellow-300'
+                  : ' bg-gray-300'
+              }`}
+          ></div>
+          <div
+            className={` h-1 rounded-md  ${securityLevel === 'Strong'
                 ? 'bg-green-600' : ' bg-gray-300'
-            }`}
-          ></div>
+              }`}
+          >
+          </div>
+          
         </div>
-        <p className='text-xs'>use 8 or more characters with a mix of letters, numbers & symbols.</p>
+          <p className='text-xs text-white'>use 8 or more characters with a mix of letters, numbers & symbols.</p>
+        </>
+        }
+       
       </div>
     </div>
   );
