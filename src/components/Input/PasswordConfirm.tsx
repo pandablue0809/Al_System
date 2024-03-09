@@ -45,25 +45,20 @@ const PasswordConfirm: React.FC<PasswordConfirmProps> = ({ value }) => {
   };
 
   return (
-    <div className="m-2">
-      <div className="relative w-full">
+    <div className='m-2 mb-3'>
+      <div className='relative w-full'>
         <input
           type={showPassword ? 'text' : 'password'}
           value={confirmPassword}
-                  onChange={handleChange}
-                  className={`px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full pr-8 ${isPasswordValid 
-                                ? 'focus:border-green-600'
-                                : isPasswordNull
-                                ? 'focus:border-[#8c94ff]'
-                                : 'focus:border-red-600'}`}
-                  
+          onChange={handleChange}
+          className={`px-4 py-2 border border-gray-300 rounded-md focus:outline-none w-full pr-8 ${
+            isPasswordValid ? 'focus:border-green-600' : isPasswordNull ? 'focus:border-[#8c94ff]' : 'focus:border-red-600'
+          }`}
         />
         {renderPasswordVisibilityToggle()}
       </div>
-      
-        <p className='text-xs text-red-600'>&nbsp;{!isPasswordValid && !isPasswordNull && 'Please provide the correct password for confirmation.'}</p>
-   
-       
+
+      <p className='text-xs text-red-600'>&nbsp;{!isPasswordValid && !isPasswordNull && 'Please provide the correct password for confirmation.'}</p>
     </div>
   );
 };

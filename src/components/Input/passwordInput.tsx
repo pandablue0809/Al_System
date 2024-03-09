@@ -72,7 +72,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, isSignUp, onChange
   };
 
   return (
-    <div className="m-2">
+    <div className="m-2  mb-3">
       <div className="relative w-full">
         <input  
           type={showPassword ? 'text' : 'password'}
