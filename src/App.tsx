@@ -4,6 +4,8 @@ import { ConfigProvider } from 'antd';
 import { NextUIProvider } from '@nextui-org/react';
 import enUS from 'antd/lib/locale/en_US';
 import SignUpForm from './components/auth/signUpForm/SignUpForm';
+import LoginForm from './components/auth/logInForm/LogInForm';
+import StartPage from './pages/StartPage';
 
 const App: React.FC = () => {
   return (
@@ -11,7 +13,7 @@ const App: React.FC = () => {
       <ConfigProvider locale={enUS}>
         <NextUIProvider>
           <main className='w-full sotru-dark text-foreground bg-background'>
-            <SignUpForm />
+            <StartPage />
           </main>
         </NextUIProvider>
       </ConfigProvider>

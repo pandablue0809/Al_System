@@ -8,24 +8,24 @@ import LOGO from '../../assets/images/logo/logo.svg';
 import { HeaderAuthButton } from './components/HeaderBaseButton/HeaderAuthButton';
 
 const MENU_DATA: HeaderDropDownMenuItem = {
-  title: 'Home',
-  pathname: '/Home',
+  title: 'More',
+  pathname: '/More',
   subMenus: [
     {
-      title: 'Main Page',
-      pathname: '/Home/Main Page',
+      title: 'About',
+      pathname: '/More/About',
     },
     {
-      title: 'Investors',
-      pathname: '/Home/Investors',
+      title: 'Contact us',
+      pathname: '/More/Contact us',
     },
     {
       title: 'User',
-      pathname: '/Home/User',
+      pathname: '/More/User',
     },
     {
       title: 'Developers',
-      pathname: '/Home/Developers',
+      pathname: '/More/Developers',
     },
   ],
 };
@@ -50,6 +50,7 @@ const Header: React.FC = () => {
         <div className='flex w-fit items-center gap-12'>
           <HeaderBaseButton>Home</HeaderBaseButton>
           <HeaderBaseButton>Explore</HeaderBaseButton>
+          <HeaderBaseButton>FAQ</HeaderBaseButton>
           <HeaderDropDownButton title={MENU_DATA.title} pathname={MENU_DATA.pathname} subMenus={MENU_DATA.subMenus} onClick={handleClick} />
         </div>
         <div className='flex'>
