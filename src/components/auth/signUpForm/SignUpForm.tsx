@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PasswordInput from '../../input/passwordInput';
 import PasswordConfirm from '../../input/PasswordConfirm';
 import EmailInput from '../../input/EmailInput';
-import { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import PhoneNumberInput from '../../input/PhoneNumberInput';
 import RoleSelect from '../../input/RoleSelect';
@@ -26,13 +25,13 @@ const SignUpForm: React.FC = () => {
     return 'k';
   };
 
-  const responseGoogleSuccess = (response: any) => {
-    console.log(response);
-  };
+  // const responseGoogleSuccess = (response: any) => {
+  //   console.log(response);
+  // };
 
-  const responseGoogleFailure = (response: any) => {
-    console.log(response);
-  };
+  // const responseGoogleFailure = (response: any) => {
+  //   console.log(response);
+  // };
 
   return (
     <div className='auth_back bg-[#010311] flex flex-col h-screen justify-center flex-wrap content-center min-h-screen xs:h-auto'>
