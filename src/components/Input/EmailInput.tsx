@@ -3,15 +3,18 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 export type EmailInputProps = {
   value?: string;
   onChange?: (newValue: string) => void;
+  setEmailValidatedStatus?: (newValue: boolean) => void;
 }
 
-const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
+const EmailInput: React.FC<EmailInputProps> = ({value, onChange, setEmailValidatedStatus}) => {
     const [email, setEmail] = useState(value || '');
     const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-        onChange && onChange(email);
-    }, [email, onChange]);
+    onChange && onChange(email);
+    setEmailValidatedStatus && setEmailValidatedStatus(isValid);
+  }, [email]);
+  
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       const newEmail = event.target.value;

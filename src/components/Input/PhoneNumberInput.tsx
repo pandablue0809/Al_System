@@ -6,11 +6,14 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 interface PhoneNumberInputProps {
   phoneNumber: string;
   handlePhoneNumberChange: (value: string) => void;
+  setPhoneNumberValidatedStatus: (value: boolean) => void;
 }
 
-const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange }) => {
+const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange, setPhoneNumberValidatedStatus }) => {
+
   const isPhoneNumberValid = phoneNumber ? isValidPhoneNumber(phoneNumber) : false;
   const isPhoneNumberNull = phoneNumber === undefined || phoneNumber === '' ? true : false;
+  setPhoneNumberValidatedStatus && setPhoneNumberValidatedStatus(isPhoneNumberValid);
 
   return (
     <div className='m-2'>

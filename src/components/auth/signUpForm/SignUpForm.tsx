@@ -20,6 +20,15 @@ const SignUpForm: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [selectedRoles, setSelectedRoles] = useState<string>('');
 
+  const [phoneNumberValidatedStatus, setPhoneNumberValidatedStatus] = useState(false);
+  const [emailValidatedStatus, setEmailValidatedStatus] = useState(false);
+  const [securityStatus, setSecurityStatus] = useState(false);
+  const [passwordConfirmedValidatedStatus, setPasswordConfirmedValidatedStatus] = useState(false);
+
+  useEffect(() => {
+    alert('aef');
+  }, [phoneNumberValidatedStatus, emailValidatedStatus, securityStatus, passwordConfirmedValidatedStatus]);
+
   const { register_success } = useAppSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -77,17 +86,21 @@ const SignUpForm: React.FC = () => {
             <RoleSelect onSelectRole={handleSelectRoles} />
 
             <label className='requireLabel'>Phone Number</label>
-            <PhoneNumberInput phoneNumber={phoneNumber} handlePhoneNumberChange={handlePhoneNumberChange} />
+            <PhoneNumberInput
+              setPhoneNumberValidatedStatus={setPhoneNumberValidatedStatus}
+              phoneNumber={phoneNumber}
+              handlePhoneNumberChange={handlePhoneNumberChange}
+            />
 
             <label className='requireLabel'>Email</label>
-            <EmailInput value={email} onChange={setEmail} />
+            <EmailInput value={email} onChange={setEmail} setEmailValidatedStatus={setEmailValidatedStatus} />
 
             <label className='requireLabel'>Password</label>
 
-            <PasswordInput isSignUp={true} value={password} onChange={setPassword} />
+            <PasswordInput isSignUp={true} setSecurityStatus={setSecurityStatus} value={password} onChange={setPassword} />
 
             <label className='requireLabel'>Password Confirm</label>
-            <PasswordConfirm value={password} />
+            <PasswordConfirm setPasswordConfirmedStatus={setPasswordConfirmedValidatedStatus} value={password} />
 
             <label className='flex item-center ml-2'>
               <span>
