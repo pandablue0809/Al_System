@@ -22,7 +22,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
     };
 
   return (
-    <div className="m-2 mb-4">
+    <div className="m-2 mb-3">
       <div className="relative w-full">
         <input
           type='text'
