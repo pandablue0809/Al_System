@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React from 'react';
 import ClientErrorImage from '../../assets/images/error/client-error.svg';
 
 const ClientError: React.FC = () => {

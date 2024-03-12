@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import GoogleButton from 'react-google-button';
+
 import PasswordInput from '../../input/passwordInput';
 import PasswordConfirm from '../../input/PasswordConfirm';
 import EmailInput from '../../input/EmailInput';
-import 'react-phone-number-input/style.css';
 import PhoneNumberInput from '../../input/PhoneNumberInput';
 import RoleSelect from '../../input/RoleSelect';
-import GoogleButton from 'react-google-button';
+
+import { doSignUp } from '../../../store/slices/authSlice';
+import { useAppSelector } from '../../../hooks/useReduxHooks';
 
 const SignUpForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [selectedRoles, setSelectedRoles] = useState<string>('');
+
+  const { register_success } = useAppSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('selectedRoles=======>');
+  }, [password, selectedRoles, phoneNumber]);
 
   const handleSelectRoles = (selectedRoles: string) => {
     setSelectedRoles(selectedRoles);
@@ -25,13 +41,13 @@ const SignUpForm: React.FC = () => {
     return 'k';
   };
 
-  // const responseGoogleSuccess = (response: any) => {
-  //   console.log(response);
-  // };
+  const responseGoogleSuccess = (response: any) => {
+    console.log(response);
+  };
 
-  // const responseGoogleFailure = (response: any) => {
-  //   console.log(response);
-  // };
+  const responseGoogleFailure = (response: any) => {
+    console.log(response);
+  };
 
   return (
     <div className='auth_back bg-[#010311] flex flex-col h-screen justify-center flex-wrap content-center min-h-screen xs:h-auto'>
