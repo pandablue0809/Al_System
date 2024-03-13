@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { isValidPhoneNumber } from 'react-phone-number-input';
@@ -24,10 +24,7 @@ const SignUpForm: React.FC = () => {
   const [emailValidatedStatus, setEmailValidatedStatus] = useState(false);
   const [securityStatus, setSecurityStatus] = useState(false);
   const [passwordConfirmedValidatedStatus, setPasswordConfirmedValidatedStatus] = useState(false);
-
-  useEffect(() => {
-    alert('aef');
-  }, [phoneNumberValidatedStatus, emailValidatedStatus, securityStatus, passwordConfirmedValidatedStatus]);
+  const [isAgree, setIsAgree] = useState(false);
 
   const { register_success } = useAppSelector((state) => state.auth);
 
@@ -50,6 +47,10 @@ const SignUpForm: React.FC = () => {
     return 'k';
   };
 
+  const handleCheck = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsAgree(event.target.checked);
+  };
+
   const responseGoogleSuccess = (response: any) => {
     console.log(response);
   };
@@ -63,7 +64,7 @@ const SignUpForm: React.FC = () => {
       <div className='first-line:items-center xl:mr-[36rem]'>
         <h1 className="md:text-left mb-3 text-white text-center text-[24px] font-semibold style={{fontFamily: 'Poppins'}}">
           Sign up to
-          <span className='text-[#ff69a5]'>Admin</span>
+          <span className='ml-2 text-[#ff69a5]'>Admin</span>
         </h1>
         <div className='items-center flex justify-center bg-black bg-opacity-60 rounded-lg shadow-orange-200 lg:px-20 md:px-10 px-4 xl:px-24 py-10 align-middle'>
           <form onSubmit={handleSubmit}>
@@ -104,7 +105,7 @@ const SignUpForm: React.FC = () => {
 
             <label className='flex item-center ml-2'>
               <span>
-                <input type='checkbox' />
+                <input type='checkbox' onChange={handleCheck} checked={isAgree} />
                 <span className='mr-2'></span>
               </span>
               <span className='text-white w-full text-sm place-items-center'>I agree with our Terms of Service and Privacy Policy</span>
