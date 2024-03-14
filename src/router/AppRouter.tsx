@@ -10,13 +10,15 @@ const Logout = React.lazy(() => import('./Logout'));
 const Error404Page = React.lazy(() => import('../pages/Error404Page'));
 const ServerErrorPage = React.lazy(() => import('../pages/ServerErrorPage'));
 const UserDashboardPage = React.lazy(() => import('../pages/dashboard/UserDashboard'));
-const UserDashboard = withLoading(UserDashboardPage);
+const MailVerifyPage = React.lazy(() => import('../pages/MailVerifyPage'));
 
 export const START_PAGE = '/';
 
+const UserDashboard = withLoading(UserDashboardPage);
 const LogoutFallback = withLoading(Logout);
 const Error404 = withLoading(Error404Page);
 const ServerError = withLoading(ServerErrorPage);
+const MailVerify = withLoading(MailVerifyPage);
 
 export const AppRouter: React.FC = () => {
   return (
@@ -29,6 +31,7 @@ export const AppRouter: React.FC = () => {
           <Route path='login' element={<LoginPage />} />
           <Route path='sign-up' element={<SignUpPage />} />
         </Route>
+        <Route path='/mail-verify' element={<MailVerify />} />
         <Route path='/dashboard'>
           <Route path='user-dashboard' element={<UserDashboard />} />
         </Route>
