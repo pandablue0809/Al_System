@@ -67,8 +67,6 @@ const SignUpForm: React.FC = () => {
       error_message.confirmPassword = 'ConfirmPassword';
     }
 
-    console.log('succsessed status ', register_success);
-
     if (Object.keys(error_message).length === 0) {
       if (securityStatus && passwordConfirmedValidatedStatus) {
         setLoading(() => true);
