@@ -5,7 +5,6 @@ import { setUser } from './userSlice';
 import { UserModel } from '../../domain/UserModel';
 
 export type AuthSliceData = {
-    token: string | null;
     user: UserModel | null;
     isAuthenticated: boolean;
     errorCase: string;
@@ -18,7 +17,6 @@ export type AuthSliceData = {
 }
 
 const initialState: AuthSliceData = {
-    token: readToken(),
     user: readUser(),
     isAuthenticated: false,
     errorCase: '',
@@ -37,6 +35,11 @@ export type SignUpRequest = {
     phoneNumber: string,
     email: string,
     password: string,
+}
+
+export type LoginRequest = {
+    email: string;
+    password: string;
 }
 
 export const setMailVerifying = createAction('auth/setMailVerifying', () => {
@@ -71,10 +74,29 @@ export const doSignUp = createAsyncThunk('auth/doSignUp', async (signUpPayload: 
         if (!response.ok) {
             throw new Error('Signup failed');
         }
+    } catch (error: any) {
+        return rejectWithValue(error.message);
+    }
+})
 
-        // Extract and return only the necessary data, making sure it's serializable
+export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: LoginRequest, { dispatch, rejectWithValue }) => {
+    try {
+        const response = await fetch(`${API_URL}/api/authentication/login/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginPayload),
+        })
+
         const data = await response.json();
-        return data; // This should be a serializable object
+
+        console.log('data from backend', data, response);
+
+        if (response.status === 200) {
+            persistToken(data.result.token);
+            dispatch(setUser(data.result.user));
+        }
     } catch (error: any) {
         return rejectWithValue(error.message);
     }
@@ -115,6 +137,9 @@ const authSlice = createSlice({
         builder.addCase(doSignUp.fulfilled, (state) => {
             state.register_success = true;
         });
+        builder.addCase(doLogin.fulfilled, (state) => {
+            state.isAuthenticated = true;
+        })
         builder.addCase(setMailVerifying, (state, action) => {
             state.verifying = action.payload;
         });
