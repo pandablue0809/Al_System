@@ -197,7 +197,7 @@ module.exports = {
         "sotru-dark": {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
-            background: "#010311",
+            background: "#141b2d",
             foreground: "#ffffff",
             primary: {
               50: "#001731",

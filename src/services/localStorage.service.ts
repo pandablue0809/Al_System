@@ -1,11 +1,14 @@
-import { UserModel } from "../domain/UserModel"
+type UserModel = {
+    username: string;
+    email: string;
+}
 
 export const persistToken = (token: string): void => {
     localStorage.setItem('accessToken', token)
 }
 
-export const readToken = (): string => {
-    return localStorage.getItem('accessToken') || 'bearerToken'
+export const readToken = (): string | null => {
+    return localStorage.getItem('accessToken');
 }
 
 export const persistUser = (user: UserModel): void => {
@@ -14,7 +17,6 @@ export const persistUser = (user: UserModel): void => {
 
 export const readUser = (): UserModel | null => {
     const userStr = localStorage.getItem('user');
-
     return userStr ? JSON.parse(userStr) : null;
 };
 

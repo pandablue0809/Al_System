@@ -11,13 +11,14 @@ const initialState: UserState = {
 export const setUser = createAction<PrepareAction<string>>(
   "user/setUser",
   (newUser) => {
+    console.log("dispatched username=======>", newUser);
     return {
       payload: newUser,
     };
   },
 );
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},

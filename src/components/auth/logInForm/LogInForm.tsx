@@ -1,19 +1,59 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { Checkbox, Button } from '@nextui-org/react';
 
+import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
+import { doLogin } from '../../../store/slices/authSlice';
 import PasswordInput from '../../input/passwordInput';
 import EmailInput from '../../input/EmailInput';
+
+type Error = {
+  email?: string;
+  password?: string;
+};
 
 const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
+  const [emailValidatedStatus, setEmailValidatedStatus] = useState<boolean>(false);
   const [isAgree, setSsAgree] = useState<boolean>(false);
 
-  const handleSubmit = () => {
-    console.log('here');
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const { errorMessage } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // notificationController.success({ message: 'Login Successful!' });
+      navigate('/dashboard/user-dashboard');
+    } else {
+      // !!errorMessage && notificationController.error({ message: `${errorMessage}` });
+    }
+  }, [isAuthenticated, errorMessage]);
+
+  const handleSignInButtonClick = () => {
+    const error_message: Error = {};
+
+    if (!emailValidatedStatus) {
+      error_message.email = 'Email';
+    }
+    if (!password) {
+      error_message.password = 'Empty password';
+    }
+
+    if (Object.keys(error_message).length === 0) {
+      dispatch(doLogin({ email: email, password: password }));
+    } else {
+      let message = '';
+      Object.values(error_message).map((content) => {
+        message = message.concat(' ', content);
+      });
+      // notificationController.error({ message: `Invalid${message} value` });
+    }
   };
 
   return (
@@ -27,8 +67,7 @@ const LoginForm: React.FC = () => {
             <label className='requireLabel' title='Email'>
               Username or Email Address
             </label>
-            <EmailInput value={email} onChange={setEmail} />
-
+            <EmailInput value={email} onChange={setEmail} setEmailValidatedStatus={setEmailValidatedStatus} />
             <label className='requireLabel' title='Email'>
               Password
             </label>
@@ -55,7 +94,7 @@ const LoginForm: React.FC = () => {
                 isDisabled={!isAgree}
                 variant='shadow'
                 color='secondary'
-                onClick={handleSubmit}>
+                onClick={handleSignInButtonClick}>
                 <span>Sign In</span>
               </Button>
             </div>

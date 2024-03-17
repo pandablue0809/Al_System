@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
 import { API_URL } from '../../config';
-import { deleteToken, deleteUser, persistToken, persistUser, readToken, readUser } from '../../services/localStorage.service';
+import { deleteToken, deleteUser, persistToken, persistUser } from '../../services/localStorage.service';
 import { setUser } from './userSlice';
-import { UserModel } from '../../domain/UserModel';
 
 export type AuthSliceData = {
-    user: UserModel | null;
     isAuthenticated: boolean;
-    errorCase: string;
+    errorMessage: string | unknown;
     verifying: boolean;
     isVerified: boolean;
     lastRefreshRequest: number | null;
@@ -17,9 +15,8 @@ export type AuthSliceData = {
 }
 
 const initialState: AuthSliceData = {
-    user: readUser(),
     isAuthenticated: false,
-    errorCase: '',
+    errorMessage: '',
     verifying: false,
     isVerified: false,
     register_success: false,
@@ -74,14 +71,18 @@ export const doSignUp = createAsyncThunk('auth/doSignUp', async (signUpPayload: 
         if (!response.ok) {
             throw new Error('Signup failed');
         }
-    } catch (error: any) {
-        return rejectWithValue(error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return rejectWithValue(error.message);
+        } else {
+            return rejectWithValue('An unknown error occurred');
+        }
     }
 })
 
 export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: LoginRequest, { dispatch, rejectWithValue }) => {
     try {
-        const response = await fetch(`${API_URL}/api/authentication/login/`, {
+        const res = await fetch(`${API_URL}/api/authentication/login/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,20 +90,29 @@ export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: Log
             body: JSON.stringify(loginPayload),
         })
 
-        const data = await response.json();
+        const data = await res.json();
 
-        console.log('data from backend', data, response);
+        console.log('data from data', data);
+        console.log('token =>>>>', data.result.token);
+        console.log('data from status=========>', data.result.user.username);
 
-        if (response.status === 200) {
+        if (res.status === 200) {
             persistToken(data.result.token);
-            dispatch(setUser(data.result.user));
+            dispatch(setUser(data.result.user.username));
+            persistUser(data.result.user);
+        } else {
+            return rejectWithValue(data.message || 'Login failed');
         }
-    } catch (error: any) {
-        return rejectWithValue(error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return rejectWithValue(error.message);
+        } else {
+            return rejectWithValue('An unknown error occurred');
+        }
     }
 })
 
-export const doEmailVerify = createAsyncThunk('auth/doEmailVerify', async (token: string, { dispatch }) => {
+export const doEmailVerify = createAsyncThunk('auth/doEmailVerify', async (token: string, { dispatch, rejectWithValue }) => {
     dispatch(setMailVerifying());
     try {
         const res = await fetch(`${API_URL}/api/authentication/mail-verify/`, {
@@ -116,6 +126,8 @@ export const doEmailVerify = createAsyncThunk('auth/doEmailVerify', async (token
         const result = await res.json();
         if (result.success) {
             dispatch(setVerifiedStatus());
+        } else {
+            return rejectWithValue(result.message || "Mail verify failed");
         }
     }
     catch (e) {
@@ -123,7 +135,7 @@ export const doEmailVerify = createAsyncThunk('auth/doEmailVerify', async (token
     }
 })
 
-export const doLogout = createAsyncThunk('auth/doLogout', (payload, { dispatch }) => {
+export const doLogout = createAsyncThunk('auth/doLogout', async (_, { dispatch }) => {
     deleteToken();
     deleteUser();
     dispatch(setUser(null));
@@ -136,10 +148,18 @@ const authSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(doSignUp.fulfilled, (state) => {
             state.register_success = true;
-        });
+        })
         builder.addCase(doLogin.fulfilled, (state) => {
             state.isAuthenticated = true;
         })
+            .addCase(doLogin.rejected, (state, action) => {
+                state.isAuthenticated = false;
+                state.errorMessage = action.payload;
+            })
+            .addCase(doLogin.pending, (state) => {
+                state.isAuthenticated = false;
+                state.errorMessage = ''
+            })
         builder.addCase(setMailVerifying, (state, action) => {
             state.verifying = action.payload;
         });
@@ -149,6 +169,9 @@ const authSlice = createSlice({
         builder.addCase(setVerifiedStatus, (state, action) => {
             state.isVerified = action.payload;
         });
+        builder.addCase(doLogout.fulfilled, (state) => {
+            state.isAuthenticated = false;
+        })
     }
 })
 
