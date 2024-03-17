@@ -11,7 +11,7 @@ import RoleSelect from '../../input/RoleSelect';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doSignUp } from '../../../store/slices/authSlice';
-import { notificationController } from '../../../controllers/notificationController';
+// import { notificationController } from '../../../controllers/notificationController';
 
 import { IoMailOpenOutline } from 'react-icons/io5';
 
@@ -87,7 +87,7 @@ const SignUpForm: React.FC = () => {
       Object.values(error_message).map((content) => {
         message = message.concat(' ', content);
       });
-      notificationController.error({ message: `Invalid${message} value` });
+      // notificationController.error({ message: `Invalid${message} value` });
     }
   };
 
