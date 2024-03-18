@@ -1,28 +1,36 @@
 import React, { useState } from 'react';
+// import { Routes, Route } from "react-router-dom";
+import { CssBaseline } from '@mui/material';
+
+import UserSidebar from '../../components/layout/userSidebar/UserSidebar';
 import Header from '../../components/header/Header';
-import SideBar from '../../components/layout/MySidebar';
-import ChatInput from '../../components/input/ChatInput';
-import { ChatMessage } from '../../components/messagebox/MessageBox';
-import MessageBox from '../../components/messagebox/MessageBox';
 
 const UserDashboard: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-
-  const handleSendMessage = (newMessage: string) => {
-    setMessages([...messages, { user: 'Me', message: newMessage }]);
-  };
+  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
-    <div className='h-screen'>
-      <Header />
-      <SideBar />
-      <div className='justify-center w-full flex overflow-hidden '>
-        <div className='mt-5  text-black overflow-scroll h-[75vh]'>
-          <MessageBox messages={messages} />
-        </div>
-        <ChatInput onSendMsg={handleSendMessage} />
+    <>
+      <CssBaseline />
+      <div className='w-full h-full flex relative'>
+        <UserSidebar />
+        <main className='w-full h-full'>
+          <Header />
+          {/* <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/team' element={<Team />} />
+            <Route path='/contacts' element={<Contacts />} />
+            <Route path='/invoices' element={<Invoices />} />
+            <Route path='/form' element={<Form />} />
+            <Route path='/bar' element={<Bar />} />
+            <Route path='/pie' element={<Pie />} />
+            <Route path='/line' element={<Line />} />
+            <Route path='/faq' element={<FAQ />} />
+            <Route path='/calendar' element={<Calendar />} />
+            <Route path='/geography' element={<Geography />} />
+          </Routes> */}
+        </main>
       </div>
-    </div>
+    </>
   );
 };
 

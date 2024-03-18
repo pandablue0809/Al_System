@@ -1,22 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+import { Checkbox, Button } from '@nextui-org/react';
+
+import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
+import { doLogin } from '../../../store/slices/authSlice';
 import PasswordInput from '../../input/passwordInput';
 import EmailInput from '../../input/EmailInput';
-import GoogleButton from 'react-google-button';
+
+type Error = {
+  email?: string;
+  password?: string;
+};
 
 const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = () => {
-    console.log('here');
-  };
+  const [emailValidatedStatus, setEmailValidatedStatus] = useState<boolean>(false);
+  const [isAgree, setSsAgree] = useState<boolean>(false);
 
-  const responseGoogleSuccess = (response: any) => {
-    console.log(response);
-  };
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const responseGoogleFailure = (response: any) => {
-    console.log(response);
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const { errorMessage } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // notificationController.success({ message: 'Login Successful!' });
+      navigate('/dashboard/user-dashboard');
+    } else {
+      // !!errorMessage && notificationController.error({ message: `${errorMessage}` });
+    }
+  }, [isAuthenticated, errorMessage]);
+
+  const handleSignInButtonClick = () => {
+    const error_message: Error = {};
+
+    if (!emailValidatedStatus) {
+      error_message.email = 'Email';
+    }
+    if (!password) {
+      error_message.password = 'Empty password';
+    }
+
+    if (Object.keys(error_message).length === 0) {
+      dispatch(doLogin({ email: email, password: password }));
+    } else {
+      let message = '';
+      Object.values(error_message).map((content) => {
+        message = message.concat(' ', content);
+      });
+      // notificationController.error({ message: `Invalid${message} value` });
+    }
   };
 
   return (
@@ -26,21 +63,20 @@ const LoginForm: React.FC = () => {
           Sign In to <span className='text-[#ff69a5]'>Admin</span>
         </h1>
         <div className='items-center flex justify-center bg-black bg-opacity-60 rounded-lg shadow-orange-200 px-16 py-32 align-middle '>
-          <form onSubmit={handleSubmit}>
+          <div>
             <label className='requireLabel' title='Email'>
               Username or Email Address
             </label>
-            <EmailInput value={email} onChange={setEmail} />
-
+            <EmailInput value={email} onChange={setEmail} setEmailValidatedStatus={setEmailValidatedStatus} />
             <label className='requireLabel' title='Email'>
               Password
             </label>
             <PasswordInput value={password} onChange={setPassword} />
             <div className='flex my-5 flex-col md:flex-row ml-2'>
               <label>
-                <input type='checkbox' />
-                <span className='mr-2'></span>
-                <span className='text-white'>Keep me logged in</span>
+                <Checkbox isSelected={isAgree} size='sm' onValueChange={setSsAgree}>
+                  Keep me logged in
+                </Checkbox>
               </label>
               <a className='text-[#1890ff] decoration-inherit md:ml-4' href='/react/strikingdash/forgotPassword'>
                 Forgot password?
@@ -48,27 +84,35 @@ const LoginForm: React.FC = () => {
             </div>
             <p className='text-white text-center text-sm md:pb-4 sm:pb-5'>
               Have you account?
-              <a aria-current='page' className='text-[#1890ff] no-underline ml-2' href='/react/strikingdash/'>
+              <Link to='/auth/sign-up' aria-current='page' className='text-[#1890ff] no-underline ml-2'>
                 Sign up now
-              </a>
+              </Link>
             </p>
             <div className='flex items-center justify-between my-5'>
-              <button
-                type='submit'
-                className='m-2 shadow-lg font-medium text-[16px] border-box text-white bg-secondary hover:bg-[#823cf1] focus:shadow-outline focus:outline-none px-9 w-full h-[2.8rem] rounded-[10px]'>
+              <Button
+                className='m-2 shadow-lg font-medium text-[16px] border-box text-white px-9 w-full h-[2.8rem] rounded-[10px]'
+                isDisabled={!isAgree}
+                variant='shadow'
+                color='secondary'
+                onClick={handleSignInButtonClick}>
                 <span>Sign In</span>
-              </button>
+              </Button>
             </div>
             <div className='mx-2'>
-              <GoogleButton
-                label='Sign in with Google'
-                className='custom-google-login'
-                onClick={() => {
-                  console.log('Google button clicked');
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
                 }}
+                onError={() => {
+                  console.log('Login Failed');
+                }}
+                theme='filled_blue'
+                text='continue_with'
+                shape='square'
+                useOneTap
               />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

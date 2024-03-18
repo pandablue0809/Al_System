@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import { readToken } from '../services/localStorage.service';
+
 import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 
@@ -10,34 +13,58 @@ const Logout = React.lazy(() => import('./Logout'));
 const Error404Page = React.lazy(() => import('../pages/Error404Page'));
 const ServerErrorPage = React.lazy(() => import('../pages/ServerErrorPage'));
 const UserDashboardPage = React.lazy(() => import('../pages/dashboard/UserDashboard'));
-const UserDashboard = withLoading(UserDashboardPage);
+const MailVerifyPage = React.lazy(() => import('../pages/MailVerifyPage'));
 
 export const START_PAGE = '/';
 
+const UserDashboard = withLoading(UserDashboardPage);
 const LogoutFallback = withLoading(Logout);
 const Error404 = withLoading(Error404Page);
 const ServerError = withLoading(ServerErrorPage);
+const MailVerify = withLoading(MailVerifyPage);
 
 export const AppRouter: React.FC = () => {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    setToken(token);
+  }, [readToken]);
+
   return (
     <Router>
-      <Routes>
-        <Route path={START_PAGE}>
-          <Route index element={<StartPage />} />
-        </Route>
-        <Route path='/auth'>
-          <Route path='login' element={<LoginPage />} />
-          <Route path='sign-up' element={<SignUpPage />} />
-        </Route>
-        <Route path='/dashboard'>
-          <Route path='user-dashboard' element={<UserDashboard />} />
-        </Route>
-        <Route path='/error'>
-          <Route path='404' element={<Error404 />} />
-          <Route path='server-error' element={<ServerError />} />
-        </Route>
-        <Route path='/logout' element={<LogoutFallback />} />
-      </Routes>
+      {token ? (
+        <Routes>
+          <Route path={START_PAGE}>
+            <Route index element={<StartPage />} />
+          </Route>
+          <Route path='/auth'>
+            <Route path='login' element={<LoginPage />} />
+            <Route path='sign-up' element={<SignUpPage />} />
+          </Route>
+          <Route path='/mail-verify' element={<MailVerify />} />
+          <Route path='/dashboard'>
+            <Route path='user-dashboard' element={<UserDashboard />} />
+          </Route>
+          <Route path='/error'>
+            <Route path='404' element={<Error404 />} />
+            <Route path='server-error' element={<ServerError />} />
+          </Route>
+          <Route path='/logout' element={<LogoutFallback />} />
+          <Route path='*' element={<Error404 />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path={START_PAGE}>
+            <Route index element={<StartPage />} />
+          </Route>
+          <Route path='/auth'>
+            <Route path='login' element={<LoginPage />} />
+            <Route path='sign-up' element={<SignUpPage />} />
+          </Route>
+          <Route path='/logout' element={<LogoutFallback />} />
+          <Route path='*' element={<Error404 />} />
+        </Routes>
+      )}
     </Router>
   );
 };

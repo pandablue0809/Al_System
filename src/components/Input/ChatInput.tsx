@@ -58,7 +58,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                 onKeyDown={handleKeyDown}
                 rows={rows}
                 placeholder='Message ChatGPT…'
-                className='rounded-2xl m-0 w-full resize-none border-0 bg-transparent focus:ring-0 focus-visible:ring-0 dark:bg-transparent py-[10px] pr-10 md:py-3.5 md:pr-12 max-h-[25vh] max-h-52 placeholder-black/50 dark:placeholder-white/50 pl-3 md:pl-4'></textarea>
+                className='rounded-2xl m-0 w-full resize-none border-0 bg-transparent focus:ring-0 focus-visible:ring-0 dark:bg-transparent py-[10px] pr-10 md:py-3.5 md:pr-1 max-h-52 placeholder-black/50 dark:placeholder-white/50 pl-3 md:pl-4'></textarea>
               <button
                 disabled={isEmpty}
                 onClick={handleClick}
