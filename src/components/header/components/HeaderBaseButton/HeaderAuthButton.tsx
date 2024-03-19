@@ -105,7 +105,7 @@ const UserDropdown = () => {
         }}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        <Box sx={{ pt: 2, pb: 3, px: 4 }}>
+        <Box sx={{ pt: 1, pb: 2, px: 2 }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Badge overlap='circular' badgeContent={<BadgeContentSpan />} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
               <Avatar alt='Avatar-text' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }}>
@@ -120,7 +120,7 @@ const UserDropdown = () => {
             </Box>
           </Box>
         </Box>
-        <Divider sx={{ mt: 0, mb: 1 }} />
+        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <AccountOutline sx={{ marginRight: 1 }} />
@@ -139,7 +139,7 @@ const UserDropdown = () => {
             Chat
           </Box>
         </MenuItem>
-        <Divider />
+        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <CogOutline sx={{ marginRight: 1 }} />
@@ -152,7 +152,7 @@ const UserDropdown = () => {
             Pricing
           </Box>
         </MenuItem>
-        <Divider />
+        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/logout')}>
           <Box sx={styles}>
             <LogoutVariant sx={{ marginRight: 1 }} />
