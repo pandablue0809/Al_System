@@ -3,8 +3,7 @@ import { Button } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import PasswordInput from '../../input/passwordInput';
 import PasswordConfirm from '../../input/PasswordConfirm';
-
-import { notificationController } from '../../../controllers/notificationController';
+import { toast } from 'react-toastify';
 
 type Error = {
   password?: string;
@@ -36,7 +35,7 @@ const CreateNewPassword: React.FC = () => {
       Object.values(error_message).map((content) => {
         message = message.concat(' ', content);
       });
-      notificationController.error({ message: `Invalid${message} value` });
+      toast.error(`Invalid${message} value`);
     }
   };
 

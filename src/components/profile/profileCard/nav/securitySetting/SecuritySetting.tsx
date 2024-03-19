@@ -1,6 +1,5 @@
 import React, { ReactComponentElement, useCallback, useEffect, useMemo, useState } from 'react';
-import { DatePicker, Select } from 'antd';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+// import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import { Radio, RadioGroup } from '@nextui-org/react';
 import PasswordInput from '../../../../input/passwordInput';
 import PasswordConfirm from '../../../../input/PasswordConfirm';

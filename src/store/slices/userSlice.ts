@@ -1,17 +1,16 @@
 import { createAction, createSlice, PrepareAction } from "@reduxjs/toolkit";
 
-export interface UserState {
-  user: string;
+export type UserState = {
+  user: string | null;
 }
 
 const initialState: UserState = {
-  user: "",
+  user: null
 };
 
 export const setUser = createAction<PrepareAction<string>>(
   "user/setUser",
   (newUser) => {
-    console.log("dispatched username=======>", newUser);
     return {
       payload: newUser,
     };

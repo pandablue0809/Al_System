@@ -66,8 +66,8 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
       </button>
       {menuShowingDropdown === title && (
         <div
-          className='w-44 flex flex-col pt-4 pb-8 px-8 rounded-lg transition ease-in-out duration-300 shadow-lg absolute z-10'
-          style={{ backgroundColor: '#212749' }}
+          className='w-44 flex flex-col pt-4 pb-8 px-8 rounded-lg transition ease-in-out duration-300 shadow-xl absolute z-10'
+          style={{ backgroundColor: '#2b2c40' }}
           onMouseLeave={() => {
             closeSubMenu();
           }}

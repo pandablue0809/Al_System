@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { CssBaseline } from '@mui/material';
 
 import UserSidebar from '../../components/layout/userSidebar/UserSidebar';
 import Header from '../../components/header/Header';
+import WorkRoom from './userDashboardComponent/WorkRoom';
 
 const UserDashboard: React.FC = () => {
   const [isSidebar, setIsSidebar] = useState(true);
@@ -13,9 +14,11 @@ const UserDashboard: React.FC = () => {
       <CssBaseline />
       <div className='w-full h-full flex relative'>
         <UserSidebar />
-        <main className='w-full h-full'>
+        <main className='w-full h-screen box-border flex flex-col'>
           <Header />
+          <WorkRoom />
           {/* <Routes>
+            <Route path='/user-dashboard/work' element={<WorkRoom />} />
             <Route path='/' element={<Dashboard />} />
             <Route path='/team' element={<Team />} />
             <Route path='/contacts' element={<Contacts />} />

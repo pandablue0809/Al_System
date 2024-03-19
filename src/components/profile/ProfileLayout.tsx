@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ProfileInfo } from './profileCard/profileInfo/ProfileInfo';
 import { ProfileNav } from './profileCard/profileNav/ProfileNav';
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PersonalInfo from './profileCard/nav/personalInfo/PersonalInfo';
 import SecuritySetting from './profileCard/nav/securitySetting/SecuritySetting';

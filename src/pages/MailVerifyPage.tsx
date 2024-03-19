@@ -5,7 +5,7 @@ import { PageTitle } from '../components/common/pageTitle/PageTitle';
 const MailVerifyPage: React.FC = () => {
   return (
     <>
-      <PageTitle>{'commone.mailverify'}</PageTitle>
+      <PageTitle>{'mailverify'}</PageTitle>
       <EmailVerifyForm />
     </>
   );

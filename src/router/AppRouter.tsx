@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { readToken } from '../services/localStorage.service';
+import { useAppSelector, useAppDispatch } from '../hooks/useReduxHooks';
+import { setUser } from '../store/slices/userSlice';
 
 import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 
 import { withLoading } from '../hocs/withLoading.hoc';
 import StartPage from '../pages/StartPage';
+import { readUser } from '../services/localStorage.service';
 
 const Logout = React.lazy(() => import('./Logout'));
 const Error404Page = React.lazy(() => import('../pages/Error404Page'));
@@ -24,15 +26,23 @@ const ServerError = withLoading(ServerErrorPage);
 const MailVerify = withLoading(MailVerifyPage);
 
 export const AppRouter: React.FC = () => {
-  const [token, setToken] = useState('');
+  const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setToken(token);
-  }, [readToken]);
+    const username = readUser()?.username;
+    if (username) {
+      loadUser(username);
+    }
+  }, []);
+
+  const loadUser = async (user: string) => {
+    await dispatch(setUser(user));
+  };
 
   return (
     <Router>
-      {token ? (
+      {user ? (
         <Routes>
           <Route path={START_PAGE}>
             <Route index element={<StartPage />} />

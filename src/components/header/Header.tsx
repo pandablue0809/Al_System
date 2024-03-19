@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Box, IconButton } from '@mui/material';
 
 import { HeaderBaseButton } from './components/HeaderBaseButton/HeaderBaseButton';
 import { HeaderDropDownButton } from './components/HeaderBaseButton/HeaderDropDownButton';
@@ -6,6 +7,8 @@ import type { HeaderDropDownMenuItem } from './components/HeaderBaseButton/Heade
 
 import LOGO from '../../assets/images/logo/logo.svg';
 import { HeaderAuthButton } from './components/HeaderBaseButton/HeaderAuthButton';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 
 const MENU_DATA: HeaderDropDownMenuItem = {
   title: 'More',
@@ -42,10 +45,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className='container relative m-0 mx-auto py-1 md:px-2'>
-      <div className='max-w-full flex items-center justify-between'>
-        <div className='flex w-fit items-center'>
-          <img src={LOGO} width={50} height={50} alt='logo' className='h-10 w-10 md:h-16 md:w-16' style={{ overflowClipMargin: 'content-box' }} />
+    <div className='w-full relative mx-auto py-1 md:px-2 rounded-lg md:rounded-xl'>
+      <div className='mx-auto max-w-[1400px] px-5 md:px-6 lg:px-8 xl:px-10 2xl:px-6 flex items-center justify-between bg-[#2b2c40] rounded-lg md:rounded-xl shadow-md mt-3'>
+        <div className='flex w-fit items-center box-border'>
+          <img src={LOGO} width={50} height={50} alt='logo' className='h-10 w-10 md:h-16 md:w-16 p-3' style={{ overflowClipMargin: 'content-box' }} />
         </div>
         <div className='flex w-fit items-center gap-12'>
           <HeaderBaseButton>Home</HeaderBaseButton>
@@ -62,5 +65,6 @@ const Header: React.FC = () => {
     </div>
   );
 };
+
 
 export default Header;

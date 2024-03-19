@@ -1,6 +1,5 @@
-import React, { ReactComponentElement, useCallback, useEffect, useMemo, useState } from 'react';
-import { DatePicker, Select } from 'antd';
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import React, { useEffect, useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import PhoneNumberInput from '../../../../input/PhoneNumberInput';
 import EmailInput from '../../../../input/EmailInput';
 
@@ -24,7 +23,7 @@ export type PersonalInfoFormValues = {
   email: string;
 };
 
-const PersonalInfo = () => {
+const PersonalInfo: React.FC = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
 
@@ -76,11 +75,11 @@ const PersonalInfo = () => {
         </div>
         <div>
           <label className='text-lg text-blue-400'>Birthday</label>
-          <DatePicker
+          {/* <DatePicker
             type='Date'
             placeholder='Birthday'
             className={`px-4 py-2 mt-2 border bg-[#3B3B3B] text-white focus:text-black border-gray-300 rounded-md focus:outline-none focus:border-[#8c94ff] w-full pr-8`}
-          />
+          /> */}
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'react-phone-number-input/style.css';
 import { Checkbox, Button } from '@nextui-org/react';
+import { toast } from 'react-toastify';
 
 import PasswordInput from '../../input/passwordInput';
 import PasswordConfirm from '../../input/PasswordConfirm';
@@ -11,7 +12,6 @@ import RoleSelect from '../../input/RoleSelect';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doSignUp } from '../../../store/slices/authSlice';
-// import { notificationController } from '../../../controllers/notificationController';
 
 import { IoMailOpenOutline } from 'react-icons/io5';
 
@@ -87,7 +87,7 @@ const SignUpForm: React.FC = () => {
       Object.values(error_message).map((content) => {
         message = message.concat(' ', content);
       });
-      // notificationController.error({ message: `Invalid${message} value` });
+      toast.error(`Invalid${message} value`);
     }
   };
 
