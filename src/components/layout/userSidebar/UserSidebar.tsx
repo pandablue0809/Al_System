@@ -4,6 +4,7 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography } from '@mui/material';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
@@ -20,6 +21,7 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import logo from '../../../assets/images/logo/logo.svg';
 
 type ItemData = {
+  className?: string;
   title: string;
   to: string;
   icon: ReactElement<SVGProps<SVGSVGElement>>;
@@ -27,9 +29,10 @@ type ItemData = {
   setSelected: (title: string) => void;
 };
 
-const Item: React.FC<ItemData> = ({ title, to, icon, selected, setSelected }) => {
+const Item: React.FC<ItemData> = ({ className, title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
+      className={className ?? ''}
       active={selected === title}
       style={{ color: '#e0e0e0' }}
       component={<Link to={to} />}
@@ -60,9 +63,10 @@ const UserSidebar = () => {
         '& .menu-item:hover': { backgroundColor: 'transparent !important' },
         '& .menu-item.active': { backgroundColor: 'transparent !important' },
       }}>
-      <Sidebar collapsed={isCollapsed} breakPoint='md' backgroundColor='#1F2A40'>
+      <Sidebar className='sidebar' collapsed={isCollapsed} breakPoint='md' backgroundColor='#2b2c40'>
         <Menu>
           <MenuItem
+            className='menu-item'
             icon={isCollapsed ? <MenuOutlinedIcon onClick={() => setIsCollapsed(!isCollapsed)} /> : undefined}
             style={{ margin: '10px 0 20px 0', color: '#e0e0e0' }}>
             {!isCollapsed && (
@@ -98,7 +102,8 @@ const UserSidebar = () => {
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : '10%'}>
-            <Item title='Dashboard' to='/' icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item className='menu-item' title='Work' to='/user-dashboard/work' icon={<AutoFixHighOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item className='menu-item' title='Dashboard' to='/' icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Data

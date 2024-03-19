@@ -5,7 +5,7 @@ import { PageTitle } from '../components/common/pageTitle/PageTitle';
 const LoginPage: React.FC = () => {
   return (
     <>
-      <PageTitle>{'common.login'}</PageTitle>
+      <PageTitle>{'login'}</PageTitle>
       <LoginForm />
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { Checkbox, Button } from '@nextui-org/react';
+import { toast } from 'react-toastify';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doLogin } from '../../../store/slices/authSlice';
@@ -28,10 +29,10 @@ const LoginForm: React.FC = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      // notificationController.success({ message: 'Login Successful!' });
+      toast.success('Login Successful!');
       navigate('/dashboard/user-dashboard');
     } else {
-      // !!errorMessage && notificationController.error({ message: `${errorMessage}` });
+      !!errorMessage && toast.error(`${errorMessage}`);
     }
   }, [isAuthenticated, errorMessage]);
 
@@ -52,7 +53,7 @@ const LoginForm: React.FC = () => {
       Object.values(error_message).map((content) => {
         message = message.concat(' ', content);
       });
-      // notificationController.error({ message: `Invalid${message} value` });
+      toast.error(`Invalid${message} value`);
     }
   };
 

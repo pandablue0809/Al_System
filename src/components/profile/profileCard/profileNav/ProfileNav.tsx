@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { UserOutlined, SecurityScanOutlined, BellOutlined, DollarOutlined } from '@ant-design/icons';
-import { Button } from '@nextui-org/react';
+// import { UserOutlined, SecurityScanOutlined, DollarOutlined } from '@ant-design/icons';
+import DollarOutlined from '@mui/icons-material/MonetizationOnOutlined';
+import SecurityScanOutlined from '@mui/icons-material/PrivacyTipOutlined';
+import { AiOutlineUser } from "react-icons/ai";
 
 export type ProfileNavProps = {
   onSetNav?: (newValue: string) => void;
@@ -21,7 +23,7 @@ export const ProfileNav: React.FC<ProfileNavProps> = ({ onSetNav }) => {
           setNav('personalInfo');
         }}>
         <div className='p-2 my-2 rounded-md bg-slate-800'>
-          <UserOutlined className='text-primary-500 text-lg' />
+          <AiOutlineUser className='text-primary-500 text-lg' />
         </div>
         <span className='pl-2 text-xl font-bold'>Personal Info</span>
       </button>
