@@ -21,7 +21,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const newContent = event.target.value;
     const length = newContent.split('\n').length;
-    const lines = length + newContent.split('\n')[length - 1].length / 100;
+    const lines = length + newContent.split('\n')[length - 1].length / 90;
     if (!isKeyDownEnter) {
       setChatContent(newContent);
       setRows(lines);
@@ -61,7 +61,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                 onKeyDown={handleKeyDown}
                 rows={rows}
                 placeholder='Message ChatGPT…'
-                className='rounded-2xl m-0 w-full resize-none border-0 bg-transparent focus:ring-0 focus-visible:ring-0 dark:bg-transparent py-[10px] pr-10 md:py-3.5 md:pr-1 max-h-52 placeholder-white/50 pl-3 md:pl-4'></textarea>
+                className='rounded-2xl m-0 resize-none border-0 bg-transparent focus:ring-0 focus-visible:ring-0 dark:bg-transparent py-[10px] pr-32 md:py-3.5 max-h-36 placeholder-white/50 pl-3 md:pl-4 '></textarea>
               <button
                 disabled={isEmpty}
                 onClick={handleClick}
