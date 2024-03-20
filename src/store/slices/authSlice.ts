@@ -93,8 +93,7 @@ export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: Log
         const data = await res.json();
 
         console.log('data from data', data);
-        console.log('token =>>>>', data.result.token);
-        console.log('data from status=========>', data.result.user.username);
+        console.log('data from status=========>', res);
 
         if (res.status === 200) {
             persistToken(data.result.token);

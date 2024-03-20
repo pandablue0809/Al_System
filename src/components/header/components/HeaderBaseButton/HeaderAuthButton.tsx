@@ -120,7 +120,7 @@ const UserDropdown = () => {
             </Box>
           </Box>
         </Box>
-        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
+        <Divider sx={{ backgroundColor: '#414750' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <AccountOutline sx={{ marginRight: 1 }} />
@@ -139,7 +139,7 @@ const UserDropdown = () => {
             Chat
           </Box>
         </MenuItem>
-        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
+        <Divider sx={{ backgroundColor: '#414750' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose()}>
           <Box sx={styles}>
             <CogOutline sx={{ marginRight: 1 }} />
@@ -152,7 +152,7 @@ const UserDropdown = () => {
             Pricing
           </Box>
         </MenuItem>
-        <Divider sx={{ backgroundColor: '#e7e3fc' }} />
+        <Divider sx={{ backgroundColor: '#414750' }} />
         <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/logout')}>
           <Box sx={styles}>
             <LogoutVariant sx={{ marginRight: 1 }} />

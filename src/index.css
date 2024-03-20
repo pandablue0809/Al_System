@@ -246,32 +246,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  width: 5px;
+  width: 3px;
   background-color: #888;
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.unhovered ::-webkit-scrollbar{
+  width: 0px !important;
+}
+
+::-webkit-scrollbar-thumb:hover ::-webkit-scrollbar{
+  width: 10px !important;
 }
 
 textarea::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.4em!important;
 }
 
 textarea::-webkit-scrollbar-track {
   margin-top: 10px;
   margin-bottom: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(255, 252, 252, 0.3);
 }
 
 .ps-menu-button:hover {
   background-color: inherit !important;
   color: rgb(18, 53, 250) !important;
 }
+
 .ps-menu-button.active {
-  background-color: inherit !important;
+  background-color: #53c959 !important;
   color: rgb(4, 236, 162) !important;
 }
-
-

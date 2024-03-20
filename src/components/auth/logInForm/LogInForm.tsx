@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
-import { Checkbox, Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { toast } from 'react-toastify';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
@@ -17,9 +17,9 @@ type Error = {
 const LoginForm: React.FC = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
   const [emailValidatedStatus, setEmailValidatedStatus] = useState<boolean>(false);
-  const [isAgree, setSsAgree] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -47,8 +47,10 @@ const LoginForm: React.FC = () => {
     }
 
     if (Object.keys(error_message).length === 0) {
+      setLoading(true);
       dispatch(doLogin({ email: email, password: password }));
     } else {
+      setLoading(false);
       let message = '';
       Object.values(error_message).map((content) => {
         message = message.concat(' ', content);
@@ -74,11 +76,7 @@ const LoginForm: React.FC = () => {
             </label>
             <PasswordInput value={password} onChange={setPassword} />
             <div className='flex my-5 flex-col md:flex-row ml-2'>
-              <label>
-                <Checkbox isSelected={isAgree} size='sm' onValueChange={setSsAgree}>
-                  Keep me logged in
-                </Checkbox>
-              </label>
+              <label>Keep me logged in</label>
               <a className='text-[#1890ff] decoration-inherit md:ml-4' href='/react/strikingdash/forgotPassword'>
                 Forgot password?
               </a>
@@ -92,9 +90,20 @@ const LoginForm: React.FC = () => {
             <div className='flex items-center justify-between my-5'>
               <Button
                 className='m-2 shadow-lg font-medium text-[16px] border-box text-white px-9 w-full h-[2.8rem] rounded-[10px]'
-                isDisabled={!isAgree}
+                isDisabled={isLoading}
+                isLoading={isLoading}
                 variant='shadow'
                 color='secondary'
+                spinner={
+                  <svg className='animate-spin h-5 w-5 text-current' fill='none' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                    <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4' />
+                    <path
+                      className='opacity-75'
+                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                      fill='currentColor'
+                    />
+                  </svg>
+                }
                 onClick={handleSignInButtonClick}>
                 <span>Sign In</span>
               </Button>

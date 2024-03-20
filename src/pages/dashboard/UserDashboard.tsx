@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+// import { Routes, Route } from "react-router-dom";
 import { CssBaseline } from '@mui/material';
 
 import UserSidebar from '../../components/layout/userSidebar/UserSidebar';
@@ -7,7 +7,6 @@ import Header from '../../components/header/Header';
 import WorkRoom from './userDashboardComponent/WorkRoom';
 
 const UserDashboard: React.FC = () => {
-  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
     <>
@@ -23,7 +22,6 @@ const UserDashboard: React.FC = () => {
             <Route path='/team' element={<Team />} />
             <Route path='/contacts' element={<Contacts />} />
             <Route path='/invoices' element={<Invoices />} />
-            <Route path='/form' element={<Form />} />
             <Route path='/bar' element={<Bar />} />
             <Route path='/pie' element={<Pie />} />
             <Route path='/line' element={<Line />} />
