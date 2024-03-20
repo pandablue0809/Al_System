@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Box, IconButton } from '@mui/material';
+import React, { useState } from 'react';
 
 import { HeaderBaseButton } from './components/HeaderBaseButton/HeaderBaseButton';
 import { HeaderDropDownButton } from './components/HeaderBaseButton/HeaderDropDownButton';
@@ -36,9 +35,9 @@ const MENU_DATA: HeaderDropDownMenuItem = {
 const Header: React.FC = () => {
   const [status, setStatus] = useState('');
 
-  useEffect(() => {
-    console.log(status);
-  }, [status]);
+  // useEffect(() => {
+  //   console.log(status);
+  // }, [status]);
 
   const handleClick = (state: string) => {
     setStatus(state);
@@ -65,6 +64,5 @@ const Header: React.FC = () => {
     </div>
   );
 };
-
 
 export default Header;
