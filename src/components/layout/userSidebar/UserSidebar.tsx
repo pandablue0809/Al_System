@@ -102,30 +102,30 @@ const UserSidebar = () => {
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : '10%'}>
-            <Item className='menu-item' title='Work' to='/user-dashboard/work' icon={<AutoFixHighOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item className='menu-item' title='Dashboard' to='/' icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item className='menu-item' title='Work' to='/dashboard/user/work' icon={<AutoFixHighOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item className='menu-item' title='Dashboard' to='/dashboard/user/chat' icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Data
             </Typography>
-            <Item title='Manage Team' to='/team' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Contacts Information' to='/contacts' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Invoices Balances' to='/invoices' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Manage Team' to='' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Contacts Information' to='' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Invoices Balances' to='' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Pages
             </Typography>
-            <Item title='Profile Form' to='/form' icon={<PersonOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Calendar' to='/calendar' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='FAQ Page' to='/faq' icon={<HelpOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Profile Form' to='' icon={<PersonOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Calendar' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='FAQ Page' to='' icon={<HelpOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Charts
             </Typography>
-            <Item title='Bar Chart' to='/bar' icon={<BarChartOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Pie Chart' to='/pie' icon={<PieChartOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Line Chart' to='/line' icon={<TimelineOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Geography Chart' to='/geography' icon={<MapOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Bar Chart' to='' icon={<BarChartOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Pie Chart' to='' icon={<PieChartOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Line Chart' to='' icon={<TimelineOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Geography Chart' to='' icon={<MapOutlinedIcon />} selected={selected} setSelected={setSelected} />
           </Box>
         </Menu>
       </Sidebar>

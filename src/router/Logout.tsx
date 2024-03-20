@@ -10,7 +10,7 @@ const Logout: React.FC = () => {
     dispatch(doLogout());
   }, [dispatch]);
 
-  return <Navigate to='/auth/login' replace />;
+  return <Navigate to='/' replace />;
 };
 
 export default Logout;

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
-import { Checkbox, Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 
-import PasswordInput from '../../input/passwordInput';
 import EmailInput from '../../input/EmailInput';
 
 const ForgotPassword: React.FC = () => {

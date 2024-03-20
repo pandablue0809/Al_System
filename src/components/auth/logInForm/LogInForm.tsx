@@ -30,7 +30,7 @@ const LoginForm: React.FC = () => {
   useEffect(() => {
     if (isAuthenticated) {
       toast.success('Login Successful!');
-      navigate('/dashboard/user-dashboard');
+      navigate('/dashboard/user/work');
     } else {
       !!errorMessage && toast.error(`${errorMessage}`);
     }
@@ -77,9 +77,9 @@ const LoginForm: React.FC = () => {
             <PasswordInput value={password} onChange={setPassword} />
             <div className='flex my-5 flex-col md:flex-row ml-2'>
               <label>Keep me logged in</label>
-              <a className='text-[#1890ff] decoration-inherit md:ml-4' href='/react/strikingdash/forgotPassword'>
+              <Link to='/auth/forgot-password' className='text-[#1890ff] decoration-inherit md:ml-4'>
                 Forgot password?
-              </a>
+              </Link>
             </div>
             <p className='text-white text-center text-sm md:pb-4 sm:pb-5'>
               Have you account?
