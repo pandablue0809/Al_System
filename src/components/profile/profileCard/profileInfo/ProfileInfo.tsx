@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { UserModel } from '../../../../domain/UserModel';
+import React from 'react';
 import { Avatar } from '@nextui-org/react';
 
 export const ProfileInfo: React.FC = () => {

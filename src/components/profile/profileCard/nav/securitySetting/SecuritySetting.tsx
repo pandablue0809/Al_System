@@ -1,4 +1,4 @@
-import React, { ReactComponentElement, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 // import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import { Radio, RadioGroup } from '@nextui-org/react';
 import PasswordInput from '../../../../input/passwordInput';
@@ -8,11 +8,10 @@ import PhoneNumberInput from '../../../../input/PhoneNumberInput';
 import EmailInput from '../../../../input/EmailInput';
 
 export type PersonalInfoFormValues = {
-  password?: String;
+  password?: string;
 };
 
 const SecuritySetting: React.FC<PersonalInfoFormValues> = ({ password }) => {
-  const [country, setCountry] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [isSelected, setIsSelected] = React.useState(true);
   const [phoneNumber, setPhoneNumber] = useState('+1 484 847 3628');

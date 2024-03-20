@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ClientErrorImage from '../../assets/images/error/client-error.svg';
 
 const ClientError: React.FC = () => {
@@ -9,11 +10,11 @@ const ClientError: React.FC = () => {
           <img src={ClientErrorImage} />
         </div>
         <div className='relative flex flex-col items-center'>
-          <span className='break-words text-[4rem] font-semibold mb-[1.8rem]'>Oops!</span>
-          <span className=' break-words text-4xl font-semibold mb-[1.8rem]'>Sorry, page not found!</span>
-          <a className='ant-btn ant-btn-link' href='/'>
+          <span className='break-words text-[4rem] font-semibold mb-[1.8rem] text-white'>Oops!</span>
+          <span className=' break-words text-4xl font-semibold mb-[1.8rem] text-white'>Sorry, page not found!</span>
+          <Link className='ant-btn ant-btn-link text-white' to='/'>
             Return to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>

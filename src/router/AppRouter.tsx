@@ -22,6 +22,10 @@ const ForgotPassword = React.lazy(() => import('../pages/ForgotPasswordPage'));
 
 const ChatRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/ChatRoom'));
 const WorkRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/WorkRoom'));
+const InvoiceRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/InvoiceRoom'));
+const PaidHistoryRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/PaidHistoryRoom'));
+const TeamRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/TeamRoom'));
+const Dashboard = React.lazy(() => import('../mockData/Dashboard'));
 const Setting = React.lazy(() => import('../pages/PersonalInfoPage'));
 
 export const START_PAGE = '/';
@@ -34,6 +38,10 @@ const MailVerify = withLoading(MailVerifyPage);
 const ForgotPasswordPage = withLoading(ForgotPassword);
 const ChatService = withLoading(ChatRoom);
 const WorkService = withLoading(WorkRoom);
+const InvoiceService = withLoading(InvoiceRoom);
+const PaidHistoryService = withLoading(PaidHistoryRoom);
+const UserTeamService = withLoading(TeamRoom);
+const DashboardService = withLoading(Dashboard);
 const PersonalInfo = withLoading(Setting);
 
 export const AppRouter: React.FC = () => {
@@ -66,8 +74,12 @@ export const AppRouter: React.FC = () => {
                     <Route path='login' element={<LoginPage />} />
                   </Route>
                   <Route path='/dashboard'>
-                    <Route path='user/chat' element={<ChatService />} />
+                    <Route path='user' element={<DashboardService />} />
                     <Route path='user/work' element={<WorkService />} />
+                    <Route path='user/chat' element={<ChatService />} />
+                    <Route path='user/invoice' element={<InvoiceService />} />
+                    <Route path='user/paid-history' element={<PaidHistoryService />} />
+                    <Route path='user/team' element={<UserTeamService />} />
                     <Route path='user/setting' element={<PersonalInfo />} />
                   </Route>
                   <Route path='/error'>

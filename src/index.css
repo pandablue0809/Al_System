@@ -270,7 +270,7 @@ textarea::-webkit-scrollbar-track {
 
 .ps-menu-button:hover {
   background-color: inherit !important;
-  color: rgb(18, 53, 250) !important;
+  color: rgb(69,212,131, 0.8) !important;
 }
 
 .ps-menu-button.active {

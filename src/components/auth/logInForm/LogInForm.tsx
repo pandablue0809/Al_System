@@ -30,7 +30,7 @@ const LoginForm: React.FC = () => {
   useEffect(() => {
     if (isAuthenticated) {
       toast.success('Login Successful!');
-      navigate('/dashboard/user/work');
+      navigate('/dashboard/user');
     } else {
       !!errorMessage && toast.error(`${errorMessage}`);
     }

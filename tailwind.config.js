@@ -198,7 +198,7 @@ module.exports = {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
             background: "#232333",
-            foreground: "#ffffff",
+            foreground: "#2b2c40",
             primary: {
               50: "#001731",
               100: "#002e62",

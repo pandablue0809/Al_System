@@ -59,3 +59,7 @@ export const hexToHSL = (hex: string): { h: number; s: number; l: number } => {
         throw new Error('Non valid HEX color');
     }
 };
+
+export const capitalize = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
