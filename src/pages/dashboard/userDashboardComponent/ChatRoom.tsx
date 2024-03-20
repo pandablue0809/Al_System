@@ -107,7 +107,7 @@ const ChatRoom: React.FC = () => {
 
   return (
     <div className='w-full relative mx-auto py-1 md:px-2 rounded-lg h-full box-border'>
-      <div className='flex flex-row bg-[#2b2c40f2] h-full shadow-lg rounded-lg '>
+      <div className='flex flex-row bg-foreground h-full shadow-lg rounded-lg '>
         <div className='flex-none h-full border-r border-gray-500'>
           <Box
             sx={{

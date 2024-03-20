@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography } from '@mui/material';
 
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
+// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PermPhoneMsgOutlinedIcon from '@mui/icons-material/PermPhoneMsgOutlined';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import ManageSearchOutlinedIcon from '@mui/icons-material/ManageSearchOutlined';
+import ApiOutlinedIcon from '@mui/icons-material/ApiOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
+import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
 
 import logo from '../../../assets/images/logo/logo.svg';
 
@@ -102,30 +103,58 @@ const UserSidebar = () => {
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : '10%'}>
-            <Item className='menu-item' title='Work' to='/dashboard/user/work' icon={<AutoFixHighOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item className='menu-item' title='Dashboard' to='/dashboard/user/chat' icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item
+              className='menu-item'
+              title='Dashboard'
+              to='/dashboard/user'
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
+              AI Service
+            </Typography>
+            <Item
+              className='menu-item'
+              title='Your AI'
+              to='/dashboard/user/work'
+              icon={<SupportAgentOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item title='Invoices' to='/dashboard/user/invoice' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
+              Community Service
+            </Typography>
+            <Item
+              className='menu-item'
+              title='Community'
+              to='/dashboard/user/chat'
+              icon={<PermPhoneMsgOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Data
+              List
             </Typography>
-            <Item title='Manage Team' to='' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Contacts Information' to='' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Invoices Balances' to='' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Inventory List' to='' icon={<StorageOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Team List' to='/dashboard/user/team' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Paid List' to='/dashboard/user/paid-history' icon={<ManageSearchOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Pages
+              My Setting
             </Typography>
-            <Item title='Profile Form' to='' icon={<PersonOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Calendar' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='FAQ Page' to='' icon={<HelpOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='My Info' to='/dashboard/user/setting' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Schedule' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Charts
+              Configuration
             </Typography>
-            <Item title='Bar Chart' to='' icon={<BarChartOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Pie Chart' to='' icon={<PieChartOutlineOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Line Chart' to='' icon={<TimelineOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Geography Chart' to='' icon={<MapOutlinedIcon />} selected={selected} setSelected={setSelected} />
+
+            <Item title='My API' to='' icon={<ApiOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Add Language Model' to='' icon={<BuildOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='Preferences' to='' icon={<TuneOutlinedIcon />} selected={selected} setSelected={setSelected} />
           </Box>
         </Menu>
       </Sidebar>

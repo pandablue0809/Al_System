@@ -7,7 +7,7 @@ import TextAnimation from '../components/animation/text/TextAnimation';
 const StartPage: React.FC = () => {
   return (
     <div className='start-page'>
-      <div className='relative'>
+      <div className='relative h-screen'>
         <Header />
         <div className=''>
           <div className='w-full double-background'>
