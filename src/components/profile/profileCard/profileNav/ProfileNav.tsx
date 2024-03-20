@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DollarOutlined from '@mui/icons-material/MonetizationOnOutlined';
 import SecurityScanOutlined from '@mui/icons-material/PrivacyTipOutlined';
 import { AiOutlineUser } from "react-icons/ai";
+import { TbServerCog } from "react-icons/tb";
 
 export type ProfileNavProps = {
   onSetNav?: (newValue: string) => void;
@@ -37,6 +38,17 @@ export const ProfileNav: React.FC<ProfileNavProps> = ({ onSetNav }) => {
         </div>
         <span className='pl-2 text-xl font-bold'>Security Settings</span>
       </button>
+      <button
+        className='rounded-md flex w-full hover:bg-slate-900 items-center justify-start pl-2'
+        onClick={() => {
+          setNav('services');
+        }}>
+        <div className='p-2 my-2 rounded-md bg-slate-800'>
+          <TbServerCog className='text-secondary-500 text-lg' />
+        </div>
+        <span className='pl-2 text-xl font-bold'>Services</span>
+      </button>
+
       <button
         className='rounded-md flex w-full hover:bg-slate-900 items-center justify-start pl-2'
         onClick={() => {

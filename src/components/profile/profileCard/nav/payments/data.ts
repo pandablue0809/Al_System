@@ -21,7 +21,7 @@ const users = [
     date: "2023-09-02",
     status: "paid",
     totalAmount: "$2970",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/8.png",
   },
   {
     id:2,
@@ -29,7 +29,7 @@ const users = [
     date: "2022-08-16",
     status: "failed",
     totalAmount: "$425",
-    avatar: "	https://res.cloudinary.com/lapkinthegod/image/upload/v1632988456/Ellipse_73_zanfs3.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/2.png",
   },
   {
     id:3,
@@ -37,7 +37,7 @@ const users = [
     date: "2023-05-19",
     status: "paid",
     totalAmount: "$220",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988460/Ellipse_73_1_hhfpzj.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/3.png",
   },
   {
     id:4,
@@ -45,7 +45,7 @@ const users = [
     date: "2023-11-15",
     status: "pending",
     totalAmount: "$310",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988456/Ellipse_73_zanfs3.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/4.png",
   },
   {
     id:5,
@@ -53,14 +53,14 @@ const users = [
     date: "2023-03-24",
     status: "paid",
     totalAmount: "$650",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988460/Ellipse_73_1_hhfpzj.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/5.png",
   },
   {
     id:6,
     recipient: "Brian Kim",
     date: "2023-12-08",
     totalAmount: "$109",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988451/Ellipse_72_hwxejr.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/6.png",
     status: "paid",
   },
   {
@@ -69,7 +69,7 @@ const users = [
     date: "2023-10-06",
     status: "scheduled",
     totalAmount: "$9800",
-    avatar: "https://res.cloudinary.com/lapkinthegod/image/upload/v1632988460/Ellipse_73_1_hhfpzj.png",
+    avatar: "https://demos.themeselection.com/sneat-mui-react-nextjs-admin-template/demo-1/images/avatars/7.png",
   }
 ];
 
