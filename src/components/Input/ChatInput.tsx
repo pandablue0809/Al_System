@@ -53,8 +53,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
   };
 
   return (
-    <div className='absolute bottom-2 pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent w-[60vw]'>
-      <div className='mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl'>
+    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 content-center pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent w-[60%]'>
+      <div className='mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl w-full'>
         <div className='relative flex h-full flex-1 flex-col'>
           <div className='flex w-full items-center'>
             <div className='overflow-hidden [&amp;:has(textarea:focus)]:border-token-border-xheavy [&amp;:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)] flex flex-col w-full flex-grow relative border text-white rounded-2xl bg-token-main-surface-primary border-token-border-medium'>
@@ -74,12 +74,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                 <SendIcon className='text-sm' />
               </button>
               <button
-                disabled={isEmpty}
                 color="white" className="md:bottom-3 bottom-1.5 right-12 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10" >
                 <KeyboardVoiceIcon />
               </button>
               <button
-                disabled={isEmpty}
                 color="white" className="md:bottom-3 bottom-1.5 right-20 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10" >
                 <AttachFileIcon />
               </button>

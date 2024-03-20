@@ -33,14 +33,11 @@ const Payments = () => {
 
   return (
     <div>
-      <h3>Payment Method</h3>
-      <div className='grid grid-cols-3 gap-5'>
+     <span className='font-bold text-xl text-white'>Payment Method</span>
+      <div className='grid grid-cols-2 gap-2 mt-2'>
         <Cards name='John Smith' number='5245 0017 2000 0164' expiry='10/20' cvc='737' />
-
         <Cards name='John Smith' number='4111 1111 1111 1111' expiry='10/20' cvc='737' />
-
         <Cards name='John Smith' number='3700 0000 0000 002' expiry='10/20' cvc='737' />
-
         <Cards name='John Smith' number='3600 666633 3344' expiry='10/20' cvc='737' />
       </div>
       <div className='mt-5'>

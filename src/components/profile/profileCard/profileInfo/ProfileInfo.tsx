@@ -15,8 +15,8 @@ export const ProfileInfo: React.FC = () => {
   };
 
   return (
-    <div className='text-center flex flex-col gap-10'>
-      <button className='flex justify-center' onClick={handleClick}>
+    <div className='text-center flex flex-col gap-10 items-center'>
+      <button onClick={handleClick}>
         <Avatar
           showFallback
           name={user?.userName[0]}
@@ -27,7 +27,7 @@ export const ProfileInfo: React.FC = () => {
       </button>
       <div>
         <p className='text-2xl font-bold'>{`${user?.firstName} ${user?.lastName}`}</p>
-        <p className='text-xl mb-2 font-semibold'>{user?.userName}</p>
+        <p className='text-lg mb-2'>{user?.userName}</p>
       </div>
     </div>
   );
