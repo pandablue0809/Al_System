@@ -1,19 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TextField, Box, Paper, List, ListItem, ListItemAvatar, Typography } from '@mui/material';
+import { Box, List, ListItem, ListItemAvatar } from '@mui/material';
 import { Button } from "@nextui-org/react";
 import { Badge, Avatar, Input, user } from '@nextui-org/react';
-import { redirect } from 'react-router-dom';
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { LuPhoneCall } from "react-icons/lu";
 import { MdOutlineVideoCameraFront } from "react-icons/md";
 import { RiSearch2Line } from "react-icons/ri";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { CiMicrophoneOn } from "react-icons/ci";
-import SendIcon from '@mui/icons-material/Send';
-import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
 import ChatInput from '../../../components/input/ChatInput';
-import { inherits } from 'util';
 import GridViewIcon from '@mui/icons-material/GridView';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
@@ -31,17 +25,14 @@ export type Message = {
     sender: string;
 }
 
+export type ColorType = "success" | "danger" | "secondary" | "primary" | "default" | "warning";
 
 
-interface ChatRoomProps { }
-
-const ChatRoom: React.FC<ChatRoomProps> = () => {
+const ChatRoom: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
-    const [newMessage, setNewMessage] = useState<string>('');
     const [users, setUsers] = useState<User[]>([]);
     const [searchValue, setSearchValue] = useState<string>('');
     const [newU, setNew] = useState<string>('Iwamoto');
-
     const handleSendMessage = (newMessage: string) => {
         if (newMessage) {
             const newMessageObj: Message = {
@@ -49,7 +40,6 @@ const ChatRoom: React.FC<ChatRoomProps> = () => {
                 sender: 'Me',
             };
             setMessages([...messages, newMessageObj]);
-            setNewMessage('');
         }
     };
 
@@ -70,8 +60,8 @@ const ChatRoom: React.FC<ChatRoomProps> = () => {
     };
 
     const filteredUsers = users.filter((user) => user.username.toLowerCase().includes(searchValue.toLowerCase()));
-    const characterToColor = (character: string) : string => {
-        const colorMap: { [key: string]: string } = {
+    const characterToColor = (character: string): ColorType => {
+        const colorMap: { [key: string]: ColorType } = {
             'A': 'success',
             'B': 'danger',
             'C': 'success',
@@ -109,18 +99,18 @@ const ChatRoom: React.FC<ChatRoomProps> = () => {
         return 'default';
     }
 
-    const chatContainerRef = useRef<HTMLDivElement>(null);
+    const messageEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        focusOnLastMessage();
-    }, [newMessage]);
+        scrollToBottom();
+    }, [messages]);
 
-    const focusOnLastMessage = () => {
-        if (chatContainerRef.current) {
-
-            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    const scrollToBottom = () => {
+        if (messageEndRef.current) {
+            messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
 
     return (
         <div className='h-screen bg-[#232333] py-5 px-10 w-full flex flex-col'>
@@ -196,7 +186,7 @@ const ChatRoom: React.FC<ChatRoomProps> = () => {
                                 <ListItem key={index}>
                                     <ListItemAvatar>
                                         <Badge content='' color={`${!user.active ? 'success' : 'default'}`} shape='circle' placement='bottom-right'>
-                                            <Avatar showFallback name={user?.username.charAt(0).toUpperCase()} src={user?.avatar} className={`text-2xl`} color={characterToColor(user?.username.charAt(0).toUpperCase())} />
+                                            <Avatar showFallback name={user?.username.charAt(0).toUpperCase()} src={user?.avatar} className={`text-2xl`} color={`${characterToColor(user?.username.charAt(0).toUpperCase())}`} />
                                         </Badge>
                                     </ListItemAvatar>
                                     <span>{user?.username}</span>
@@ -257,18 +247,18 @@ const ChatRoom: React.FC<ChatRoomProps> = () => {
                             </button>
                         </div>
                     </Box>
-                    <Paper variant='outlined' sx={{ overflow: 'auto', overflowY: true, Bottom: 2, padding: 2, marginleft: 2, marginRight: 1, backgroundColor: 'inherit', border: 'none', height: '70vh' }}>
+                    <div className='overflow-auto overflow-y b-2 ml-2 mr-1 bg-inherit h-[65vh] border-none p-4'>
                         {messages.map((message, index) => (
-                            <Box key={index} display='flex' alignItems='center' marginBottom={1}>
+                            <Box key={index} display='flex' alignItems='start' marginBottom={1}>
                                 <Avatar name="L" className='text-2xl' color={characterToColor('Iwamoto'.charAt(0).toUpperCase())}>{message.sender.charAt(0)}</Avatar>
-                                <div className='ml-2 bg-[#444] px-2 rounded-md text-white py-2 max-w-96 shadow-lg'>
+                                <div className='ml-2 bg-[#444] px-2 rounded-md text-white py-2 max-w-[40vw] shadow-lg flex-row' ref={messageEndRef}>
 
-                                    <Typography variant='body2'> <pre>{message.text}</pre></Typography>
+                                    <p className=' break-words whitespace-pre-wrap'>{message.text}</p>
                                 </div>
                             </Box>
                         ))}
                         <ChatInput onSendMsg={handleSendMessage} />
-                    </Paper>
+                    </div>
                 </div>
             </div>
         </div>
