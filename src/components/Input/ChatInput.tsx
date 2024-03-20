@@ -73,7 +73,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                 data-testid='send-button'>
                 <SendIcon className='text-sm' />
               </button>
-
               <button
                 disabled={isEmpty}
                 color="white" className="md:bottom-3 bottom-1.5 right-12 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10" >
