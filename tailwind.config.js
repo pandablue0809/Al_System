@@ -1,334 +1,305 @@
-const { nextui } = require("@nextui-org/react");
+const { calculateNewValue } = require('@testing-library/user-event/dist/utils');
 
-/** @type {import('tailwindcss').Config} */
+// /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.ts'
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      animation: {
-        'text-slide-2': 'text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-3': 'text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-4': 'text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-5': 'text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-6': 'text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-7': 'text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-        'text-slide-8': 'text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+      fontFamily: {
+        'poppins': ['Poppins']
       },
-      keyframes: {
-        'text-slide-2': {
-          '0%, 40%': {
-            transform: 'translateY(0%)',
-          },
-          '50%, 90%': {
-            transform: 'translateY(-33.33%)',
-          },
-          '100%': {
-            transform: 'translateY(-66.66%)',
-          },
-        },
-        'text-slide-3': {
-          '0%, 26.66%': {
-            transform: 'translateY(0%)',
-          },
-          '33.33%, 60%': {
-            transform: 'translateY(-25%)',
-          },
-          '66.66%, 93.33%': {
-            transform: 'translateY(-50%)',
-          },
-          '100%': {
-            transform: 'translateY(-75%)',
-          },
-        },
-        'text-slide-4': {
-          '0%, 20%': {
-            transform: 'translateY(0%)',
-          },
-          '25%, 45%': {
-            transform: 'translateY(-20%)',
-          },
-          '50%, 70%': {
-            transform: 'translateY(-40%)',
-          },
-          '75%, 95%': {
-            transform: 'translateY(-60%)',
-          },
-          '100%': {
-            transform: 'translateY(-80%)',
-          },
-        },
-        'text-slide-5': {
-          '0%, 16%': {
-            transform: 'translateY(0%)',
-          },
-          '20%, 36%': {
-            transform: 'translateY(-16.66%)',
-          },
-          '40%, 56%': {
-            transform: 'translateY(-33.33%)',
-          },
-          '60%, 76%': {
-            transform: 'translateY(-50%)',
-          },
-          '80%, 96%': {
-            transform: 'translateY(-66.66%)',
-          },
-          '100%': {
-            transform: 'translateY(-83.33%)',
-          },
-        },
-        'text-slide-6': {
-          '0%, 13.33%': {
-            transform: 'translateY(0%)',
-          },
-          '16.66%, 30%': {
-            transform: 'translateY(-14.28%)',
-          },
-          '33.33%, 46.66%': {
-            transform: 'translateY(-28.57%)',
-          },
-          '50%, 63.33%': {
-            transform: 'translateY(-42.85%)',
-          },
-          '66.66%, 80%': {
-            transform: 'translateY(-57.14%)',
-          },
-          '83.33%, 96.66%': {
-            transform: 'translateY(-71.42%)',
-          },
-          '100%': {
-            transform: 'translateY(-85.71%)',
-          },
-        },
-        'text-slide-7': {
-          '0%, 11.43%': {
-            transform: 'translateY(0%)',
-          },
-          '14.28%, 25.71%': {
-            transform: 'translateY(-12.5%)',
-          },
-          '28.57%, 40%': {
-            transform: 'translateY(-25%)',
-          },
-          '42.85%, 54.28%': {
-            transform: 'translateY(-37.5%)',
-          },
-          '57.14%, 68.57%': {
-            transform: 'translateY(-50%)',
-          },
-          '71.42%, 82.85%': {
-            transform: 'translateY(-62.5%)',
-          },
-          '85.71%, 97.14%': {
-            transform: 'translateY(-75%)',
-          },
-          '100%': {
-            transform: 'translateY(-87.5%)',
-          },
-        },
-        'text-slide-8': {
-          '0%, 10%': {
-            transform: 'translateY(0%)',
-          },
-          '12.5%, 22.5%': {
-            transform: 'translateY(-11.11%)',
-          },
-          '25%, 35%': {
-            transform: 'translateY(-22.22%)',
-          },
-          '37.5%, 47.5%': {
-            transform: 'translateY(-33.33%)',
-          },
-          '50%, 60%': {
-            transform: 'translateY(-44.44%)',
-          },
-          '62.5%, 72.5%': {
-            transform: 'translateY(-55.55%)',
-          },
-          '75%, 85%': {
-            transform: 'translateY(-66.66%)',
-          },
-          '87.5%, 97.5%': {
-            transform: 'translateY(-77.77%)',
-          },
-          '100%': {
-            transform: 'translateY(-88.88%)',
-          },
-        }
+      backgroundImage: theme => ({
+        // header
+        'header-deposit-btn': 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%)',
+        'header-deposit-btn-dark': 'linear-gradient(154.49deg, rgba(121, 117, 131, 0.2) 5.35%, rgba(54, 53, 103, 0.2) 83.85%), rgba(49, 48, 54, 0.3);',
+        'header-login-btn-dark': 'linear-gradient(154.49deg, rgba(121, 117, 131, 0.2) 5.35%, rgba(54, 53, 103, 0.2) 83.85%);',
+        'header-balance': "url('../images/header/balance.svg')",
+        'header-history': "url('../images/header/history.svg')",
+        'header-history-dark': "url('../images/header/history-dark.svg')",
+        //intro header
+        "introheader-logoimage": "url('../images/_intro/introheader/logoimage.png')",
+        "introheader-mobiletab": "url('../images/_intro/introheader/mobiletab.png')",
+        "introheader-mobilemenuclose": "url('../images/_intro/introheader/mobilemenuclose.png')",
+        //intro dashboard
+        "introdashboard-logoimage": "url('../images/_intro/introdashboard/logo.png')",
+        "introdashboard-fullscreenimage": "url('../images/_intro/introdashboard/ep_full-screen.png')",
+        "introdashboard-starimage": "url('../images/_intro/introdashboard/stars.png')",
+        "introdashboard-shape1": "url('../images/_intro/introdashboard/shape1.png')",
+        "introdashboard-shape2": "url('../images/_intro/introdashboard/shape2.png')",
+        "introdashboard-shape3": "url('../images/_intro/introdashboard/shape3.png')",
+        "introdashboard-shape4": "url('../images/_intro/introdashboard/shape4.png')",
+        "introdashboard-showdemo1": "url('../images/_intro/introdashboard/showdemo1.png')",
+        "introdashboard-showdemo2": "url('../images/_intro/introdashboard/showdemo2.png')",
+        "introdashboard-iphonecut": "url('../images/_intro/introdashboard/iPhone_cut.png')",
+        "introdashboard-fullphone": "url('../images/_intro/introdashboard/iPhone-13-Pro-Front.png')",
+        "introdashboard-iPhone-2": "url('../images/_intro/introdashboard/iPhone-2.png')",
+        "introdashboard-phone-photo": "url('../images/_intro/introdashboard/phone-photo.png')",
+        "introdashboard-arrow": "url('../images/_intro/introdashboard/arrow.png')",
+        "introdashboard-linegroup": "url('../images/_intro/introdashboard/linegroup.png')",
+        "introdashboard-earn-back": "url('../images/_intro/introdashboard/earn_title.png')",
+        "introdashboard-borrow-back": "url('../images/_intro/introdashboard/BORROW.png')",
+        "introdashboard-card": "url('../images/_intro/introdashboard/card.png')",
+        "introdashboard-card1": "url('../images/_intro/introdashboard/card1.png')",
+        "introdashboard-card2": "url('../images/_intro/introdashboard/card2.png')",
+        "introdashboard-card3": "url('../images/_intro/introdashboard/card3.png')",
+        "introdashboard-maccom": "url('../images/_intro/introdashboard/MacStudio.png')",
+        "introdashboard-phone-photo-mobile": "url('../images/_intro/introdashboard/phone-photo-mobile.png')",
+        "introdashboard-section1-bg": "url('../images/_intro/introdashboard/section1_bg.gif')",
+
+        //intro earn
+        "introearn-starsstart": "url('../images/_intro/introearn/StarsStart.png')",
+        "introearn-earth": "url('../images/_intro/introearn/earth.gif')",
+        "introearn-section2": "url('../images/_intro/introearn/section2.png')",
+        "introearn-star-group2": "url('../images/_intro/introearn/star-group2.png')",
+        "introearn-linegroup": "url('../images/_intro/introearn/linegroup.png')",
+        "introearn-bitcoin": "url('../images/_intro/introearn/bitcoin.png')",
+        "introearn-arrow2": "url('../images/_intro/introearn/arrow2.png')",
+        "introearn-currenty": "url('../images/_intro/introearn/currenty.png')",
+        "introearn-chart": "url('../images/_intro/introearn/chart.png')",
+        "introearn-down-arrow": "url('../images/_intro/introearn/iconoir_nav-arrow-down.png')",
+        'introearn-title-gradient': 'linear-gradient(95.29deg, #1F0A9C 7.4%, #00DDA2 84.23%, rgba(6, 136, 101, 0) 88.55%)',
+        'introearn-price-gradient': 'linear-gradient(124.08deg, #1199FA 3.96%, #00DDA2 94.96%)',
+        //intro borrow
+        "introborrow-section2": "url('../images/_intro/introborrow/section2.gif')",
+        "introborrow-section2mobile": "url('../images/_intro/introborrow/section2.gif')",
+        "introborrow-switchcolor": "url('../images/_intro/introborrow/switchcolor.png')",
+        'introborrow-calculate-gradient': 'linear-gradient(124.08deg, #1199FA 3.96%, #00DDA2 94.96%)',
+        "introborrow-chart": "url('../images/_intro/introborrow/chart.png')",
+        "introborrow-shape1": "url('../images/_intro/introborrow/shape1.png')",
+        "introborrow-shape2": "url('../images/_intro/introborrow/shape2.png')",
+        //intro cards
+        "introborrow-card4": "url('../images/_intro/introcards/card4.png')",
+        "introborrow-card1": "url('../images/_intro/introcards/card1.png')",
+        "introborrow-ivancard": "url('../images/_intro/introcards/ivancard.png')",
+        "introborrow-maccom": "url('../images/_intro/introcards/maccom.png')",
+        "introborrow-iPhone": "url('../images/_intro/introcards/iPhone.png')",
+        "introborrow-comimage": "url('../images/_intro/introcards/comimage.png')",
+        //intro team
+        "introteam-starlight1": "url('../images/_intro/introteam/starlight1.png')",
+        "introteam-starlight2": "url('../images/_intro/introteam/starlight2.png')",
+        "introteam-chunhu": "url('../images/_intro/introteam/chunhu.png')",
+        "introteam-chunhu2": "url('../images/_intro/introteam/chunhu2.png')",
+        "introteam-william": "url('../images/_intro/introteam/william.png')",
+        "introteam-william2": "url('../images/_intro/introteam/william2.png')",
+        "introteam-dev": "url('../images/_intro/introteam/dev.png')",
+        "introteam-dev2": "url('../images/_intro/introteam/dev2.png')",
+        "introteam-ivan": "url('../images/_intro/introteam/ivan.png')",
+        "introteam-ivan2": "url('../images/_intro/introteam/ivan2.png')",
+        "introteam-cofounder": "url('../images/_intro/introteam/cofounder.png')",
+        "introteam-cofounder2": "url('../images/_intro/introteam/cofounder2.png')",
+        "introteam-eric": "url('../images/_intro/introteam/eric.png')",
+        "introteam-eric2": "url('../images/_intro/introteam/eric2.png')",
+        "introteam-arrowcurve": "url('../images/_intro/introteam/arrowcurve.png')",
+        "introteam-clickhere": "url('../images/_intro/introteam/clickhere.png')",
+        'introteam-title-gradient': 'linear-gradient(124.08deg, #2708E4 3.96%, #00DDA2 94.96%, #0F6B53 94.96%);',
+        // splash
+        'splash-logo': "url('../images/splash/logo.png')",
+        'splash-logo-dark': "url('../images/splash/logo-dark.png')",
+        'splash-leftbottom': "url('../images/splash/leftbottom.png')",
+        'splash-leftbottom-dark': "url('../images/splash/leftbottom-dark.png')",
+        'splash-leftmiddle': "url('../images/splash/leftmiddle.png')",
+        'splash-leftmiddle-dark': "url('../images/splash/leftmiddle-dark.png')",
+        'splash-righttop': "url('../images/splash/righttop.png')",
+        'splash-righttop-dark': "url('../images/splash/righttop-dark.png')",
+        'splash-lefttop1': "url('../images/splash/lefttop1.svg')",
+        'splash-lefttop2': "url('../images/splash/lefttop2.svg')",
+        'splash-righttop': "url('../images/splash/righttop.png')",
+        'splash-righttop-dark': "url('../images/splash/righttop-dark.png')",
+        'splash-rightbottom': "url('../images/splash/rightbottom.svg')",
+        // login
+        'login-background': 'radial-gradient(58.43% 103.88% at 56.74% 50%, #DEE2E8 14.58%, #929CEE 63.66%, #E6C8E7 100%);',
+        'login-background-dark': 'linear-gradient(287.56deg, #32283C 8.81%, #3B3054 52.57%, #32283C 100%);',
+        'login-leftbottom': "url('../images/login/leftbottom.png')",
+        'login-middletop': "url('../images/login/middletop.png')",
+        'login-middlemiddle': "url('../images/login/middlemiddle.png')",
+        'login-middlebottom': "url('../images/login/middlebottom.png')",
+        'login-rightbottom': "url('../images/login/rightbottom.png')",
+        'login-righttop': "url('../images/login/righttop.png')",
+        // dashboard
+        'main-background': "url('../images/dashboard/background.svg')",
+        'main-background-dark': "url('../images/dashboard/background-dark.svg')",
+        'main-center': "url('../images/dashboard/center.svg')",
+        'main-center-dark': "url('../images/dashboard/center-dark.svg')",
+        'main-leftbottom': "url('../images/dashboard/leftbottom.png')",
+        'main-leftbottom-dark': "url('../images/dashboard/leftbottom-dark.png')",
+        'main-lefttop': "url('../images/dashboard/lefttop.png')",
+        'main-lefttop-dark': "url('../images/dashboard/lefttop-dark.png')",
+        'main-righttop': "url('../images/dashboard/righttop.png')",
+        'main-righttop-dark': "url('../images/dashboard/righttop-dark.png')",
+        'main-card': 'linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)',
+        'main-card-dark': 'linear-gradient(160.71deg, #392F40 9.07%, #3E3C4E 92.22%)',
+        'main-card-btn': 'linear-gradient(124.08deg, #1199FA 3.96%, #00DDA2 94.96%)',
+        'main-card-earn-banner': "url('../images/dashboard/card-earn-banner.jpg')",
+        'main-card-borrow-banner': "url('../images/dashboard/card-borrow-banner.jpg')",
+        'main-card-cards-banner': "url('../images/dashboard/card-cards-banner.png')",
+        'main-card-stocks-banner': "url('../images/dashboard/card-stocks-banner.jpg')",
+        // borrow
+        'borrow-left': "url('../images/borrow/left.png')",
+        'borrow-righttop': "url('../images/borrow/righttop.png')",
+        'borrow-rightbottom': "url('../images/borrow/rightbottom.png')",
+        'borrow-leftbottom': "url('../images/borrow/leftbottom.png')",
+        'borrow-rightbottom2': "url('../images/borrow/rightbottom2.png')",
+        'borrow-card': 'linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)',
+        'borrow-card-dark': 'linear-gradient(160.71deg, rgba(65, 52, 64, 0.41) 9.07%, rgba(24, 19, 29, 0.53) 92.22%);',
+        'borrow-saly': "url('../images/borrow/saly.png')",
+        'borrow-borrow': "url('../images/borrow/borrow.png')",
+        'borrow-soon': "url('../images/borrow/soon.svg')",
+        'borrow-card-small-dark': 'linear-gradient(110.16deg, #302B34 0.48%, #22242A 106.09%)',
+        // stocks
+        'stocks-left': "url('../images/stocks/left.png')",
+        'stocks-right': "url('../images/stocks/right.png')",
+        'stocks-cardbanner': "url('../images/stocks/cardbanner.png')",
+        'stocks-card': 'linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)',
+        'stocks-card-dark': 'linear-gradient(160.71deg, rgba(65, 52, 64, 0.41) 9.07%, rgba(24, 19, 29, 0.53) 92.22%);',
+        'stocks-tooltip': "url('../images/stocks/tooltip.svg')",
+        'stocks-tooltip-dark': "url('../images/stocks/tooltip-dark.svg')",
+        'stocks-icon-aapl': "url('../images/stocks/icon-aapl.png')",
+        'stocks-icon-abnb': "url('../images/stocks/icon-abnb.png')",
+        'stocks-btn-buy': "url('../images/stocks/btn-buy.png')",
+        'stocks-btn-sell': "url('../images/stocks/btn-sell.png')",
+        'stocks-btn-neutral': "url('../images/stocks/btn-neutral.png')",
+        'stocks-btn-neutral-dark': "url('../images/stocks/btn-neutral-dark.png')",
+        'stocks-oneclick': "url('../images/stocks/oneclick.png')",
+        'stocks-stocks': "url('../images/stocks/stocks.png')",
+        'stocks-stocks-dark': "url('../images/stocks/stocks-dark.png')",
+        'stocks-availablesoon': "url('../images/stocks/availablesoon.png')",
+        'stocks-availablesoon-dark': "url('../images/stocks/availablesoon-dark.png')",
+        // cards
+        'cards-leftmiddle': "url('../images/cards/leftmiddle.png')",
+        'cards-leftbottom': "url('../images/cards/leftbottom.png')",
+        'cards-rightmiddle': "url('../images/cards/rightmiddle.png')",
+        'cards-rightbottom': "url('../images/cards/rightbottom.png')",
+        'cards-cardtop': "url('../images/cards/cardtop.png')",
+        'cards-cardbottom': "url('../images/cards/cardbottom.png')",
+        'cards-arrowhead-down': "url('../images/cards/arrowhead-down.svg')",
+        'cards-availablesoon': "url('../images/cards/availablesoon.png')",
+        // deposit
+        'deposit-card': 'linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)',
+        'deposit-card-dark': 'linear-gradient(160.71deg, #393040 9.07%, #35303C 92.22%)',
+        'deposit-card-btn': 'linear-gradient(160.71deg, #1199FA 3.96%, #00DDA2 94.96%)',
+        'deposit-arrow-back': "url('../images/deposit/arrow-back.svg')",
+        'deposit-crypto-bitcoin': "url('../images/deposit/crypto-bitcoin.png')",
+        'deposit-crypto-saly': "url('../images/deposit/crypto-saly.jpg')",
+        'deposit-fiat-saly': "url('../images/deposit/fiat-saly.gif')",
+        'deposit-leftbottom': "url('../images/deposit/leftbottom.png')",
+        'deposit-transfer-from': "url('../images/deposit/transfer-from.png')",
+        'deposit-tab-inactive': 'linear-gradient(180deg, #DEE2E8 0%, #EFF1F3 100%)',
+        'deposit-tab-inactive-dark': 'linear-gradient(180deg, #393140 0%, #393141 100%)',
+        // earn
+        'earn-rightbottom': "url('../images/earn/rightbottom.png')",
+        'earn-banner': "url('../images/earn/banner.jpg')",
+        'earn-chart': "url('../images/earn/chart.png')",
+        'earn-card': 'linear-gradient(107.49deg, rgba(116, 95, 242, 0.05) 9.82%, rgba(116, 95, 242, 0.06) 61.98%);',
+        'earn-withdraw-card-btn': 'linear-gradient(160.71deg, #EA6D96 3.96%, #BC81CF 94.96%)',
+        'earn-right-panel': 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%)',
+        'earn-right-panel-dark': 'linear-gradient(97deg, #32283C 7.53%, #32283C 95.32%)',
+        // common component
+        'common-crypto-btc': "url('../images/_common/crypto-btc.svg')",
+        'common-crypto-usdc': "url('../images/_common/crypto-usdc.svg')",
+        'common-crypto-chat': "url('../images/_common/crypto-chat.svg')",
+        'common-crypto-eth': "url('../images/_common/crypto-eth.svg')",
+        'common-crypto-mtc': "url('../images/_common/crypto-mtc.svg')",
+        'common-crypto-sbu': "url('../images/_common/crypto-sbu.svg')",
+        'common-crypto-swrv': "url('../images/_common/crypto-swrv.svg')",
+        'common-crypto-usdt': "url('../images/_common/crypto-usdt.png')",
+        'common-crypto-dai': "url('../images/_common/dai-logo.png')",
+        'common-debit-card': "url('../images/_common/debit-card.png')",
+        'common-bank': "url('../images/_common/bank.png')",
+        'common-fiat-usd': "url('../images/_common/fiat-usd.svg')",
+        'common-fiat-euro': "url('../images/_common/fiat-euro.svg')",
+        'common-caret-up': "url('../images/_common/caret-up.svg')",
+        'common-caret-up-dark': "url('../images/_common/caret-up-dark.svg')",
+        'common-caret-down': "url('../images/_common/caret-down.svg')",
+        'common-caret-down-dark': "url('../images/_common/caret-down-dark.svg')",
+        'common-transfer-from': "url('../images/_common/transfer-from.svg')",
+        'common-wallet-eth': "url('../images/_common/wallet-eth.svg')",
+        'common-wallet-tera': "url('../images/_common/wallet-tera.png')",
+        'common-video-play': "url('../images/_common/video-play.png')",
+      }),
+      boxShadow: {
+        // header
+        'header-deposit-btn': '0px 4px 4px rgba(114, 138, 183, 0.5)',
+        'header-deposit-btn-dark': '0px 4px 4px rgba(0, 0, 0, 0.5)',
+        'header-login-btn': '0px 0px 4px rgba(0, 0, 0, 0.25)',
+        // dashboard
+        'main-card': '-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)',
+        'main-card-dark': '-6px -13px 37px rgba(116, 95, 242, 0.1), 6px 17px 37px rgba(116, 95, 242, 0.1)',
+        'main-card-btn': '9px 8px 12px rgba(114, 138, 183, 0.5)',
+        'main-card-banner': 'inset 3px 6px 4px rgba(0, 0, 0, 0.25)',
+        // borrow
+        'borrow-card': '-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)',
+        'borrow-card-dark': '-9px -13px 37px rgba(116, 95, 242, 0.5), 9px 17px 37px rgba(116, 95, 242, 0.5)',
+        'borrow-card-small': '-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)',
+        'borrow-card-small-dark': '0px 0px 37px rgba(162, 89, 255, 0.33)',
+        // stocks
+        'stocks-card': '-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)',
+        'stocks-card-dark': '-9px -13px 37px rgba(116, 95, 242, 0.5), 9px 17px 37px rgba(116, 95, 242, 0.5)',
+        // cards
+        'cards-card': '0px 0px 9px #1199FA',
+        // deposit
+        'deposit-tab': '0px 4px 4px rgba(116, 95, 242, 0.26)',
+        // earn
+        'earn-panel': '-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)',
+        'earn-panel-dark': '-6px -13px 37px rgba(116, 95, 242, 0.1), 6px 17px 37px rgba(116, 95, 242, 0.1)',
+        'earn-expected-card': '-6px -8px 15px rgba(255, 255, 255, 0.7), 4px 6px 15px rgba(0, 0, 0, 0.13)',
+        'earn-expected-card-dark': '-6px -8px 15px rgba(255, 255, 255, 0.06), 4px 6px 15px rgba(0, 0, 0, 0.13)'
       },
-    },
-  },
-  darkMode: 'class',
-  plugins: [
-    require("tailwindcss-animate"),
-    nextui({
-      prefix: 'sotru',
-      layout: {
-        spacingUnit: 4, // in px
-        disabledOpacity: 0.5, // this value is applied as opacity-[value] when the component is disabled
-        dividerWeight: "1px", // h-divider the default height applied to the divider component
-        fontSize: {
-          tiny: "0.75rem", // text-tiny
-          small: "0.875rem", // text-small
-          medium: "1rem", // text-medium
-          large: "1.125rem", // text-large
-        },
-        lineHeight: {
-          tiny: "1rem", // text-tiny
-          small: "1.25rem", // text-small
-          medium: "1.5rem", // text-medium
-          large: "1.75rem", // text-large
-        },
-        radius: {
-          small: "8px", // rounded-small
-          medium: "12px", // rounded-medium
-          large: "14px", // rounded-large
-        },
-        borderWidth: {
-          small: "1px", // border-small
-          medium: "2px", // border-medium (default)
-          large: "3px", // border-large
-        },
-      },
-      themes: {
-        "sotru-dark": {
-          extend: "dark", // <- inherit default values from dark theme
-          colors: {
-            background: "#232333",
-            foreground: "#2b2c40",
-            primary: {
-              50: "#001731",
-              100: "#002e62",
-              200: "#004493",
-              300: "#005bc4",
-              400: "#006FEE",
-              500: "#338ef7",
-              600: "#66aaf9",
-              700: "#99c7fb",
-              800: "#cce3fd",
-              900: "#e6f1fe",
-              DEFAULT: "#338ef7",
-            },
-            secondary: {
-              50: "#180828",
-              100: "#301050",
-              200: "#481878",
-              300: "#6020a0",
-              400: "#7828c8",
-              500: "#9353d3",
-              600: "#ae7ede",
-              700: "#c9a9e9",
-              800: "#e4d4f4",
-              900: "#f2eafa",
-              DEFAULT: "#7828c8",
-            },
-            success: {
-              50: "#052814",
-              100: "#095028",
-              200: "#0e793c",
-              300: "#12a150",
-              400: "#17c964",
-              500: "#45d483",
-              600: "#74dfa2",
-              700: "#a2e9c1",
-              800: "#d1f4e0",
-              900: "#e8faf0",
-              DEFAULT: "#45d483",
-            },
-            warning: {
-              50: "#312107",
-              100: "#62420e",
-              200: "#936316",
-              300: "#c4841d",
-              400: "#f5a524",
-              500: "#f7b750",
-              600: "#f9c97c",
-              700: "#fbdba7",
-              800: "#fdedd3",
-              900: "#fefce8",
-              DEFAULT: "#f7b750",
-            },
-            danger: {
-              50: "#310413",
-              100: "#610726",
-              200: "#920b3a",
-              300: "#c20e4d",
-              400: "#f31260",
-              500: "#f54180",
-              600: "#f871a0",
-              700: "#faa0bf",
-              800: "#fdd0df",
-              900: "#fee7ef",
-              DEFAULT: "#f54180",
-            },
-          },
-          layout: {
-            disabledOpacity: "0.3",
-            radius: {
-              small: "4px",
-              medium: "6px",
-              large: "8px",
-            },
-            borderWidth: {
-              small: "1px",
-              medium: "2px",
-              large: "3px",
-            },
-          },
-        },
-      },
-      spacingUnit: {
-        'unit-xs': '8px', // 2 * spacingUnit
-        'unit-sm': '12px', // 3 * spacingUnit
-        'unit-md': '16px', // 4 * spacingUnit
-        'unit-lg': '22px', // 5.5 * spacingUnit
-        'unit-xl': '36px', // 9 * spacingUnit
-        'unit-2xl': '48px', // 12 * spacingUnit
-        'unit-3xl': '80px', // 20 * spacingUnit
-        'unit-4xl': '120px', // 30 * spacingUnit
-        'unit-5xl': '224px', // 56 * spacingUnit
-        'unit-6xl': '288px', // 72 * spacingUnit
-        'unit-7xl': '384px', // 96 * spacingUnit
-        'unit-8xl': '512px', // 128 * spacingUnit
-        'unit-9xl': '640px', // 160 * spacingUnit
-        'unit-0': '0px', // 0 * spacingUnit
-        'unit-1': '4px', // 1 * spacingUnit
-        'unit-2': '8px', // 2 * spacingUnit
-        'unit-3': '12px', // 3 * spacingUnit
-        'unit-3_5': '14px', // 3.5 * spacingUnit
-        'unit-4': '16px', // 4 * spacingUnit
-        'unit-5': '20px', // 5 * spacingUnit
-        'unit-6': '24px', // 6 * spacingUnit
-        'unit-7': '28px', // 7 * spacingUnit
-        'unit-8': '32px', // 8 * spacingUnit
-        'unit-9': '36px', // 9 * spacingUnit
-        'unit-10': '40px', // 10 * spacingUnit
-        'unit-11': '44px', // 11 * spacingUnit
-        'unit-12': '48px', // 12 * spacingUnit
-        'unit-13': '52px', // 13 * spacingUnit
-        'unit-14': '56px', // 14 * spacingUnit
-        'unit-15': '60px', // 15 * spacingUnit
-        'unit-16': '64px', // 16 * spacingUnit
-        'unit-17': '68px', // 17 * spacingUnit
-        'unit-18': '72px', // 18 * spacingUnit
-        'unit-20': '80px', // 20 * spacingUnit
-        'unit-24': '96px', // 24 * spacingUnit
-        'unit-28': '112px', // 28 * spacingUnit
-        'unit-32': '128px', // 32 * spacingUnit
-        'unit-36': '144px', // 36 * spacingUnit
-        'unit-40': '160px', // 40 * spacingUnit
-        'unit-44': '176px', // 44 * spacingUnit
-        'unit-48': '192px', // 48 * spacingUnit
-        'unit-52': '208px', // 52 * spacingUnit
-        'unit-56': '224px', // 56 * spacingUnit
-        'unit-60': '240px', // 60 * spacingUnit
-        'unit-64': '256px', // 64 * spacingUnit
-        'unit-72': '288px', // 72 * spacingUnit
-        'unit-80': '320px', // 80 * spacingUnit
-        'unit-96': '384px', // 96 * spacingUnit
+      backgroundPosition: {
+        'earth': '-101px -93px',
+        'earth-mobile': '-65px -65px'
       }
-    })],
+    },
+    colors: {
+    },
+    animation: {
+      move1: 'keyframe1 5s ease 0s 1 forwards',
+      zoom1: 'keyframe2 3s linear 2s forwards',
+      zoom2: 'keyframe3 3s linear 2s forwards',
+      display1: 'keyframe4 3s linear forwards',
+      move2: 'keyframe5 3s linear forwards',
+      move3: 'keyframe6 3s linear forwards',
+      move4: 'keyframe7 3s linear forwards'
+    },
+    keyframes: {
+      keyframe1: {
+        '0%': { left: '0px' },
+        '100%': { left: '500px' }
+      },
+      keyframe2: {
+        "0%": { fontSize: '24px', lineHeight: '29px' },
+        "100%": { fontSize: '250px', lineHeight: '298px' },
+      },
+      keyframe3: {
+        "0%": { top: '0px', width: '373px', height: '373px' },
+        "100%": { top: '-250px', width: '120vh', height: '120vh' }
+      },
+      keyframe4: {
+        "0%": { opacity: 0 },
+        "100%": { opacity: 1 }
+      },
+      keyframe5: {
+        "0%": { fontSize: '48px', lineHeight: '57px' },
+        "100%": { position: 'absolute', left: '70vw', bottom: '60vh', width: '120vh', height: '120vh' }
+      },
+      keyframe6: {
+        "0%": { left: '-120px', top: 0, transform: 'rotate(150deg)' },
+        "25%": { left: '-120px', top: '35vh' },
+        "50%": { left: '-120px', top: '70vh' },
+        "100%": { left: '-120px', top: '105vh' },
+      },
+      keyframe7: {
+        "0%": { bottom: '70vh' },
+        "100%": { opacity: '60vh' }
+      },
+    }
+  },
+  plugins: [
+    require('@themesberg/flowbite/plugin'),
+    require("tailwindcss-animate"),
+    require('flowbite/plugin'),
+  ],
 }

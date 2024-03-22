@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Spinner } from '@nextui-org/react';
+import { GlobalSpinner } from '../../common/globalSpinner/GlobalSpinner';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doEmailVerify } from '../../../store/slices/authSlice';
@@ -42,7 +42,7 @@ const EmailVerifyForm: React.FC = () => {
     <div className='w-screen h-screen flex justify-center align-middle items-center text-center'>
       {verifying ? (
         <div className='container flex flex-col absolute items-center justify-center text-center' style={{ translate: 'translate(-50%, -50%)' }}>
-          <Spinner color='default' size='lg' />
+          <GlobalSpinner />
           <span className='w-1/2 text-white text-2xl'>Verification is in progress...</span>
         </div>
       ) : (
