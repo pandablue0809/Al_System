@@ -5,7 +5,6 @@ import { HeaderDropDownButton } from './components/HeaderBaseButton/HeaderDropDo
 import type { HeaderDropDownMenuItem } from './components/HeaderBaseButton/HeaderDropDownButton';
 
 import LOGO from '../../assets/images/logo/logo.svg';
-import { HeaderAuthButton } from './components/HeaderBaseButton/HeaderAuthButton';
 
 const MENU_DATA: HeaderDropDownMenuItem = {
   title: 'More',
@@ -55,7 +54,6 @@ const Header: React.FC = () => {
         </div>
         <div className='flex'>
           <div className='flex w-full flex-col-reverse'>
-            <HeaderAuthButton />
           </div>
         </div>
       </div>

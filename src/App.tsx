@@ -1,6 +1,5 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { NextUIProvider } from '@nextui-org/react';
 import { AppRouter } from './router/AppRouter';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -13,12 +12,10 @@ const App: React.FC = () => {
     <HelmetProvider>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <NextUIProvider>
-          <main className='w-full sotru-dark text-foreground bg-background'>
-            <ToastContainer />
-            <AppRouter />
-          </main>
-        </NextUIProvider>
+        <main className='w-full sotru-dark text-white bg-background'>
+          <ToastContainer />
+          <AppRouter />
+        </main>
       </ThemeProvider>
     </HelmetProvider>
   );

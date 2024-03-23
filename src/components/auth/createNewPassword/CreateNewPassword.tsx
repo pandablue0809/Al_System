@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@nextui-org/react';
+import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import PasswordInput from '../../input/passwordInput';
 import PasswordConfirm from '../../input/PasswordConfirm';
@@ -61,12 +61,7 @@ const CreateNewPassword: React.FC = () => {
               </Link>
             </p>
             <div className='flex items-center justify-between my-5'>
-              <Button
-                className='m-2 shadow-lg font-medium text-[16px] border-box text-white px-9 w-full h-[2.8rem] rounded-[10px]'
-                isLoading={loading}
-                variant='shadow'
-                color='secondary'
-                onClick={handleSubmit}>
+              <Button variant='contained' color='success' onClick={handleSubmit}>
                 <span>Reset Password</span>
               </Button>
             </div>

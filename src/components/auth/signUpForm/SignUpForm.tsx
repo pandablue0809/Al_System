@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'react-phone-number-input/style.css';
-import { Checkbox, Button } from '@nextui-org/react';
+import { Checkbox, Button } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import PasswordInput from '../../input/passwordInput';
@@ -138,9 +138,9 @@ const SignUpForm: React.FC = () => {
             <PasswordConfirm setPasswordConfirmedStatus={setPasswordConfirmedValidatedStatus} value={password} />
 
             <label className='flex item-center ml-2'>
-              <Checkbox isSelected={isAgree} size='sm' onValueChange={setSsAgree}>
-                I agree with our Terms of Service and Privacy Policy
-              </Checkbox>
+              {/* <Checkbox size='small'> */}
+                <span className='text-white'>I agree with our Terms of Service and Privacy Policy</span>
+              {/* </Checkbox> */}
             </label>
             <p className='text-white text-center text-sm'>
               Already have an account?
@@ -149,13 +149,7 @@ const SignUpForm: React.FC = () => {
               </Link>
             </p>
             <div className='flex items-center justify-between my-5'>
-              <Button
-                className='m-2 shadow-lg font-medium text-[16px] border-box text-white px-9 w-full h-[2.8rem] rounded-[10px]'
-                isLoading={loading}
-                isDisabled={!isAgree}
-                variant='shadow'
-                color='secondary'
-                onClick={handleSubmit}>
+              <Button color='secondary' onClick={handleSubmit}>
                 <span>Create Account</span>
               </Button>
             </div>
