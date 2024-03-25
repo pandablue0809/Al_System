@@ -41,7 +41,7 @@ const SignUpForm: React.FC = () => {
   const { register_success } = useAppSelector((state) => state.auth);
   //This variable is used to display a loading icon on the button when clicked.
   const [loading, setLoading] = useState<boolean>(false);
-  const [isAgree, setSsAgree] = useState<boolean>(false);
+  const [isAgree, setIsAgree] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
