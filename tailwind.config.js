@@ -15,7 +15,7 @@ module.exports = {
       backgroundImage: theme => ({
         // header
         'header-deposit-btn': 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%)',
-        'header-deposit-btn-dark': 'linear-gradient(154.49deg, rgba(121, 117, 131, 0.2) 5.35%, rgba(54, 53, 103, 0.2) 83.85%), rgba(49, 48, 54, 0.3);',
+        'header-deposit-btn-dark': 'linear-gradient(154.49deg, rgba(121, 117, 131, 0.2) 5.35%, rgba(54, 53, 103, 0.2) 83.85%), rgba(49, 48, 54, 0.3)',
         'header-login-btn-dark': 'linear-gradient(154.49deg, rgba(121, 117, 131, 0.2) 5.35%, rgba(54, 53, 103, 0.2) 83.85%);',
         'header-balance': "url('../images/header/balance.svg')",
         'header-history': "url('../images/header/history.svg')",
@@ -25,7 +25,6 @@ module.exports = {
         "introheader-mobiletab": "url('../images/_intro/introheader/mobiletab.png')",
         "introheader-mobilemenuclose": "url('../images/_intro/introheader/mobilemenuclose.png')",
         //intro dashboard
-        "introdashboard-logoimage": "url('../images/_intro/introdashboard/logo.png')",
         "introdashboard-fullscreenimage": "url('../images/_intro/introdashboard/ep_full-screen.png')",
         "introdashboard-starimage": "url('../images/_intro/introdashboard/stars.png')",
         "introdashboard-shape1": "url('../images/_intro/introdashboard/shape1.png')",
@@ -48,8 +47,7 @@ module.exports = {
         "introdashboard-card3": "url('../images/_intro/introdashboard/card3.png')",
         "introdashboard-maccom": "url('../images/_intro/introdashboard/MacStudio.png')",
         "introdashboard-phone-photo-mobile": "url('../images/_intro/introdashboard/phone-photo-mobile.png')",
-        "introdashboard-section1-bg": "url('../images/_intro/introdashboard/section1_bg.gif')",
-
+        "introdashboard-section1-bg":"url('../images/_intro/introdashboard/section1_bg.gif')",
         //intro earn
         "introearn-starsstart": "url('../images/_intro/introearn/StarsStart.png')",
         "introearn-earth": "url('../images/_intro/introearn/earth.gif')",
