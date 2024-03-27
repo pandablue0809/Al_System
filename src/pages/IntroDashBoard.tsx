@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../utils/useWindowSize';
 import ThreeCard from '../components/animation/card/ThreeCard';
-import Tahara from '../assets/images/_intro/introdashboard/asano.png';
+import CEOImage from '../assets/images/_intro/introdashboard/CEO.png';
+import CTOImage from '../assets/images/_intro/introdashboard/CTO.png';
+import BotImage from '../assets/images/_intro/introdashboard/BOT.png';
 import AIImage1 from '../assets/images/_intro/introdashboard/AI1.jpg';
 import AIImage2 from '../assets/images/_intro/introdashboard/AI2.jpg';
 import AIImage3 from '../assets/images/_intro/introdashboard/AI3.jpg';
+import Divider from '../assets/images/_intro/introdashboard/divider.svg';
+import Crown from '../assets/images/_intro/introdashboard/crown.svg';
+import IntroLogo from '../assets/images/_intro/introdashboard/introllogo.png';
+import Text_Divider from '../assets/images/_intro/introdashboard/text_divider.svg';
 
 const Introdashboard: React.FC = () => {
   const size = useWindowSize();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [showDemo, setShowDemo] = useState<boolean>(false);
-  const [showDemo1, setShowDemo1] = useState<boolean>(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,13 +31,6 @@ const Introdashboard: React.FC = () => {
       }
     }
   }, [size]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowDemo1(!showDemo1);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [showDemo1]);
 
   return (
     <div className='bg-[#10213f]'>
@@ -73,32 +70,138 @@ const Introdashboard: React.FC = () => {
         onClick={() => navigate('/auth/login')}>
         Join for free
       </button>
-      <div className='flex flex-row gap-x-16 w-full px-40 justify-center mt-[19vh]'>
-        <ThreeCard />
-        <ThreeCard avatar={Tahara} role='CTO' name='Tahara Kazuki' location='Saeby town, North Denmark' position='Machine Learning Engineer' />
-        <ThreeCard />
-        <ThreeCard />
+      <div className='w-full max-w-[90rem] mx-auto box-border'>
+        <div className='flex items-center justify-center' style={{ flexFlow: 'wrap' }}>
+          <div
+            style={{
+              gridColumnGap: 16,
+              gridRowGap: 16,
+              gridTemplateRows: 'auto auto',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              gridAutoColumns: '1fr',
+              display: 'grid',
+              marginTop: '19vh',
+            }}>
+            <ThreeCard avatar={CEOImage} name='Alexadru Suteu' role='CEO' />
+            <ThreeCard avatar={CTOImage} role='CTO' name='Tahara Kazuki' />
+            <ThreeCard avatar={BotImage} name='Virtual Assitant' role='Assitant' />
+          </div>
+        </div>
       </div>
       <button
         className='text-white block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-10 py-4 text-center mt-[10vh] mb-2 mx-auto cursor-pointer z-10'
         onClick={() => navigate('/auth/login')}>
         Show more
       </button>
-      <div className='w-full pt-[20vh] md:pt-[20vh]'>
-        <div className='text-[#1199FA] text-[48px] md:text-[74px] leading-[57px] md:leading-[78px] font-[600] md:font-[500] text-center'>Earn</div>
-        <div className='w-[85%] md:w-[50%] mt-[20px] mx-auto text-[18px] md:text-[20px] leading-[21px] md:leading-[24px] text-[#FFF] font-[400] md:font-[500] text-center'>
-          By using this platform, you can be provided with a convenient work environment anytime, anywhere.
+      <section className='mb-[19vh] mt-[19vh]'>
+        <div className='max-w-[90em] md:max-w-[90rem] w-full mx-auto box-border'>
+          <div className='flex justify-between'>
+            <div className='w-[90%] md:w-1/2 bg-[#1b1b1b] rounded-[80px] justify-center items-center mr-[40px] p-[40px] flex relative'>
+              <div className='bg-[#232221] rounded-[80px]'>
+                <div className='w-full h-[110px] md:h-[161px] bg-[rgba(22, 22, 22, 0.79)] border-[1px] border-solid border-white rounded-[20px] justify-center items-center flex absolute top-auto bottom-0 left-0 md:left-[3%]'>
+                  <div className='justify-around flex'>
+                    <div className=' text-left leading-[20px]'>
+                      <h6 className='text-[20px] md:text-[24px] mt-[10px] mb-[10px] font-semibold leading-[30px]'>586</h6>
+                      <div className='leading-[16px] text-[12px]'>
+                        Working <br /> Days
+                      </div>
+                    </div>
+                    <img
+                      className='inline-block border-0 max-w-full align-middle ml-[20px] mr-[20px] md:ml-[29px] md:mr-[29px]'
+                      src={Divider}
+                      loading='lazy'
+                      alt='mission'
+                    />
+                    <div className=' text-left leading-[20px]'>
+                      <h6 className='text-[20px] md:text-[24px] mt-[10px] mb-[10px] font-semibold leading-[30px]'>2036</h6>
+                      <div className='leading-[16px] text-[12px]'>
+                        Happy <br /> Clients
+                      </div>
+                    </div>
+                    <img
+                      className='inline-block border-0 max-w-full align-middle ml-[20px] mr-[20px] md:ml-[29px] md:mr-[29px]'
+                      src={Divider}
+                      loading='lazy'
+                      alt='mission'
+                    />
+                    <div className=' text-left leading-[20px]'>
+                      <h6 className='text-[20px] md:text-[24px] mt-[10px] mb-[10px] font-semibold leading-[30px]'>1132</h6>
+                      <div className='leading-[16px] text-[12px]'>
+                        Successfull <br /> Story
+                      </div>
+                    </div>
+                    <img
+                      className='inline-block border-0 max-w-full align-middle ml-[20px] mr-[20px] md:ml-[29px] md:mr-[29px]'
+                      src={Divider}
+                      loading='lazy'
+                      alt='mission'
+                    />
+                    <div className='text-left leading-[20px]'>
+                      <h6 className='text-[20px] md:text-[24px] mt-[10px] mb-[10px] font-semibold leading-[30px]'>56</h6>
+                      <div className='leading-[16px] text-[12px]'>
+                        Perfect <br /> Service
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className='w-[70px] h-[70px] md:w-[100px] md:h-[100px] bg-[#fe8a31] rounded-full justify-center items-center flex absolute'
+                    style={{ top: '-44%', bottom: 'auto' }}>
+                    <img src={Crown} loading='lazy' width={30} alt='symbol' />
+                  </div>
+                </div>
+                <img
+                  src={IntroLogo}
+                  style={{
+                    overflowClipMargin: 'content-box',
+                    overflow: 'clip',
+                    border: 0,
+                    maxWidth: '100%',
+                    verticalAlign: 'middle',
+                    display: 'inline-block',
+                    borderRadius: 80,
+                  }}
+                />
+              </div>
+            </div>
+            <div className='w-full md:w-1/2 flex flex-col justify-center items-start'>
+              <div className='text-white block' style={{ marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: 0, marginInlineEnd: 0 }}>
+                About us
+              </div>
+              <h3 className='font-semibold text-[1.75em] md:text-[3rem] md:mt-[10px]'>
+                We Are Ready to Making You Different<span className='text-[#1199FA]'> from others</span>
+              </h3>
+              <img
+                src={Text_Divider}
+                className='border-0 max-w-full align-middle inline-block mt-[29px] mb-[21px] overflow-clip'
+                style={{ overflowClipMargin: 'content-box' }}
+                loading='lazy'
+                alt=''
+              />
+              <p
+                className='mb-0 md:mb-10 leading-3 md:leading-[30px] block text-[1.1em] md:text-[1.375em]'
+                style={{ marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: 0, marginInlineEnd: 0 }}>
+                In 2023, before &apos;generative AI&apos; was a buzzword, Alexandru and Tahara were grinding through the world of AI. Frustrated by
+                the slow, painstaking process of traditional...
+                {/* 
+                 methods and uninspired by the soulless automation available, they teamed up.  */}
+                {/* Their mission: to use AI not just to make his work faster, but to make them matter—
+                to ensure every second a viewer spent working was a second well spent.
+                They wanted to help marketers not just catch eyes, but spark action. Alexandru brought a knack for storytelling coupled with the
+                hard-earned wisdom of a serial founder in AI. Tahara brought a decade of deep learning and computer vision expertise from the trenches
+                of Amazon's AI initiatives. */}
+              </p>
+              <button
+                className='text-white block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-10 py-4 text-center mt-0 md:mt-8 mb-2 mx-auto cursor-pointer z-10'
+                onClick={() => navigate('/auth/login')}>
+                Learn More
+              </button>
+            </div>
+          </div>
         </div>
-        <div className='w-[45%] md:w-[30%] mt-[70px] md:mt-[110px] mx-auto border-b-[3px] md:border-b-[7px] border-[#1199FA] h-0 text-center' />
-        <div className='border-[#1199FA] mt-[70px] md:mt-[80px] text-[48px] md:text-[74px] leading-[57px] md:leading-[78px] font-[600] md:font-[500] text-center'>
-          Borrow
-        </div>
-        <div className='w-[85%] md:w-[55%] mt-[20px] mx-auto text-[18px] md:text-[20px] leading-[21px] md:leading-[24px] text-[#FFF] font-[400] md:font-[500] text-center'>
-          <span>Contact me to get your dream website up and ready for the rest of the world to see!</span>
-          <div className='mt-[15px]' />
-        </div>
+      </section>
+      <div className='w-full'>
         <div className='flex w-full h-fit flex-row p-24'>
-          <div className='mt-[20vh] md:mt-[150px] md:mx-auto md:w-[60%] text-center text-[48px] md:text-[64px] leading-[57px] md:leading-[76px] text-[#FFF] font-[500] md:drop-shadow-[0_0_2px_#FFFFFF]'>
+          <div className='md:mx-auto md:w-[60%] text-center text-[48px] md:text-[64px] leading-[57px] md:leading-[76px] text-[#FFF] font-[500] md:drop-shadow-[0_0_2px_#FFFFFF]'>
             <span>Built by SoTru.</span>
             <br /> <span>AI Evolution is here.</span>
           </div>
@@ -107,15 +210,17 @@ const Introdashboard: React.FC = () => {
               <div className='layer layer_1'>
                 <img className='w-72 h-72 bg-cover bg-no-repeat bg-center items-center rounded-xl shadow-2xl' src={AIImage1} />
               </div>
-              <div className='layer layer_2'><img className='w-72 h-72 bg-cover bg-no-repeat bg-center items-center rounded-xl shadow-2xl' src={AIImage2} /></div>
-              <div className='layer layer_3'><img className='w-72 h-72 bg-cover bg-no-repeat bg-center items-center rounded-xl shadow-2xl' src={AIImage3} /></div>
+              <div className='layer layer_2'>
+                <img className='w-72 h-72 bg-cover bg-no-repeat bg-center items-center rounded-xl shadow-2xl' src={AIImage2} />
+              </div>
+              <div className='layer layer_3'>
+                <img className='w-72 h-72 bg-cover bg-no-repeat bg-center items-center rounded-xl shadow-2xl' src={AIImage3} />
+              </div>
             </div>
           </div>
         </div>
         <div
-          className={`flex flex-col md:flex-row items-center ${
-            !showDemo ? 'mt-[50vh]' : 'mt-[10vh]'
-          } md:mx-auto md:bg-introdashboard-earn-back md:bg-contain md:bg-no-repeat bg-center md:w-[80%] md:h-[35vh]`}>
+          className={`flex flex-col md:flex-row items-center ${'mt-[10vh]'} md:mx-auto md:bg-introdashboard-earn-back md:bg-contain md:bg-no-repeat bg-center md:w-[80%] md:h-[35vh]`}>
           {isMobile && <div className='text-[74px] leading-[88px] font-[600] text-[#1199FA] mb-[30px]'>EARN</div>}
           <div className='md:mx-auto md:w-[90%] text-[#FFF] text-[32px] md:text-[64px] text-center leading-[38px] md:leading-[76px] font-[500] md:drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]'>
             <span>Enjoy the world of AI for free!</span>

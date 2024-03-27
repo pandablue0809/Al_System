@@ -39,7 +39,6 @@ module.exports = {
         "introdashboard-phone-photo": "url('../images/_intro/introdashboard/phone-photo.png')",
         "introdashboard-arrow": "url('../images/_intro/introdashboard/arrow.png')",
         "introdashboard-linegroup": "url('../images/_intro/introdashboard/linegroup.png')",
-        "introdashboard-earn-back": "url('../images/_intro/introdashboard/earn_title.png')",
         "introdashboard-borrow-back": "url('../images/_intro/introdashboard/BORROW.png')",
         "introdashboard-card": "url('../images/_intro/introdashboard/card.png')",
         "introdashboard-card1": "url('../images/_intro/introdashboard/card1.png')",
