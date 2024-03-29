@@ -5,7 +5,7 @@ import { PageTitle } from '../components/common/pageTitle/PageTitle';
 const SignUpPage: React.FC = () => {
   return (
     <>
-      <PageTitle>{'common.signUp'}</PageTitle>
+      <PageTitle>{'SignUp'}</PageTitle>
       <SignUpForm />
     </>
   );

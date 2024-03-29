@@ -15,24 +15,21 @@ type HeaderDropDownButtonData = HeaderDropDownMenuItem & HeaderDropDownButtonBas
 
 export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title, subMenus, onClick }) => {
   const [menuShowingDropdown, setMenuShowingDropdown] = useState<null | string>('');
-  const [animateActive, setAnimateActive] = useState(false);
   const buttonRef = useRef<null | HTMLButtonElement>(null);
 
   const showSubMenu = useCallback(() => {
     setMenuShowingDropdown(title);
-    setAnimateActive(true);
   }, [title, setMenuShowingDropdown]);
 
   const closeSubMenu = useCallback(() => {
     setMenuShowingDropdown('');
-    setAnimateActive(false);
   }, [setMenuShowingDropdown]);
 
   const subMenusNodes = subMenus?.map((subMenuItem) => {
     return (
       <div key={subMenuItem.title} className='flex flex-col w-full items-start transition ease-in-out duration-300'>
         <button
-          className='text-white hover:text-success text-sm sm:text-base font-sans select-none bg-transparent mt-2 transition ease-in-out duration-300'
+          className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
           onClick={() => {
             if (onClick) {
               onClick(subMenuItem.title);
@@ -41,7 +38,6 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
           }}>
           {subMenuItem.title}
         </button>
-        <div className='w-full h-[1px] bg-white align-bottom px-1 py-0 my-2'></div>
       </div>
     );
   });
@@ -49,7 +45,7 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
   return (
     <div className='relative box-border flex-row h-full'>
       <button
-        className='flex flex-row text-base sm:text-xl hover:text-success bg-transparent select-none font-sans tracking-wide font-semibold transition ease-in-out duration-300 items-center relative'
+        className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center relative'
         id={`menuItem-${title}`}
         ref={buttonRef}
         onMouseLeave={() => {
@@ -62,12 +58,12 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
           }
         }}>
         <span className='flex'>{title}</span>
-        <MdOutlineKeyboardArrowDown className={`flex mt-1 ml-1 ${animateActive ? 'animate-bounce' : ''}`} />
+        <MdOutlineKeyboardArrowDown className={`flex mt-[1px] ml-[6px]`} />
       </button>
       {menuShowingDropdown === title && (
         <div
-          className='w-44 flex flex-col pt-4 pb-8 px-8 rounded-lg transition ease-in-out duration-300 shadow-lg absolute z-10'
-          style={{ backgroundColor: '#212749' }}
+          className='w-max flex flex-col drop-shadow-md pt-4 pb-8 px-8 rounded-lg transition ease-in-out duration-300 shadow-xl absolute z-10'
+          style={{backgroundImage: 'linear-gradient(123deg, #4b4d63, rgba(19, 24, 32, 1))'}}
           onMouseLeave={() => {
             closeSubMenu();
           }}

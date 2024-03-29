@@ -1,11 +1,11 @@
 import { createAction, createSlice, PrepareAction } from "@reduxjs/toolkit";
 
-export interface UserState {
-  user: string;
+export type UserState = {
+  user: string | null;
 }
 
 const initialState: UserState = {
-  user: "",
+  user: null
 };
 
 export const setUser = createAction<PrepareAction<string>>(
@@ -17,7 +17,7 @@ export const setUser = createAction<PrepareAction<string>>(
   },
 );
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},

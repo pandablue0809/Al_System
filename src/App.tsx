@@ -1,20 +1,25 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { ConfigProvider } from 'antd';
-import { NextUIProvider } from '@nextui-org/react';
-import enUS from 'antd/lib/locale/en_US';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { AppRouter } from './router/AppRouter';
+import { ToastContainer } from 'react-toastify';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/header';
 
 const App: React.FC = () => {
+  const darkTheme = createTheme({ palette: { mode: 'dark' } });
   return (
     <HelmetProvider>
-      <ConfigProvider locale={enUS}>
-        <NextUIProvider>
-          <main className='w-full sotru-dark text-foreground bg-background'>
-            <AppRouter />
-          </main>
-        </NextUIProvider>
-      </ConfigProvider>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Router>
+          <Header />
+          <AppRouter />
+        </Router>
+        <ToastContainer />
+      </ThemeProvider>
     </HelmetProvider>
   );
 };

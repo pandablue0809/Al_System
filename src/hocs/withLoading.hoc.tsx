@@ -6,7 +6,7 @@ type ReturnType<T> = (props: T) => JSX.Element;
 export const withLoading = <T extends object>(Component: React.ComponentType<T>): ReturnType<T> => {
   // Define the component inside the HOC
   const WithLoadingComponent = (props: T) => (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading color='success' />}>
       <Component {...props} />
     </Suspense>
   );

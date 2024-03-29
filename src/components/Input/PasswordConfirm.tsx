@@ -3,19 +3,25 @@ import { FaEye, FaEyeSlash} from 'react-icons/fa';
 
 export type PasswordConfirmProps = {
   value?: string;
-  
+  setPasswordConfirmedStatus?: (newValue: boolean) => void;
 }
 
-const PasswordConfirm: React.FC<PasswordConfirmProps> = ({ value }) => {
+const PasswordConfirm: React.FC<PasswordConfirmProps> = ({ value, setPasswordConfirmedStatus}) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isPasswordValid, setIsPasswordValid] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isPasswordNull, setIsPasswordNull] = useState(false);
-
+  
     useEffect(() => {
       confirmPassword === '' ? setIsPasswordNull(true) : setIsPasswordNull(false);
       (value === confirmPassword && confirmPassword !== '') ? setIsPasswordValid(true) : setIsPasswordValid(false);
-  }, [confirmPassword]);
+   
+    }, [confirmPassword]);
+  
+  
+  useEffect(() => {
+    setPasswordConfirmedStatus && setPasswordConfirmedStatus(isPasswordValid);
+  },[isPasswordValid])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newPassword = event.target.value;

@@ -5,12 +5,17 @@ export type PasswordInputProps = {
   value?: string;
   isSignUp?: boolean;
   onChange?: (newValue: string) => void;
+  setSecurityStatus?: (newValue: boolean) => void;
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ value, isSignUp, onChange }) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({ value, isSignUp, onChange, setSecurityStatus }) => {
   const [password, setPassword] = useState(value || '');
   const [securityLevel, setSecurityLevel] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  
+  useEffect(() => {
+    setSecurityStatus && setSecurityStatus(securityLevel === 'Strong')
+  },[securityLevel])
 
   useEffect(() => {
     const newSecurityLevel = getSecurityLevel(password);
@@ -23,9 +28,11 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, isSignUp, onChange
     setPassword(newPassword);
   };
 
-   const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+ 
 
   const getSecurityLevel = (password: string): string => {
     let level = 0;

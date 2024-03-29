@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the styles if you haven't already
 import { isValidPhoneNumber } from 'react-phone-number-input';
@@ -6,11 +6,21 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 interface PhoneNumberInputProps {
   phoneNumber: string;
   handlePhoneNumberChange: (value: string) => void;
+  setPhoneNumberValidatedStatus: (value: boolean) => void;
 }
 
-const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange }) => {
-  const isPhoneNumberValid = phoneNumber ? isValidPhoneNumber(phoneNumber) : false;
-  const isPhoneNumberNull = phoneNumber === undefined || phoneNumber === '' ? true : false;
+const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange, setPhoneNumberValidatedStatus }) => {
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
+  const [isPhoneNumberNull, setIsPhoneNumberNull] = useState(true);
+
+  useEffect(() => {
+    phoneNumber ? setIsPhoneNumberValid(isValidPhoneNumber(phoneNumber)) : setIsPhoneNumberValid(false);
+    phoneNumber === undefined || phoneNumber === '' ? setIsPhoneNumberNull(true) : setIsPhoneNumberNull(false);
+  }, [phoneNumber]);
+
+  useEffect(() => {
+    setPhoneNumberValidatedStatus && setPhoneNumberValidatedStatus(isPhoneNumberValid);
+  }, [isPhoneNumberValid]);
 
   return (
     <div className='m-2'>
