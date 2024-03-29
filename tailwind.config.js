@@ -1,5 +1,3 @@
-const { calculateNewValue } = require('@testing-library/user-event/dist/utils');
-
 // /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
