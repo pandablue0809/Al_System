@@ -51,7 +51,7 @@ const UserSidebar = () => {
   return (
     <Box
       sx={{
-        position: '-webkit-sticky',
+        position: 'sticky',
         display: 'flex',
         height: '100vh',
         top: 0,

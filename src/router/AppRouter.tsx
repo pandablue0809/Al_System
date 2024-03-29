@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import UserSidebar from '../components/layout/userSidebar/UserSidebar';
 
@@ -11,7 +11,7 @@ import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 
 import { withLoading } from '../hocs/withLoading.hoc';
-import Header from '../components/header/Header';
+import Header from '../components/header';
 
 
 const AboutUs = React.lazy(() => import('../pages/aboutUs/AboutUsPage'))
@@ -29,6 +29,7 @@ export const START_PAGE = '/';
 
 const AboutUsPage = withLoading(AboutUs)
 const StartPage = withLoading(Start);
+const IntrodashboardPage = withLoading(Introdashboard);
 const AboutDashPage = withLoading(AboutDash);
 const IntrodashboardPage = withLoading(Introdashboard)
 const LogoutFallback = withLoading(Logout);
@@ -55,32 +56,47 @@ export const AppRouter: React.FC = () => {
 
   return (
     <div className='relative font-poppins w-full h-full min-h-screen bg-[#DEE2E8] dark:bg-[#000000] transition-all duration-1000'>
-      <Router>
-        {user ? (
-          <div className='relative w-screen h-full min-h-screen flex'>
-            <CssBaseline />
-            <div className='w-full h-full flex relative'>
-              <UserSidebar />
-              <main className='w-full h-full box-border flex px-10'>
-                <div className='w-full h-screen flex flex-col box-border relative overflow-y-auto justify-center'>
-                  <Header />
-                  <Routes>
-                    <Route path='/auth'>
-                      <Route path='login' element={<LoginPage />} />
-                    </Route>
-                    <Route path='/dashboard'>
-                      <Route path='user/work' element={<WorkService />} />
-                    </Route>
-                    <Route path='/error'>
-                      <Route path='server' element={<ServerError />} />
-                    </Route>
-                    <Route path='/logout' element={<LogoutFallback />} />
-                    <Route path='*' element={<Error404 />} />
-                  </Routes>
-                </div>
-              </main>
-            </div>
+      {user ? (
+        <div className='relative w-screen h-full min-h-screen flex'>
+          <CssBaseline />
+          <div className='w-full h-full flex relative'>
+            <UserSidebar />
+            <main className='w-full h-full box-border flex px-10'>
+              <div className='w-full h-screen flex flex-col box-border relative overflow-y-auto justify-center'>
+                <Header />
+                <Routes>
+                  <Route path='/auth'>
+                    <Route path='login' element={<LoginPage />} />
+                  </Route>
+                  <Route path='/dashboard'>
+                    <Route path='user/work' element={<WorkService />} />
+                  </Route>
+                  <Route path='/error'>
+                    <Route path='server' element={<ServerError />} />
+                  </Route>
+                  <Route path='/logout' element={<LogoutFallback />} />
+                  <Route path='*' element={<Error404 />} />
+                </Routes>
+              </div>
+            </main>
           </div>
+        </div>
+      ) : (
+        <Routes>
+          <Route path={START_PAGE}>
+            <Route index element={<StartPage />} />
+            <Route path='introdashboard' element={<IntrodashboardPage />} />
+          </Route>
+          <Route path='/auth'>
+            <Route path='login' element={<LoginPage />} />
+            <Route path='sign-up' element={<SignUpPage />} />
+            <Route path='forgot-password' element={<ForgotPasswordPage />} />
+          </Route>
+          <Route path='/mail-verify' element={<MailVerify />} />
+          <Route path='/logout' element={<LogoutFallback />} />
+          <Route path='*' element={<Error404 />} />
+        </Routes>
+      )}
         ) : (
           <Routes>
             <Route path={START_PAGE}>
