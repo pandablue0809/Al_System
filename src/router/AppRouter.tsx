@@ -13,6 +13,8 @@ import SignUpPage from '../pages/SignUpPage';
 import { withLoading } from '../hocs/withLoading.hoc';
 import Header from '../components/header/Header';
 
+
+const AboutUs = React.lazy(() => import('../pages/aboutUs/AboutUsPage'))
 const Start = React.lazy(() => import('../pages/Splash'));
 const Introdashboard = React.lazy(() => import('../pages/IntroDashBoard'));
 const Logout = React.lazy(() => import('./Logout'));
@@ -20,12 +22,14 @@ const Error404Page = React.lazy(() => import('../pages/Error404Page'));
 const ServerErrorPage = React.lazy(() => import('../pages/ServerErrorPage'));
 const MailVerifyPage = React.lazy(() => import('../pages/MailVerifyPage'));
 const ForgotPassword = React.lazy(() => import('../pages/ForgotPasswordPage'));
-
+const AboutDash = React.lazy(() => import('../pages/aboutUs'));
 const WorkRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/WorkRoom'));
 
 export const START_PAGE = '/';
 
+const AboutUsPage = withLoading(AboutUs)
 const StartPage = withLoading(Start);
+const AboutDashPage = withLoading(AboutDash);
 const IntrodashboardPage = withLoading(Introdashboard)
 const LogoutFallback = withLoading(Logout);
 const Error404 = withLoading(Error404Page);
@@ -82,6 +86,10 @@ export const AppRouter: React.FC = () => {
             <Route path={START_PAGE}>
               <Route index element={<StartPage />} />
               <Route path='introdashboard' element={<IntrodashboardPage />} />
+              <Route path='about'>
+                <Route path='' element={<AboutDashPage />} />
+                <Route path='intro' element={<AboutUsPage />} />
+              </Route>
             </Route>
             <Route path='/auth'>
               <Route path='login' element={<LoginPage />} />

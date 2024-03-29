@@ -716,3 +716,21 @@ textarea::-webkit-scrollbar-track {
   margin-top: 10px;
   margin-bottom: 41px;
 }
+
+.ds-5 {
+  transform: scale(0.5);
+  transition-duration: 1000ms!important;
+}
+
+.ds-20 {
+  transform: scale(2.0);
+  transition-duration: 3000ms!important;
+}
+
+.d-1{
+  transition-duration: 1000ms !important;
+}
+
+.d-2{
+  transition-duration: 2000ms !important;
+}
