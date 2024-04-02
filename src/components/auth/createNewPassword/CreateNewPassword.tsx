@@ -61,7 +61,25 @@ const CreateNewPassword: React.FC = () => {
               </Link>
             </p>
             <div className='flex items-center justify-between my-5'>
-              <Button variant='contained' color='success' onClick={handleSubmit}>
+              <Button
+                variant='contained'
+                sx={{
+                  backgroundColor: '#ff69a5',
+                  '&:hover': {
+                    backgroundColor: '#f779a5',
+                  },
+                  m: 2,
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+                  fontWeight: '500',
+                  fontSize: '16px',
+                  boxSizing: 'border-box',
+                  color: 'white',
+                  px: 9,
+                  width: '100%',
+                  height: '2.8rem',
+                  borderRadius: '10px',
+                }}
+                onClick={handleSubmit}>
                 <span>Reset Password</span>
               </Button>
             </div>
