@@ -1,124 +1,79 @@
-import React, { useState, useEffect } from "react";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+import React, { useState, useEffect, useRef } from "react";
+import { CSSTransition } from 'react-transition-group';
+
 import Earth from "../../components/earth/Earth";
-import EarthMobile from "../../components/earthMobile/EarthMobile";
 
 const AboutUsPage = () => {
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [enterEarth, setEnterEarth] = useState(false);
+  const nodeRef = useRef<HTMLDivElement>(null);
+  const nodeRef1 = useRef<HTMLDivElement>(null);
 
+  const [enterEarth, setEnterEarth] = useState(false);
 
   useEffect(() => {
     setEnterEarth(true)
-    setIsMobile(false)
     window.scrollTo(0, 0);
   }, []);
-
 
   return (
     <div className="relative bg-[#10213f] md:pb-[70px]">
       <div className="absolute left-[-200px] top-[20vh] w-[100%] h-[977px] bg-introborrow-shape2 bg-cover bg-center z-10 animate-display1"></div>
       <div className="absolute left-[-50px] top-[20vh] w-[158px] h-[151px] bg-introborrow-shape2 bg-cover bg-center z-10 rotate-[60deg] animate-display1"></div>
       <div className="relative w-full h-[100vh] bg-[#10213f] bg-introearn-starsstart bg-cover bg-left  overflow-hidden">
-        {!isMobile && (
-          <CSSTransition
-            in={enterEarth}
-            timeout={1000}
-            classNames={{
-              enter: 'top-[300px] right-[200px] scale-[2.0]',
-              enterActive: 'top-[-350px] right-[-250px] scale-[1.5]',
-              enterDone: 'top-[-200px] right-[-130px] scale-[1.5]',
-              exit: 'top-[-350px] right-[-250px] scale-[1.5]',
-              exitActive: 'top-[300px] right-[200px] scale-[0.5]',
-              exitDone: 'top-[300px] right-[200px] scale-[0.5]',
-            }}
-          >
-            <Earth className="absolute scale-[2.0] transition-all d-2" />
-          </CSSTransition>
-        )}
-        <TransitionGroup>
-          {isMobile && (
-            <CSSTransition
-              in={enterEarth}
-              timeout={1000}
-              classNames={{
-                enter: 'top-[300px] right-[200px] scale-[2.0]',
-                enterActive: 'top-[-100px] right-[-100px] scale-[1.5]',
-                enterDone: 'top-[-100px] right-[-100px] scale-[1.5]',
-              }}
-            >
-              <EarthMobile className="absolute scale-[3] transition-all d-2" />
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+        <CSSTransition
+          nodeRef={nodeRef}
+          in={enterEarth}
+          timeout={1000}
+          classNames={{
+            enter: 'top-[300px] right-[200px] scale-[2.0]',
+            enterActive: 'top-[-350px] right-[-250px] scale-[1.5]',
+            enterDone: 'top-[-200px] right-[-130px] scale-[1.5]',
+            exit: 'top-[-350px] right-[-250px] scale-[1.5]',
+            exitActive: 'top-[300px] right-[200px] scale-[0.5]',
+            exitDone: 'top-[300px] right-[200px] scale-[0.5]',
+          }}
+        >
+          <div ref={nodeRef} className="absolute scale-[2.0] transition-all d-2">
+            <Earth />
+          </div>
+        </CSSTransition>
         <div className="absolute left-[-100px] top-0 w-[232px] h-[250px] bg-introborrow-shape1 bg-cover bg-center md:animate-move3"></div>
         <div className="w-full mt-[26vh]"></div>
-        {!isMobile && (
-          <CSSTransition
-            in={enterEarth}
-            // appear={enterEarth}
-            timeout={1000}
-            classNames={{
-              enter: 'scale-[0.3] bottom-[-9rem]',
-              // enterActive: 'scale-[0.6] bottom-[-3rem]',
-              enterDone: 'scale-[0.9] bottom-1',
-              // enterActive: 'scale-[0.3] bottom-0 duration-[1000ms]',
-              // enterDone: 'scale-[0.9] bottom-0 duration-[2000ms]',
-              // appear: 'opacity-0 bottom-0',
-              // appearActive: 'opaicty-100 bottom-0',
-              // appearDone: 'opaicty-100 bottom-0',
-            }}
-          >
-            <div className="absolute transition-all d-2 scale-[0.3]">
-              <div className="text-[40px] md:text-[60px] leading-[24px] md:leading-[48px] font-[500] md:font-[600] text-[#FFF] text-center">
-                About Us
-              </div>
-              <div className="text-transparent text-[50px] md:text-[250px] leading-[79px] md:leading-[300px] font-[600] text-center font-[600] md:bg-introearn-title-gradient md:bg-clip-text">
-                SoTru
-              </div>
-              <div className="w-[70%] mx-auto md:text-[26px] md:leading-[34px] md:font-[500] text-[#FFF] text-center">
-                A groundbreaking platform designed to help you unlock your full potential through personal growth, learning, and meaningful connections.
-                At EVOLV, we believe in empowering individuals by providing them with the tools they need to grow and connect with others. Our innovative system allows users to create their own unique AI &#34;mirrors&#34; – personal, digital reflections of their thoughts, interests, and experiences.
-                This mirror evolves alongside the user, continually learning and adapting to provide tailored guidance and insights.
-              </div>
+        <CSSTransition
+          in={enterEarth}
+          nodeRef={nodeRef1}
+          appear={enterEarth}
+          timeout={1000}
+          classNames={{
+            enter: 'scale-[0.3] bottom-[-9rem]',
+            // enterActive: 'scale-[0.6] bottom-[-3rem]',
+            enterDone: 'scale-[0.9] bottom-1',
+            // enterActive: 'scale-[0.3] bottom-0 duration-[1000ms]',
+            // enterDone: 'scale-[0.9] bottom-0 duration-[2000ms]',
+            // appear: 'opacity-0 bottom-0',
+            // appearActive: 'opaicty-100 bottom-0',
+            // appearDone: 'opaicty-100 bottom-0',
+          }}
+        >
+          <div ref={nodeRef1} className="absolute transition-all d-2 scale-[0.3]">
+            <div className="text-[40px] md:text-[60px] leading-[24px] md:leading-[48px] font-[500] md:font-[600] text-[#FFF] text-center">
+              About Us
             </div>
-          </CSSTransition>
-        )}
-        <TransitionGroup>
-          {isMobile && (
-            <CSSTransition
-              in={enterEarth}
-              // appear={enterEarth}
-              timeout={1000}
-              classNames={{
-                enter: 'scale-[1] top-[35vh]',
-                // enterActive: 'scale-[0.6] bottom-[-3rem]',
-                enterDone: 'scale-[1] top-[37vh]',
-                // enterActive: 'scale-[0.3] bottom-0 duration-[1000ms]',
-                // enterDone: 'scale-[0.9] bottom-0 duration-[2000ms]',
-                // appear: 'opacity-0 bottom-0',
-                // appearActive: 'opaicty-100 bottom-0',
-                // appearDone: 'opaicty-100 bottom-0',
-              }}
-            >
-              <div className="absolute transition-all duration-[2000ms] scale-[1]">
-                <div className="text-[20px] md:text-[40px] leading-[24px] md:leading-[48px] font-[500] md:font-[600] text-[#FFF] text-center">
-                  Borrow Upto
-                </div>
-                <div className="text-[160px] md:text-[250px] leading-[200px] md:leading-[300px] font-[600] text-[#1199FA] text-center">
-                  50%
-                </div>
-                <div className="w-[70%] mx-auto md:text-[18px] md:leading-[21px] md:font-[500] text-[#FFF] text-center">
-                  Welcome to the future of banking, where you are the bank. A system designed to serve you, and not the other way around.
-                </div>
-              </div>
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+            <div className="text-transparent text-[50px] md:text-[250px] leading-[79px] md:leading-[300px] font-[600] text-center font-[600] md:bg-introearn-title-gradient md:bg-clip-text">
+              SoTru
+            </div>
+            <div className="w-[70%] mx-auto md:text-[26px] md:leading-[34px] md:font-[500] text-[#FFF] text-center">
+              A groundbreaking platform designed to help you unlock your full potential through personal growth, learning, and meaningful connections.
+              At EVOLV, we believe in empowering individuals by providing them with the tools they need to grow and connect with others. Our innovative system allows users to create their own unique AI &#34;mirrors&#34; – personal, digital reflections of their thoughts, interests, and experiences.
+              This mirror evolves alongside the user, continually learning and adapting to provide tailored guidance and insights.
+            </div>
+          </div>
+        </CSSTransition>
+
       </div>
       <div className="relative w-full h-[100vh] md:h-[calc(100vw*963/1512)] flex justify-center items-center bg-[#10213f] bg-cover bg-center  overflow-hidden">
-        <div className="absolute w-[320px] top-[130px] left-[calc(50%-160px)] md:w-[1020px] md:top-[240px] md:left-[calc(50%-510px)] bg-borrow-card dark:bg-borrow-card-dark shadow-borrow-card dark:shadow-borrow-card-dark border border-[#FFFFFF] rounded-[33px] p-[20px] md:p-[40px] md:pt-[20px] text-[#000] mt-80">
+        <div className="absolute w-[320px] top-[130px] left-[calc(50%-160px)] md:w-[1020px] md:top-[240px] md:left-[calc(50%-510px)] bg-borrow-card dark:bg-borrow-card-dark shadow-borrow-card dark:shadow-borrow-card-dark border border-[#FFFFFF] rounded-[33px] p-[20px] md:p-[40px] md:pt-[20px] text-[#000] mt-40">
           <span className="font-semibold text-[18px] md:text-[32px] leading-[36px] md:leading-[48px] tracking-[2px] text-transparent bg-clip-text bg-gradient-to-r from-[#1199FA] to-[#00DDA2]">
             About Sotru
           </span>
@@ -218,18 +173,19 @@ const AboutUsPage = () => {
               <span className="text-sm font-semibold text-red-500">**Meet Dr. Sarah, a Doctor Using EVOLV:**</span>
               <p>
                 Dr. Sarah, a dedicated physician, joins EVOLV to stay up-to-date with the latest medical advancements, improve patient care, and connect with fellow healthcare professionals. Here&apos;s how EVOLV&apos;s AI-driven platform enhances her experience:
-                <ol>
-                  <li>
-                    **Personalized Medical Insights:** As Dr. Sarah interacts with the platform, her AI mirror learns about her specialties, interests, and patient demographics. It offers tailored recommendations for relevant research articles, clinical trials, and medical conferences. It also helps her identify potential collaborators working on similar cases or research projects, fostering knowledge exchange and multidisciplinary care.
-                  </li>
-                  <li>
-                    **Healthcare Management:** Dr. Sarah integrates her AI keys for electronic health records (EHRs), scheduling, and billing into EVOLV, streamlining her administrative tasks and allowing her to focus on providing quality patient care.
-                  </li>
-                  <li>
-                    **Advanced AI Services:** Dr. Sarah decides to rent an AI service specializing in diagnostic support to assist her in analyzing patient data and identifying potential health risks or unusual symptoms. This empowers her to make data-driven decisions and provide personalized treatment plans for her patients.
-                  </li>
-                </ol>
               </p>
+              <ol>
+                <li>
+                  **Personalized Medical Insights:** As Dr. Sarah interacts with the platform, her AI mirror learns about her specialties, interests, and patient demographics. It offers tailored recommendations for relevant research articles, clinical trials, and medical conferences. It also helps her identify potential collaborators working on similar cases or research projects, fostering knowledge exchange and multidisciplinary care.
+                </li>
+                <li>
+                  **Healthcare Management:** Dr. Sarah integrates her AI keys for electronic health records (EHRs), scheduling, and billing into EVOLV, streamlining her administrative tasks and allowing her to focus on providing quality patient care.
+                </li>
+                <li>
+                  **Advanced AI Services:** Dr. Sarah decides to rent an AI service specializing in diagnostic support to assist her in analyzing patient data and identifying potential health risks or unusual symptoms. This empowers her to make data-driven decisions and provide personalized treatment plans for her patients.
+                </li>
+              </ol>
+
               <span className="text-sm font-semibold">**Example AI Interactions:**</span>
               <p>
                 * The AI mirror notifies Dr. Sarah about a webinar on new treatment options for her specific patient population, enabling her to stay current with the latest advancements in her field.
@@ -244,17 +200,18 @@ const AboutUsPage = () => {
               <span className="text-sm font-semibold text-red-500">**Meet Mike, a Forest Worker Using EVOLV:**</span>
               <p>
                 Mike, a dedicated forest worker, joins EVOLV to stay up-to-date with the latest developments in forestry management, connect with fellow professionals, and share best practices for maintaining healthy ecosystems. Here&apos;s how EVOLV&apos;s AI-driven platform enhances his experience:
-
-                <ol> <li>
-                  **Personalized Forestry Insights:** As Mike interacts with the platform, his AI mirror learns about his specific area of expertise, such as reforestation, fire management, or sustainable logging. It offers tailored recommendations for relevant research articles, conferences, and educational resources, helping Mike stay informed about new techniques and technologies in his field.
-                </li>
-                  <li>
-                    **Forestry Management Tools:** Mike integrates his AI keys for forestry management software into EVOLV, allowing him to track forest inventory, monitor growth rates, and plan for future planting or harvesting activities more efficiently.
-                  </li>
-                  <li>
-                    **Advanced AI Services:** Mike decides to rent an AI service specializing in remote sensing and GIS mapping, which helps him analyze satellite imagery and topographical data to identify areas of concern or opportunities for improvement within the forests he manages.
-                  </li></ol>
               </p>
+              <ol> <li>
+                **Personalized Forestry Insights:** As Mike interacts with the platform, his AI mirror learns about his specific area of expertise, such as reforestation, fire management, or sustainable logging. It offers tailored recommendations for relevant research articles, conferences, and educational resources, helping Mike stay informed about new techniques and technologies in his field.
+              </li>
+                <li>
+                  **Forestry Management Tools:** Mike integrates his AI keys for forestry management software into EVOLV, allowing him to track forest inventory, monitor growth rates, and plan for future planting or harvesting activities more efficiently.
+                </li>
+                <li>
+                  **Advanced AI Services:** Mike decides to rent an AI service specializing in remote sensing and GIS mapping, which helps him analyze satellite imagery and topographical data to identify areas of concern or opportunities for improvement within the forests he manages.
+                </li>
+              </ol>
+
 
               <p>
                 <br />

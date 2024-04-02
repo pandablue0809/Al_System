@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-import UserSidebar from '../components/layout/userSidebar/UserSidebar';
 
 import { useAppSelector, useAppDispatch } from '../hooks/useReduxHooks';
 import { setUser } from '../store/slices/userSlice';
@@ -11,10 +10,8 @@ import LoginPage from '../pages/LoginPage';
 import SignUpPage from '../pages/SignUpPage';
 
 import { withLoading } from '../hocs/withLoading.hoc';
-import Header from '../components/header';
 
-
-const AboutUs = React.lazy(() => import('../pages/aboutUs/AboutUsPage'))
+const AboutUs = React.lazy(() => import('../pages/aboutUs/AboutUsPage'));
 const Start = React.lazy(() => import('../pages/Splash'));
 const Introdashboard = React.lazy(() => import('../pages/IntroDashBoard'));
 const Logout = React.lazy(() => import('./Logout'));
@@ -27,11 +24,10 @@ const WorkRoom = React.lazy(() => import('../pages/dashboard/userDashboardCompon
 
 export const START_PAGE = '/';
 
-const AboutUsPage = withLoading(AboutUs)
+const AboutUsPage = withLoading(AboutUs);
 const StartPage = withLoading(Start);
 const IntrodashboardPage = withLoading(Introdashboard);
 const AboutDashPage = withLoading(AboutDash);
-const IntrodashboardPage = withLoading(Introdashboard)
 const LogoutFallback = withLoading(Logout);
 const Error404 = withLoading(Error404Page);
 const ServerError = withLoading(ServerErrorPage);
@@ -60,10 +56,8 @@ export const AppRouter: React.FC = () => {
         <div className='relative w-screen h-full min-h-screen flex'>
           <CssBaseline />
           <div className='w-full h-full flex relative'>
-            <UserSidebar />
             <main className='w-full h-full box-border flex px-10'>
               <div className='w-full h-screen flex flex-col box-border relative overflow-y-auto justify-center'>
-                <Header />
                 <Routes>
                   <Route path='/auth'>
                     <Route path='login' element={<LoginPage />} />
@@ -86,6 +80,8 @@ export const AppRouter: React.FC = () => {
           <Route path={START_PAGE}>
             <Route index element={<StartPage />} />
             <Route path='introdashboard' element={<IntrodashboardPage />} />
+            <Route path='/about' element={<AboutDashPage />} />
+            <Route path='/about/intro' element={<AboutUsPage />} />
           </Route>
           <Route path='/auth'>
             <Route path='login' element={<LoginPage />} />
@@ -97,27 +93,6 @@ export const AppRouter: React.FC = () => {
           <Route path='*' element={<Error404 />} />
         </Routes>
       )}
-        ) : (
-          <Routes>
-            <Route path={START_PAGE}>
-              <Route index element={<StartPage />} />
-              <Route path='introdashboard' element={<IntrodashboardPage />} />
-              <Route path='about'>
-                <Route path='' element={<AboutDashPage />} />
-                <Route path='intro' element={<AboutUsPage />} />
-              </Route>
-            </Route>
-            <Route path='/auth'>
-              <Route path='login' element={<LoginPage />} />
-              <Route path='sign-up' element={<SignUpPage />} />
-              <Route path='forgot-password' element={<ForgotPasswordPage />} />
-            </Route>
-            <Route path='/mail-verify' element={<MailVerify />} />
-            <Route path='/logout' element={<LogoutFallback />} />
-            <Route path='*' element={<Error404 />} />
-          </Routes>
-        )}
-      </Router>
     </div>
   );
 };
