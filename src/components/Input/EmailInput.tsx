@@ -33,7 +33,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, setEmailValida
           type='text'
           value={email}
           onChange={handleChange}
-          className={`px-4 py-2 border ${isVerified ? 'border-green-500' : 'border-gray-300'} rounded-md focus:outline-none ${isValid ? 'focus:border-green-500' : email === '' ? 'focus:border-[#8c94ff]' : 'focus:border-red-500'}
+          className={`px-4 py-[9px] border border-none ${isVerified ? 'border-green-500' : 'border-gray-300'} rounded-md ${isValid ? 'focus:border-green-500' : email === '' ? 'focus:border-[#8c94ff]' : 'focus:border-red-500'}
             w-full pr-8`}
         />
         {isVerified && (

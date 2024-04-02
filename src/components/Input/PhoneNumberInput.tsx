@@ -30,7 +30,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handle
           international
           countryCallingCodeEditable={false}
           defaultCountry='US'
-          className={`px-4 py-2 rounded-md w-full pr-8 bg-white input-phone-number`}
+          className={`px-4 rounded-md w-full pr-8 bg-white input-phone-number py-[0.5px]`}
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
         />

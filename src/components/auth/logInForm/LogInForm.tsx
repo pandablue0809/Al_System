@@ -60,8 +60,18 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className='auth_back bg-[#010311] flex flex-col h-screen justify-center flex-wrap content-center'>
-      <div className='first-line:items-center xl:mr-[36rem]'>
+    <div className='relative w-full pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000 flex flex-col h-screen justify-center flex-wrap content-center'>
+      <div
+        id='main-lefttop'
+        className='absolute top-[100px] right-0 w-[232px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover'></div>
+      <div
+        id='main-righttop'
+        className='absolute bottom-0 right-0 w-[300px] h-[325px] md:top-[71px] md:right-[12px] md:w-[750px] md:h-[797px] bg-main-righttop dark:bg-main-righttop-dark bg-center bg-cover'></div>
+      <div
+        id='main-center'
+        className='absolute left-[-70px] top-[20%] w-[275px] h-[225px] xl:left-[calc(50%-300px)] lg:left-[calc(50%-600px)] md:left-[calc(60%-700px)] md:top-[calc(50%-170px)] md:w-[550px] md:h-[450px] bg-main-center dark:bg-main-center-dark bg-center bg-cover pointer-events-none z-20'></div>
+
+      <div className='first-line:items-center xl:mr-[36rem] z-10'>
         <h1 className='md:text-left  text-white text-center text-[24px] font-semibold' style={{ fontFamily: 'Poppins' }}>
           Sign In to <span className='text-[#ff69a5]'>Admin</span>
         </h1>
@@ -88,11 +98,29 @@ const LoginForm: React.FC = () => {
               </Link>
             </p>
             <div className='flex items-center justify-between my-5'>
-              <Button color='secondary' onClick={handleSignInButtonClick}>
+              <Button
+                color='secondary'
+                onClick={handleSignInButtonClick}
+                sx={{
+                  backgroundColor: '#ff69a5',
+                  '&:hover': {
+                    backgroundColor: '#f779a5',
+                  },
+                  mx: 1,
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+                  fontWeight: '500',
+                  fontSize: '16px',
+                  boxSizing: 'border-box',
+                  color: 'white',
+                  px: 9,
+                  width: '100%',
+                  height: '2.5rem',
+                  borderRadius: '5px',
+                }}>
                 <span>Sign In</span>
               </Button>
             </div>
-            <div className='mx-2'>
+            <div className='mx-2 flex justify-center'>
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   console.log(credentialResponse);
@@ -103,6 +131,7 @@ const LoginForm: React.FC = () => {
                 theme='filled_blue'
                 text='continue_with'
                 shape='square'
+                width={'310px'}
                 useOneTap
               />
             </div>
