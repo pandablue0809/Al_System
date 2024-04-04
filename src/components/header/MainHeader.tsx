@@ -144,8 +144,8 @@ export const MainHeader: React.FC = () => {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               sx={{ top: 10 }}>
               <Box sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2, width: 260 }}>
-                <Grid container rowSpacing={1} columnSpacing={1}>
-                  <Grid md={4}>
+                <Grid container rowSpacing={1}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl' onClick={handleCloseTuen}>
@@ -155,7 +155,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -165,7 +165,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -175,7 +175,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -185,7 +185,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -195,7 +195,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -205,7 +205,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -215,7 +215,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -225,7 +225,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -235,7 +235,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -245,7 +245,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>

@@ -33,7 +33,7 @@ const Introdashboard: React.FC = () => {
   }, [size]);
 
   return (
-    <div className='bg-[#3C414A]'>
+    <div className='bg-[#10213f]'>
       <div className='relative w-full h-screen bg-introdashboard-section1-bg bg-no-repeat bg-cover'>
         <div className='invisible md:visible md:pt-[26vh] md:mx-[14.61%] md:text-[24px] text-white md:leading-[29px] md:font-[400]'>
           Welcome to the SoTru

@@ -60,16 +60,16 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className='relative w-full pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000 flex flex-col h-screen justify-center flex-wrap content-center'>
+    <div className='relative bg-gray-200 w-full pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000 flex flex-col h-screen justify-center flex-wrap content-center'>
       <div
         id='main-lefttop'
-        className='absolute top-[100px] right-0 w-[232px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover'></div>
+        className='absolute top-[100px] right-0 w-[232px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover' />
       <div
         id='main-righttop'
-        className='absolute bottom-0 right-0 w-[300px] h-[325px] md:top-[71px] md:right-[12px] md:w-[750px] md:h-[797px] bg-main-righttop dark:bg-main-righttop-dark bg-center bg-cover'></div>
+        className='absolute bottom-0 right-0 w-[300px] h-[325px] md:top-8 md:right-[12px] md:w-[750px] md:h-[797px] bg-main-righttop dark:bg-main-righttop-dark bg-center bg-cover' />
       <div
         id='main-center'
-        className='absolute left-[-70px] top-[20%] w-[275px] h-[225px] xl:left-[calc(50%-300px)] lg:left-[calc(50%-600px)] md:left-[calc(60%-700px)] md:top-[calc(50%-170px)] md:w-[550px] md:h-[450px] bg-main-center dark:bg-main-center-dark bg-center bg-cover pointer-events-none z-20'></div>
+        className='absolute left-[-70px] top-[20%] w-[275px] h-[225px] xl:left-[calc(50%-300px)] lg:left-[calc(50%-600px)] md:left-[calc(60%-700px)] md:top-[calc(50%-170px)] md:w-[550px] md:h-[450px] bg-main-center dark:bg-main-center-dark bg-center bg-cover pointer-events-none z-20' />
 
       <div className='first-line:items-center xl:mr-[36rem] z-10'>
         <h1 className='md:text-left  text-white text-center text-[24px] font-semibold' style={{ fontFamily: 'Poppins' }}>
