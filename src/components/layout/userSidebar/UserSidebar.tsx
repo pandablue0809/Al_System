@@ -53,8 +53,7 @@ const UserSidebar = () => {
       sx={{
         position: 'sticky',
         display: 'flex',
-        height: '100vh',
-        top: 0,
+        height: 'calc(100vh - 2.5rem)',
         bottom: 0,
         zIndex: 10000,
         '& .sidebar': { border: 'none' },

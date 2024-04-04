@@ -1,98 +1,68 @@
-import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { CssBaseline } from '@mui/material';
+import React from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../hooks/useReduxHooks';
-import { setUser } from '../store/slices/userSlice';
-import { readUser } from '../services/localStorage.service';
-
-import LoginPage from '../pages/LoginPage';
-import SignUpPage from '../pages/SignUpPage';
+import { useAppSelector } from '../hooks/useReduxHooks';
 
 import { withLoading } from '../hocs/withLoading.hoc';
+import RequireAuth from './RequireAuth';
+import MainLayout from '../components/layout/mainLayout/MainLayout';
 
-const AboutUs = React.lazy(() => import('../pages/aboutUs/AboutUsPage'));
-const Start = React.lazy(() => import('../pages/Splash'));
-const Introdashboard = React.lazy(() => import('../pages/IntroDashBoard'));
+//auth page
+const LoginPage = React.lazy(() => import('../pages/LoginPage'));
+const SignUpPage = React.lazy(() => import('../pages/SignUpPage'));
+const ForgotPasswordPage = React.lazy(() => import('../pages/ForgotPasswordPage'));
+const MailVerifyPage = React.lazy(() => import('../pages/MailVerifyPage'));
+const CreateNewPasswordPage = React.lazy(() => import('../pages/CreateNewPasswordPage'));
 const Logout = React.lazy(() => import('./Logout'));
+//error page
 const Error404Page = React.lazy(() => import('../pages/Error404Page'));
 const ServerErrorPage = React.lazy(() => import('../pages/ServerErrorPage'));
-const MailVerifyPage = React.lazy(() => import('../pages/MailVerifyPage'));
-const ForgotPassword = React.lazy(() => import('../pages/ForgotPasswordPage'));
-const AboutDash = React.lazy(() => import('../pages/aboutUs'));
-const WorkRoom = React.lazy(() => import('../pages/dashboard/userDashboardComponent/WorkRoom'));
-
-export const START_PAGE = '/';
-
-const AboutUsPage = withLoading(AboutUs);
-const StartPage = withLoading(Start);
-const IntrodashboardPage = withLoading(Introdashboard);
-const AboutDashPage = withLoading(AboutDash);
+//intro Page
+const SplashPage = React.lazy(() => import('../pages/Splash'));
+const IntroDashboardPage = React.lazy(() => import('../pages/IntroDashBoard'));
+const AboutUsFirstPage = React.lazy(() => import('../pages/aboutUs/index'));
+const AboutUsSecondPage = React.lazy(() => import('../pages/aboutUs/AboutUsPage'));
+//auth
+const LoginFallback = withLoading(LoginPage);
+const SignUpFallback = withLoading(SignUpPage);
+const ForgotPasswordFallback = withLoading(ForgotPasswordPage);
+const MailVerifyFallback = withLoading(MailVerifyPage);
+const CreateNewPasswordFallback = withLoading(CreateNewPasswordPage);
 const LogoutFallback = withLoading(Logout);
-const Error404 = withLoading(Error404Page);
-const ServerError = withLoading(ServerErrorPage);
-const MailVerify = withLoading(MailVerifyPage);
-const ForgotPasswordPage = withLoading(ForgotPassword);
-const WorkService = withLoading(WorkRoom);
+//error
+const Error404Fallback = withLoading(Error404Page);
+const ServerErrorFallback = withLoading(ServerErrorPage);
+//intro
+const SplashFallback = withLoading(SplashPage);
+const IntroDashboardFallback = withLoading(IntroDashboardPage);
+const AboutUsFirstFallback = withLoading(AboutUsFirstPage);
+const AboutUsSecondFallback = withLoading(AboutUsSecondPage);
 
-export const AppRouter: React.FC = () => {
-  const { user } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
+const AppRouter: React.FC = () => {
+  const { permission } = useAppSelector((state) => state.user);
+  const location = useLocation();
 
-  useEffect(() => {
-    const username = readUser()?.username;
-    if (username) {
-      loadUser(username);
-    }
-  }, []);
-
-  const loadUser = async (user: string) => {
-    await dispatch(setUser(user));
-  };
-
+  const protectLayout = (
+    <RequireAuth>
+      <MainLayout />
+    </RequireAuth>
+  );
   return (
-    <div className='relative font-poppins w-full h-full min-h-screen bg-[#DEE2E8] dark:bg-[#000000] transition-all duration-1000'>
-      {user ? (
-        <div className='relative w-screen h-full min-h-screen flex'>
-          <CssBaseline />
-          <div className='w-full h-full flex relative'>
-            <main className='w-full h-full box-border flex px-10'>
-              <div className='w-full h-screen flex flex-col box-border relative overflow-y-auto justify-center'>
-                <Routes>
-                  <Route path='/auth'>
-                    <Route path='login' element={<LoginPage />} />
-                  </Route>
-                  <Route path='/dashboard'>
-                    <Route path='user/work' element={<WorkService />} />
-                  </Route>
-                  <Route path='/error'>
-                    <Route path='server' element={<ServerError />} />
-                  </Route>
-                  <Route path='/logout' element={<LogoutFallback />} />
-                  <Route path='*' element={<Error404 />} />
-                </Routes>
-              </div>
-            </main>
-          </div>
-        </div>
-      ) : (
-        <Routes>
-          <Route path={START_PAGE}>
-            <Route index element={<StartPage />} />
-            <Route path='introdashboard' element={<IntrodashboardPage />} />
-            <Route path='/about' element={<AboutDashPage />} />
-            <Route path='/about/intro' element={<AboutUsPage />} />
-          </Route>
-          <Route path='/auth'>
-            <Route path='login' element={<LoginPage />} />
-            <Route path='sign-up' element={<SignUpPage />} />
-            <Route path='forgot-password' element={<ForgotPasswordPage />} />
-          </Route>
-          <Route path='/mail-verify' element={<MailVerify />} />
-          <Route path='/logout' element={<LogoutFallback />} />
-          <Route path='*' element={<Error404 />} />
-        </Routes>
-      )}
-    </div>
+    <Routes>
+      <Route path='/' element={<SplashFallback />} />
+      <Route path='/dashboard' element={protectLayout}>
+        {permission === 'User' ? <Route path='user' element={<IntroDashboardFallback />} /> : <Route path='admin'></Route>}
+      </Route>
+      <Route path='/auth'>
+        <Route path='login' element={<LoginFallback />} />
+        <Route path='sign-up' element={<SignUpFallback />} />
+        <Route path='forgot-password' element={<ForgotPasswordFallback />} />
+      </Route>
+      <Route path='/introdashboard' element={<IntroDashboardFallback />} />
+      <Route path='/mail-verify' element={<MailVerifyFallback />} />
+      <Route path='/logout' element={<LogoutFallback />} />
+    </Routes>
   );
 };
+
+export default AppRouter;
