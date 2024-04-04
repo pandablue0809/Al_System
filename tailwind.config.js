@@ -132,6 +132,8 @@ module.exports = {
         'main-card-borrow-banner': "url('../images/dashboard/card-borrow-banner.jpg')",
         'main-card-cards-banner': "url('../images/dashboard/card-cards-banner.png')",
         'main-card-stocks-banner': "url('../images/dashboard/card-stocks-banner.jpg')",
+        'contact-map': "url('../images/map.png')",
+
         // borrow
         'borrow-left': "url('../images/borrow/left.png')",
         'borrow-righttop': "url('../images/borrow/righttop.png')",
