@@ -6,7 +6,7 @@ export type WindowSizeData = {
 }
 
 //Hook
-const useWindowSize = () => {
+export const useWindowSize = () => {
     const [windowsSize, setWindowsSize] = useState<WindowSizeData>({ width: undefined, height: undefined });
 
     useEffect(() => {
@@ -26,4 +26,10 @@ const useWindowSize = () => {
     return windowsSize;
 }
 
-export default useWindowSize;
+export const MOBILE_MAX_WIDTH = 600;
+export const useMobileScreen = () => {
+    const { width } = useWindowSize();
+    if (width) {
+        return width <= MOBILE_MAX_WIDTH;
+    }
+}

@@ -21,7 +21,7 @@ export const readPermission = (): string | null => {
 }
 
 export const persistPermission = (permission: string): void => {
-    localStorage.setItem('permission', JSON.stringify(permission));
+    localStorage.setItem('permission', permission);
 };
 
 export const readUser = (): UserModel | null => {

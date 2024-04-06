@@ -54,6 +54,7 @@ const UserSidebar = () => {
         position: 'sticky',
         display: 'flex',
         height: 'calc(100vh - 2.5rem)',
+        top: '2.5rem',
         bottom: 0,
         zIndex: 10000,
         '& .sidebar': { border: 'none' },
@@ -63,7 +64,7 @@ const UserSidebar = () => {
         '& .menu-item:hover': { backgroundColor: 'transparent !important' },
         '& .menu-item.active': { backgroundColor: 'transparent !important' },
       }}>
-      <Sidebar className='sidebar' collapsed={isCollapsed} breakPoint='md' backgroundColor='#2b2c40'>
+      <Sidebar className='sidebar' collapsed={isCollapsed} breakPoint='md' backgroundColor='#30353c'>
         <Menu>
           <MenuItem
             className='menu-item'
@@ -111,7 +112,7 @@ const UserSidebar = () => {
               setSelected={setSelected}
             />
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              AI Service
+              AI
             </Typography>
             <Item
               className='menu-item'
@@ -123,7 +124,7 @@ const UserSidebar = () => {
             />
             <Item title='Invoices' to='/dashboard/user/invoice' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Community Service
+              Chat
             </Typography>
             <Item
               className='menu-item'
@@ -142,13 +143,13 @@ const UserSidebar = () => {
             <Item title='Paid List' to='/dashboard/user/paid-history' icon={<ManageSearchOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              My Setting
+              Info
             </Typography>
             <Item title='My Info' to='/dashboard/user/setting' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Item title='Schedule' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Configuration
+              Config
             </Typography>
 
             <Item title='My API' to='' icon={<ApiOutlinedIcon />} selected={selected} setSelected={setSelected} />
