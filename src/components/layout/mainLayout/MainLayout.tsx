@@ -8,7 +8,7 @@ const MainLayout: React.FC = () => {
     <div className='h-screen w-full flex box-border'>
       <UserSidebar />
       <div className='box-border ml-2 md:mx-16'>
-        <div className='flex max-h-screen h-[calc(100vh-2.5rem)] w-full overflow-y-auto px-4 py-3 md:px-9 md:py-5'>
+        <div className='flex max-h-screen h-[calc(100vh-2.5rem)] mt-8 w-full overflow-y-auto px-4 py-3 md:px-9 md:py-5'>
           <Outlet />
         </div>
       </div>
