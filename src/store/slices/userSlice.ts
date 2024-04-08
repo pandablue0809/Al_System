@@ -1,5 +1,5 @@
 import { createAction, createSlice, PrepareAction } from "@reduxjs/toolkit";
-import { persistPermission, readPermission, readUser } from "../../services/localStorage.service";
+import { readPermission, readUser } from "../../services/localStorage.service";
 
 export type UserState = {
   user: string | null;
@@ -21,7 +21,6 @@ export const setUser = createAction<PrepareAction<string>>(
 );
 
 export const setPermission = createAction<PrepareAction<string>>("user/setPermission", (newPermission,) => {
-  console.log("permission===============>", newPermission);
   return {
     payload: newPermission
   }
