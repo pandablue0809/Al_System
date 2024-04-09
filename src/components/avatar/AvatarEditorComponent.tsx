@@ -6,16 +6,16 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import sotru from '../../assets/images/logo/logo.png';
 
 export type AvatarProps = {
-  value?: string;
+  src?: string;
   onSetImage?: (newValue: string | null) => void;
 };
 
-const AvatarEditorComponent: React.FC<AvatarProps> = ({ value, onSetImage }) => {
+const AvatarEditorComponent: React.FC<AvatarProps> = ({ src, onSetImage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [image, setImage] = useState<string | null>(value || null);
+  const [image, setImage] = useState<string | null>(src || null);
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0.5, y: 0.5 });
-  const [previewImage, setPreviewImage] = useState<string | null>(value || null);
+  const [previewImage, setPreviewImage] = useState<string | null>(src || null);
   const [isHovered, setIsHovered] = useState(false);
 
   const editorRef = useRef<AvatarEditor>(null);
@@ -92,7 +92,7 @@ const AvatarEditorComponent: React.FC<AvatarProps> = ({ value, onSetImage }) => 
         onClick={handleAvatarClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
-        {isHovered ? <LocalSeeOutlinedIcon sx={{ zIndex: 100 }} fontSize='large' /> : previewImage ? '' : 'No image'}
+        {isHovered ? <LocalSeeOutlinedIcon sx={{ zIndex: 100 }} fontSize='medium' /> : previewImage ? '' : 'No image'}
       </Avatar>
 
       {image && (

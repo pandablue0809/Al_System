@@ -15,14 +15,15 @@ import {
   Stack,
   Grid,
   Button,
+  Modal,
+  Badge,
 } from '@mui/material';
-import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 
-import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHooks';
 import { readUser } from '../../services/localStorage.service';
 import { setUser } from '../../store/slices/userSlice';
+import Profile from '../profile';
 
 import LOGO from '../../assets/images/logo/logo.svg';
 import { GoMail } from 'react-icons/go';
@@ -46,6 +47,9 @@ import { LiaChalkboardSolid } from 'react-icons/lia';
 import { LiaAppStore } from 'react-icons/lia';
 import { LiaEdit } from 'react-icons/lia';
 import { RiAddCircleLine } from 'react-icons/ri';
+import { BiSolidEdit } from 'react-icons/bi';
+import { SlClose } from 'react-icons/sl';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {
@@ -59,12 +63,24 @@ export const MainHeader: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
+  const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   useEffect(() => {
     const username = readUser()?.username;
     if (username) {
       loadUser(username);
     }
   }, []);
+
+  const handleAvatarClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleEditButtonClick = () => {
+    setIsEditModalOpen(true);
+  };
 
   const loadUser = async (user: string) => {
     await dispatch(setUser(user));
@@ -88,6 +104,22 @@ export const MainHeader: React.FC = () => {
 
   const handleCloseAccount = () => {
     setAnchorAccont(null);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleEditModalClose = () => {
+    setIsEditModalOpen(false);
   };
 
   return (
@@ -144,18 +176,22 @@ export const MainHeader: React.FC = () => {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               sx={{ top: 10 }}>
               <Box sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2, width: 260 }}>
-                <Grid container rowSpacing={1} columnSpacing={1}>
-                  <Grid md={4}>
+                <Grid container item rowSpacing={1} columnSpacing={1}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl' onClick={handleCloseTuen}>
-                          <Avatar alt={user ?? ''} src='/broken-image.jpg' style={{ width: 20, height: 20, color: 'white', fontSize: 10 }} />
+                          <Avatar
+                            // alt={user ?? ''}
+                            src='/broken-image.jpg'
+                            // style={{ width: 20, height: 20, color: 'white', fontSize: 10 }}
+                          />
                         </div>
                         <div className='text-[10px] mt-[8px]'>My Profile</div>
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -165,7 +201,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -175,7 +211,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -185,7 +221,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -195,7 +231,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -205,7 +241,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -215,7 +251,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -225,7 +261,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -235,7 +271,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -245,7 +281,7 @@ export const MainHeader: React.FC = () => {
                       </div>
                     </MenuItem>
                   </Grid>
-                  <Grid md={4}>
+                  <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl'>
@@ -287,7 +323,7 @@ export const MainHeader: React.FC = () => {
             </Box>
             <Menu
               anchorEl={anchorAccount}
-              id='account-menu'
+              id='menu-id'
               open={openAccount}
               onClose={handleCloseAccount}
               onClick={handleCloseAccount}
@@ -296,13 +332,14 @@ export const MainHeader: React.FC = () => {
               sx={{ top: 10 }}>
               <Box sx={{ width: 220, maxWidth: '100%', boxSizing: 'border-box', pl: 1, pr: 1 }}>
                 <MenuList sx={{ pb: '0px !important' }}>
-                  <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <Box sx={{ display: 'inline-flex', alignItems: 'center' }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <Stack>
                       <StyledBadge overlap='circular' color='success' anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant='dot'>
                         <Avatar
                           alt={user ?? ''}
                           src='/broken-image.jpg'
                           style={{ width: 32, height: 32, color: 'white', fontSize: 10, marginLeft: 13 }}
+                          onClick={handleAvatarClick}
                         />
                       </StyledBadge>
                     </Stack>
@@ -313,14 +350,23 @@ export const MainHeader: React.FC = () => {
                         </Typography>
                       }
                       secondary={
-                        <Typography variant='body1' sx={{ fontSize: '12px', color: '#87909e' }}>
-                          admin
+                        <Typography variant='body1' sx={{ fontSize: '12px', color: '#87909e', transition: '2.8s ease' }} className='cursor-pointer'>
+                          {`${isHovered ? 'devlegend' : 'admin'}`}
                         </Typography>
                       }
                       sx={{ ml: 2, fontSize: '14px' }}
                     />
                   </Box>
-                  <MenuItem sx={{ pt: '5px !important', pb: '3px !important' }} onClick={handleCloseAccount}>
+
+                  <div className='flex flex-col border-t border-b my-2 py-2 border-[#444242] px-3'>
+                    <span className='text-green-400 text-sm'>About Me</span>
+                    <p className='text-[11px] mb-2 ml-2'>
+                      As accomplished frontend developer, I&apos;ve enough experience with not only React.js but also Webflow and WordPress.
+                    </p>
+                    <span className='text-green-400 text-sm'>Sotru member since</span>
+                    <p className='text-[11px] ml-2'>Dec 4, 2024</p>
+                  </div>
+                  <MenuItem sx={{ display: 'block', pt: '5px !important', pb: '3px !important' }} onClick={handleCloseAccount}>
                     <ListItemIcon>
                       <BiUser style={{ width: 15, height: 15, color: '#87909e' }} />
                     </ListItemIcon>
@@ -370,6 +416,64 @@ export const MainHeader: React.FC = () => {
           </div>
         </div>
       </div>
+      <Modal
+        open={isModalOpen}
+        onClose={handleModalClose}
+        sx={{
+          display: 'flex',
+          p: 5,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        aria-labelledby='parent-modal-title'
+        aria-describedby='parent-modal-description'>
+        <div className='flex w-[30rem] h-[28rem] border border-gray-700 rounded-lg outline-none items-center bg-[#333] flex-col'>
+          <header className='bg-[#2e2b40] rounded-t-lg h-16 w-full p-6 mb-14'>
+            <div className='flex flex-row justify-between'>
+              <StyledBadge overlap='circular' color='success' anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant='dot'>
+                <Avatar alt={user ?? ''} src='/broken-image.jpg' style={{ width: 70, height: 70, color: 'white', fontSize: 10 }} />
+              </StyledBadge>
+              <div className='mb-3'>
+                <IconButton onClick={handleEditButtonClick}>
+                  <BiSolidEdit />
+                </IconButton>
+              </div>
+            </div>
+          </header>
+          <div className='bg-[#111] w-[90%] h-[65%] rounded-xl p-5'>
+            <span className='text-md'>Admin</span>
+            <p className='text-[12px] text-[#555]'>devlegend_1220</p>
+            <div className='flex flex-col border-t border-b my-2 py-2 border-[#444242] px-3'>
+              <span className='text-green-400 text-sm'>About Me</span>
+              <p className='text-[11px] mb-2 ml-2'>
+                As accomplished frontend developer, I&apos;ve enough experience with not only React.js but also Webflow and WordPress.
+              </p>
+              <span className='text-green-400 text-sm'>Sotru member since</span>
+              <p className='text-[11px] ml-2'>Dec 4, 2024</p>
+            </div>
+            <p className='text-sm'>Note</p>
+            <input placeholder='Click to add note' className='w-full bg-transparent border-none outline-none text-sm'></input>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={isEditModalOpen}
+        onClose={handleEditModalClose}
+        sx={{
+          display: 'flex',
+          p: 5,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <div className='absolute top-0  flex w-full lg:h-screen h-scroll border border-gray-700 outline-none items-center bg-[#333] flex-col'>
+          <div className='absolute right-2 top-2'>
+            <IconButton onClick={handleEditModalClose}>
+              <SlClose />
+            </IconButton>
+          </div>
+          <Profile />
+        </div>
+      </Modal>
     </nav>
   );
 };
