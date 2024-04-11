@@ -181,11 +181,7 @@ export const MainHeader: React.FC = () => {
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl' onClick={handleCloseTuen}>
-                          <Avatar
-                            // alt={user ?? ''}
-                            src='/broken-image.jpg'
-                            // style={{ width: 20, height: 20, color: 'white', fontSize: 10 }}
-                          />
+                          <Avatar src='/broken-image.jpg' />
                         </div>
                         <div className='text-[10px] mt-[8px]'>My Profile</div>
                       </div>

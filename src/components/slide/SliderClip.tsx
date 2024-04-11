@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Slider from './Slider';
 import SliderContent from './SliderContent';
 
-import './CustomScrollBar.css';
-
 const SliderClip: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
@@ -67,17 +65,17 @@ const SliderClip: React.FC = () => {
     <header>
       <section className='slider'>
         {SliderContent.map((item, index) => (
-          <Slider index={index} {...item} />
+          <Slider key={index} index={index} {...item} />
         ))}
         <ul>
           <aside>
-            <a href='#'></a>
-            <a href='#'></a>
-            <a href='#'></a>
+            <a className='sliderClip' href='#'></a>
+            <a className='sliderClip' href='#'></a>
+            <a className='sliderClip' href='#'></a>
           </aside>
         </ul>
       </section>
-      <a href='#services' className='cs-down'></a>
+      <a href='#services' className='sliderClip cs-down'></a>
     </header>
   );
 };

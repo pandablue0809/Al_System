@@ -1,52 +1,42 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { FaEye, FaEyeSlash} from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export type PasswordConfirmProps = {
   value?: string;
   setPasswordConfirmedStatus?: (newValue: boolean) => void;
-}
+};
 
-const PasswordConfirm: React.FC<PasswordConfirmProps> = ({ value, setPasswordConfirmedStatus}) => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [isPasswordValid, setIsPasswordValid] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [isPasswordNull, setIsPasswordNull] = useState(false);
-  
-    useEffect(() => {
-      confirmPassword === '' ? setIsPasswordNull(true) : setIsPasswordNull(false);
-      (value === confirmPassword && confirmPassword !== '') ? setIsPasswordValid(true) : setIsPasswordValid(false);
-   
-    }, [confirmPassword]);
-  
-  
+const PasswordConfirm: React.FC<PasswordConfirmProps> = ({ value, setPasswordConfirmedStatus }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isPasswordNull, setIsPasswordNull] = useState(false);
+
+  useEffect(() => {
+    confirmPassword === '' ? setIsPasswordNull(true) : setIsPasswordNull(false);
+    value === confirmPassword && confirmPassword !== '' ? setIsPasswordValid(true) : setIsPasswordValid(false);
+  }, [confirmPassword]);
+
   useEffect(() => {
     setPasswordConfirmedStatus && setPasswordConfirmedStatus(isPasswordValid);
-  },[isPasswordValid])
+  }, [isPasswordValid]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newPassword = event.target.value;
     setConfirmPassword(newPassword);
   };
 
-   const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-   const renderPasswordVisibilityToggle = () => {
+  const renderPasswordVisibilityToggle = () => {
     if (showPassword) {
       return (
-        <FaEyeSlash
-          className="absolute top-5 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500"
-          onClick={togglePasswordVisibility}
-        />
+        <FaEyeSlash className='absolute top-5 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500' onClick={togglePasswordVisibility} />
       );
     } else {
-      return (
-        <FaEye
-          className="absolute top-5 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500"
-          onClick={togglePasswordVisibility}
-        />
-      );
+      return <FaEye className='absolute top-5 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500' onClick={togglePasswordVisibility} />;
     }
   };
 

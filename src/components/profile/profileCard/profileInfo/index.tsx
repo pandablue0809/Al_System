@@ -1,5 +1,5 @@
 import React from 'react';
-import AvatarEditorComponent from '../../../avatar/AvatarEditorComponent';
+import AvatarEditorComponent from '../../../common/avatar/AvatarEditorComponent';
 
 export const ProfileInfo: React.FC = () => {
   const user = {

@@ -3,9 +3,9 @@ import { FaCheck } from 'react-icons/fa6';
 
 export type EmailInputProps = {
   value?: string;
+  verified?: boolean;
   onChange?: (newValue: string) => void;
   setEmailValidatedStatus?: (newValue: boolean) => void;
-  verified?: boolean;
 };
 
 const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, setEmailValidatedStatus, verified }) => {
@@ -24,6 +24,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange, setEmailValida
 
     const isValidEmail = /\S+@\S+\.\S+/.test(newEmail);
     setIsValid(isValidEmail);
+    setIsVerified(isVerified); /* temporary measures */
   };
 
   return (

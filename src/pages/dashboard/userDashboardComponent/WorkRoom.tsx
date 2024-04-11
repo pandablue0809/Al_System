@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatInput from '../../../components/input/ChatInput';
+import ChatInput from '../../../components/common/input/ChatInput';
 
 const WorkRoom: React.FC = () => {
   return (
