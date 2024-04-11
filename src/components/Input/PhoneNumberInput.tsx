@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the styles if you haven't already
 import { isValidPhoneNumber } from 'react-phone-number-input';
+import { FaCheck } from 'react-icons/fa6';
 
 interface PhoneNumberInputProps {
   phoneNumber: string;
   handlePhoneNumberChange: (value: string) => void;
   setPhoneNumberValidatedStatus: (value: boolean) => void;
+  verified?: boolean;
 }
 
-const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange, setPhoneNumberValidatedStatus }) => {
+const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange, setPhoneNumberValidatedStatus, verified }) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneNumberNull, setIsPhoneNumberNull] = useState(true);
+  const [isVerified, setIsVerified] = useState(verified || false);
 
   useEffect(() => {
     phoneNumber ? setIsPhoneNumberValid(isValidPhoneNumber(phoneNumber)) : setIsPhoneNumberValid(false);
@@ -20,6 +23,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handle
 
   useEffect(() => {
     setPhoneNumberValidatedStatus && setPhoneNumberValidatedStatus(isPhoneNumberValid);
+    if (!isPhoneNumberValid) setIsVerified(false);
   }, [isPhoneNumberValid]);
 
   return (
@@ -36,6 +40,11 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handle
         />
 
         <p className='text-xs text-red-600'>&nbsp;{!isPhoneNumberValid && !isPhoneNumberNull && 'Please provide a valid phone number.'}</p>
+        {isVerified && (
+          <p className='text-green-500 flex flex-row items-center pt-1'>
+            <FaCheck className='mr-2' /> Verified
+          </p>
+        )}
       </div>
     </div>
   );
