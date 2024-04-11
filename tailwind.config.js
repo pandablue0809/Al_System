@@ -44,7 +44,7 @@ module.exports = {
         "introdashboard-card3": "url('../images/_intro/introdashboard/card3.png')",
         "introdashboard-maccom": "url('../images/_intro/introdashboard/MacStudio.png')",
         "introdashboard-phone-photo-mobile": "url('../images/_intro/introdashboard/phone-photo-mobile.png')",
-        "introdashboard-section1-bg":"url('../images/_intro/introdashboard/section1_bg.gif')",
+        "introdashboard-section1-bg": "url('../images/_intro/introdashboard/section1_bg.gif')",
         //intro earn
         "introearn-starsstart": "url('../images/_intro/introearn/StarsStart.png')",
         "introearn-earth": "url('../images/_intro/introearn/earth.gif')",
@@ -259,7 +259,7 @@ module.exports = {
       display1: 'keyframe4 3s linear forwards',
       move2: 'keyframe5 3s linear forwards',
       move3: 'keyframe6 3s linear forwards',
-      move4: 'keyframe7 3s linear forwards'
+      move4: 'keyframe7 3s linear forwards',
     },
     keyframes: {
       keyframe1: {
