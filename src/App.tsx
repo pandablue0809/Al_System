@@ -1,23 +1,27 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { AppRouter } from './router/AppRouter';
+import AppRouter from './router/AppRouter';
 import { ToastContainer } from 'react-toastify';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { useMode } from './theme';
 import Header from './components/header';
+import AIService from './pages/dashboard/user/AIService';
 
 const App: React.FC = () => {
-  const darkTheme = createTheme({ palette: { mode: 'dark' } });
+  const theme = useMode();
   return (
     <HelmetProvider>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Router>
+        {/* <Router>
           <Header />
           <AppRouter />
-        </Router>
+        </Router> */}
+        <AIService />
         <ToastContainer />
       </ThemeProvider>
     </HelmetProvider>

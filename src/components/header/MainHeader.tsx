@@ -176,16 +176,12 @@ export const MainHeader: React.FC = () => {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               sx={{ top: 10 }}>
               <Box sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2, width: 260 }}>
-                <Grid container item rowSpacing={1} columnSpacing={1}>
+                <Grid container item rowSpacing={1} columnSpacing={1}>               
                   <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>
                         <div className='p-[16px] border-[1px] border-gray-500 rounded-xl' onClick={handleCloseTuen}>
-                          <Avatar
-                            // alt={user ?? ''}
-                            src='/broken-image.jpg'
-                            // style={{ width: 20, height: 20, color: 'white', fontSize: 10 }}
-                          />
+                          <Avatar src='/broken-image.jpg' />
                         </div>
                         <div className='text-[10px] mt-[8px]'>My Profile</div>
                       </div>

@@ -265,7 +265,7 @@ module.exports = {
       display1: 'keyframe4 3s linear forwards',
       move2: 'keyframe5 3s linear forwards',
       move3: 'keyframe6 3s linear forwards',
-      move4: 'keyframe7 3s linear forwards'
+      move4: 'keyframe7 3s linear forwards',
     },
     keyframes: {
       keyframe1: {

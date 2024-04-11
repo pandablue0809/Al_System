@@ -1,7 +1,10 @@
 type UserModel = {
     username: string;
     email: string;
+    permission: string;
 }
+
+
 
 export const persistToken = (token: string): void => {
     localStorage.setItem('accessToken', token)
@@ -20,5 +23,17 @@ export const readUser = (): UserModel | null => {
     return userStr ? JSON.parse(userStr) : null;
 };
 
+export const persistPermission = (permission: string): void => {
+    localStorage.setItem('permission', permission);
+};
+
+export const readPermission = (): string | null => {
+    return localStorage.getItem('permission');
+}
+
+
+
+
 export const deleteToken = (): void => localStorage.removeItem('accessToken');
 export const deleteUser = (): void => localStorage.removeItem('user');
+export const deletePermission = (): void => localStorage.removeItem('permission');
