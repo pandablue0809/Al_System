@@ -4,6 +4,7 @@ import SendIcon from '@mui/icons-material/Send';
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
+
 export type ChatInputProps = {
   value?: string;
   onSendMsg?: (newValue: string) => void;
@@ -71,15 +72,14 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                 <SendIcon className='text-sm' />
               </button>
               <button
-                color='white'
-                className='md:bottom-3 bottom-1.5 right-12 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10'>
+                color="white" className="md:bottom-3 bottom-1.5 right-12 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10" >
                 <KeyboardVoiceIcon />
               </button>
               <button
-                color='white'
-                className='md:bottom-3 bottom-1.5 right-20 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10'>
+                color="white" className="md:bottom-3 bottom-1.5 right-20 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10" >
                 <AttachFileIcon />
               </button>
+
             </div>
           </div>
         </div>
