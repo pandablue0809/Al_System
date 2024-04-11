@@ -16,6 +16,7 @@ export enum FileName {
     Prompts = "prompts.json",
 }
 
+/**this is a part associated with config slice */
 export enum StoreKey {
     Chat = "chat-next-web-store",
     Access = "access-control",
@@ -93,3 +94,26 @@ export const DEFAULT_MODELS = [
         available: true,
     },
 ] as const;
+
+export const ROLES = ["system", "user", "assistant"] as const;
+export type MessageRole = (typeof ROLES)[number];
+
+export type RequestMessage = {
+    role: MessageRole;
+    content: string;
+}
+
+export type LLMModel = {
+    name: string;
+    available: boolean;
+}
+
+export enum SubmitKey {
+    Enter = "Enter",
+    CtrlEnter = "Ctrl + Enter",
+    ShiftEnter = "Shift + Enter",
+    AltEnter = "Alt + Enter",
+    MetaEnter = "Meta + Enter",
+}
+
+export type ModelType = (typeof DEFAULT_MODELS)[number]["name"];
