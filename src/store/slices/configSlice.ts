@@ -1,15 +1,9 @@
 import { DEFAULT_MODELS, DEFAULT_INPUT_TEMPLATE, StoreKey } from "../../constants/constant";
-import { LLMModel } from "../../config/api";
+import { LLMModel, SubmitKey, ModelType } from "../../constants/constant";
 
-export type ModelType = (typeof DEFAULT_MODELS)[number]["name"];
 
-export enum SubmitKey {
-    Enter = "Enter",
-    CtrlEnter = "Ctrl + Enter",
-    ShiftEnter = "Shift + Enter",
-    AltEnter = "Alt + Enter",
-    MetaEnter = "Meta + Enter",
-}
+
+
 
 export const DEFAULT_CONFIG = {
     submitKey: SubmitKey.CtrlEnter as SubmitKey,

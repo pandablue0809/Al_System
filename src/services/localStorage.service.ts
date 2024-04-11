@@ -23,13 +23,14 @@ export const readUser = (): UserModel | null => {
     return userStr ? JSON.parse(userStr) : null;
 };
 
+export const persistPermission = (permission: string): void => {
+    localStorage.setItem('permission', permission);
+};
+
 export const readPermission = (): string | null => {
     return localStorage.getItem('permission');
 }
 
-export const persistPermission = (permission: string): void => {
-    localStorage.setItem('permission', permission);
-};
 
 
 

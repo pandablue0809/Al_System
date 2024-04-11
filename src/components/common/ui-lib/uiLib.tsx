@@ -87,5 +87,3 @@ export const showToast = (content: string, action?: ToastProps['action'], delay 
 
   root.render(<Toast content={content} action={action} onClose={close} />);
 };
-
-
