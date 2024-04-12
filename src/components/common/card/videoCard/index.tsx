@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import ImgVideoBanner from '../ImgVideoBanner';
+import ImgVideoBanner from '../../imgVideoBanner';
 
 export type CardProps = {
   id: string;

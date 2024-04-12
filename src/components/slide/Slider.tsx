@@ -17,7 +17,7 @@ const Slider: React.FC<SliderProps> = ({ title, titleHighlight, content, btnTitl
           {title} <em>{titleHighlight}</em>
         </h3>
         <p>{content}</p>
-        <a href={url} className='btn btn_3'>
+        <a href={url} className='sliderClip btn btn_3'>
           {btnTitle}
         </a>
       </article>

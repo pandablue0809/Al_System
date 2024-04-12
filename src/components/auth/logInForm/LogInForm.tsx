@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doLogin } from '../../../store/slices/authSlice';
-import PasswordInput from '../../input/passwordInput';
-import EmailInput from '../../input/EmailInput';
+import PasswordInput from '../../common/input/PasswordInput';
+import EmailInput from '../../common/input/EmailInput';
 
 type Error = {
   email?: string;

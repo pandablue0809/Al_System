@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import PasswordInput from '../../../../input/passwordInput';
-import PasswordConfirm from '../../../../input/PasswordConfirm';
-import PhoneNumberInput from '../../../../input/PhoneNumberInput';
-import EmailInput from '../../../../input/EmailInput';
+import PasswordInput from '../../../../common/input/PasswordInput';
+import PasswordConfirm from '../../../../common/input/PasswordConfirm';
+import PhoneNumberInput from '../../../../common/input/PhoneNumberInput';
+import EmailInput from '../../../../common/input/EmailInput';
 
 import { Switch, Button } from '@mui/material';
 

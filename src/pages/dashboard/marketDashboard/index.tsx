@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Card from '../../../components/videoCard/Card';
+import Card from '../../../components/common/card/videoCard';
 
 const CommonDashboard: React.FC = () => {
   useEffect(() => {
@@ -7,7 +7,7 @@ const CommonDashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className='relative w-full min-h-[1200px] pt-[170px] pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all d-1'>
+    <div className='relative w-full min-h-[1200px] pt-[170px] pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000'>
       <div
         id='main-lefttop'
         className='absolute top-[100px] right-0 w-[232px] h-[130px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover'></div>

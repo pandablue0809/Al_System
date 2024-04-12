@@ -29,10 +29,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ onSelectRole }) => {
   return (
     <div className='m-2 mb-3'>
       <div className='relative'>
-        <select
-          className={`px-4 py-2 border w-full border-gray-300 rounded-md focus:outline-none`}
-          value={selectedValue}
-          onChange={handleChange}>
+        <select className={`px-4 py-2 border w-full border-gray-300 rounded-md focus:outline-none`} value={selectedValue} onChange={handleChange}>
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import PasswordInput from '../../input/passwordInput';
-import PasswordConfirm from '../../input/PasswordConfirm';
+import PasswordInput from '../../common/input/PasswordInput';
+import PasswordConfirm from '../../common/input/PasswordConfirm';
 import { toast } from 'react-toastify';
 
 type Error = {
@@ -27,7 +27,6 @@ const CreateNewPassword: React.FC = () => {
     if (Object.keys(error_message).length === 0) {
       if (securityStatus && passwordConfirmedValidatedStatus) {
         setLoading(() => true);
-        //Please type appropriate code.
         setLoading(() => false);
       }
     } else {

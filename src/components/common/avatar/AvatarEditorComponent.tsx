@@ -3,7 +3,7 @@ import AvatarEditor from 'react-avatar-editor';
 import { Modal, Avatar, Button } from '@mui/material';
 import LocalSeeOutlinedIcon from '@mui/icons-material/LocalSeeOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import sotru from '../../assets/images/logo/logo.png';
+import sotru from '../../../assets/images/logo/logo.png';
 
 export type AvatarProps = {
   src?: string;
@@ -98,7 +98,6 @@ const AvatarEditorComponent: React.FC<AvatarProps> = ({ src, onSetImage }) => {
       {image && (
         <Modal
           open={isModalOpen}
-          // onClose={handleClose}
           sx={{
             display: 'flex',
             p: 5,
@@ -142,7 +141,6 @@ const AvatarEditorComponent: React.FC<AvatarProps> = ({ src, onSetImage }) => {
           </div>
         </Modal>
       )}
-      {/* Display the preview image */}
     </div>
   );
 };

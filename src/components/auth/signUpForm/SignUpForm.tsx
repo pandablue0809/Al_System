@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
-import 'react-phone-number-input/style.css';
 import { Checkbox, Button } from '@mui/material';
 import { toast } from 'react-toastify';
-
-import PasswordInput from '../../input/passwordInput';
-import PasswordConfirm from '../../input/PasswordConfirm';
-import EmailInput from '../../input/EmailInput';
-import PhoneNumberInput from '../../input/PhoneNumberInput';
-import RoleSelect from '../../input/RoleSelect';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doSignUp } from '../../../store/slices/authSlice';
 
+import PasswordInput from '../../common/input/PasswordInput';
+import PasswordConfirm from '../../common/input/PasswordConfirm';
+import EmailInput from '../../common/input/EmailInput';
+import PhoneNumberInput from '../../common/input/PhoneNumberInput';
+import RoleSelect from '../../common/input/RoleSelect';
+
 import { IoMailOpenOutline } from 'react-icons/io5';
+
+import 'react-phone-number-input/style.css';
 
 type Error = {
   firstName?: string;

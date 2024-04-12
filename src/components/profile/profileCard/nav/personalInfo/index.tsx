@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import PhoneNumberInput from '../../../../input/PhoneNumberInput';
-import EmailInput from '../../../../input/EmailInput';
+import PhoneNumberInput from '../../../../common/input/PhoneNumberInput';
+import EmailInput from '../../../../common/input/EmailInput';
 import { Button } from '@mui/material';
 import { IoIosSave } from 'react-icons/io';
 import { TiCancelOutline } from 'react-icons/ti';
@@ -10,10 +10,16 @@ const PersonalInfo: React.FC = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
   const [phoneNumberValidatedStatus, setPhoneNumberValidatedStatus] = useState(true);
+  const [isEmailVerified, setIsEmailVerified] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState('+1 484 847 3628');
+  const [email, setEmail] = useState('sotru.contact@gmail.com');
 
   const handlePhoneNumberChange = (value: string) => {
     setPhoneNumber(value);
+  };
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
   };
 
   return (
@@ -63,7 +69,7 @@ const PersonalInfo: React.FC = () => {
           </div>
           <div>
             <label className='text-md text-blue-400'>Email</label>
-            <EmailInput verified={true} value='sotru.contact@gmail.com' />
+            <EmailInput verified={isEmailVerified} value={email} setEmailValidatedStatus={setIsEmailVerified} onChange={handleEmailChange} />
           </div>
         </div>
       </div>

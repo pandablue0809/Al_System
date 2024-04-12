@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-import EmailInput from '../../input/EmailInput';
+import EmailInput from '../../common/input/EmailInput';
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState('');

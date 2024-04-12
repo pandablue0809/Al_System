@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography } from '@mui/material';
 
-// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PermPhoneMsgOutlinedIcon from '@mui/icons-material/PermPhoneMsgOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
@@ -140,7 +139,13 @@ const UserSidebar = () => {
             </Typography>
             <Item title='Inventory List' to='' icon={<StorageOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Item title='Team List' to='/dashboard/user/team' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Paid List' to='/dashboard/user/paid-history' icon={<ManageSearchOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item
+              title='Paid List'
+              to='/dashboard/user/paid-history'
+              icon={<ManageSearchOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Info

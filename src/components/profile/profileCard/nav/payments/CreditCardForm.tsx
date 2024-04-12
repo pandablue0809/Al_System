@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
-import './CreditCardForm.css';
 
-const CreditCardForm = () => {
+const CreditCardForm: React.FC = () => {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
@@ -50,10 +49,31 @@ const CreditCardForm = () => {
           <div className='card-cvc'>{cvc ? cvc : 'CVC'}</div>
         </div>
       </div>
-      <form>
-        <input type='tel' name='number' placeholder='Card Number' value={cardNumber} onChange={handleInputChange} />
-        <input type='tel' name='expiry' placeholder='MM/YY Expiry' value={expiry} onChange={handleInputChange} />
-        <input type='tel' name='cvc' placeholder='CVC' value={cvc} onChange={handleInputChange} />
+      <form className='mt-5'>
+        <input
+          className='w-full h-40px p-5px mb-10px rounded-4 border border-solid border-ccc shadow-none'
+          type='tel'
+          name='number'
+          placeholder='Card Number'
+          value={cardNumber}
+          onChange={handleInputChange}
+        />
+        <input
+          className='w-full h-40px p-5px mb-10px rounded-4 border border-solid border-ccc shadow-none'
+          type='tel'
+          name='expiry'
+          placeholder='MM/YY Expiry'
+          value={expiry}
+          onChange={handleInputChange}
+        />
+        <input
+          className='w-full h-40px p-5px mb-10px rounded-4 border border-solid border-ccc shadow-none'
+          type='tel'
+          name='cvc'
+          placeholder='CVC'
+          value={cvc}
+          onChange={handleInputChange}
+        />
       </form>
     </div>
   );

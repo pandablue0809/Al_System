@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css'; // Import the styles if you haven't already
-import { isValidPhoneNumber } from 'react-phone-number-input';
+
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+
 import { FaCheck } from 'react-icons/fa6';
+
+import 'react-phone-number-input/style.css';
 
 interface PhoneNumberInputProps {
   phoneNumber: string;
+  verified?: boolean;
   handlePhoneNumberChange: (value: string) => void;
   setPhoneNumberValidatedStatus: (value: boolean) => void;
-  verified?: boolean;
 }
 
 const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({ phoneNumber, handlePhoneNumberChange, setPhoneNumberValidatedStatus, verified }) => {
