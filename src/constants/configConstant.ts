@@ -1,31 +1,12 @@
-export enum Path {
-    Home = "/",
-    Chat = "/chat",
-    Settings = "/settings",
-    NewChat = "/new-chat",
-    Masks = "/masks",
-    Auth = "/auth",
-}
-
-export enum SlotID {
-    AppBody = "app-body",
-}
-
-export enum FileName {
-    Masks = "masks.json",
-    Prompts = "prompts.json",
-}
-
-/**this is a part associated with config slice */
-export enum StoreKey {
-    Chat = "chat-next-web-store",
-    Access = "access-control",
-    Config = "app-config",
-    Mask = "mask-store",
-    Prompt = "prompt-store",
-    Update = "chat-update",
-    Sync = "sync",
-}
+/**
+ * @author Tahara Kazuki
+ * @created 04/11/2024
+ * @lastModified 04/11/2024
+ * @description Types list in Config Store
+ * @copyright SoTru
+ */
+import { SubmitKey } from "../types/ConfigTypes";
+import { LLMModel, ModelType } from "../types/modelTypes";
 
 export const MAX_SIDEBAR_WIDTH = 500;
 export const MIN_SIDEBAR_WIDTH = 230;
@@ -95,25 +76,29 @@ export const DEFAULT_MODELS = [
     },
 ] as const;
 
-export const ROLES = ["system", "user", "assistant"] as const;
-export type MessageRole = (typeof ROLES)[number];
+export const DEFAULT_CONFIG = {
+    submitKey: SubmitKey.CtrlEnter as SubmitKey,
+    avatar: "1f603",
+    fontSize: 14,
+    sendPreviewBubble: true,
+    sidebarWidth: 300,
 
-export type RequestMessage = {
-    role: MessageRole;
-    content: string;
-}
+    disablePromptHint: false,
 
-export type LLMModel = {
-    name: string;
-    available: boolean;
-}
+    dontShowMaskSplashScreen: false, // dont show splash screen when create chat
+    hideBuiltinMasks: false, // dont add builtin masks
 
-export enum SubmitKey {
-    Enter = "Enter",
-    CtrlEnter = "Ctrl + Enter",
-    ShiftEnter = "Shift + Enter",
-    AltEnter = "Alt + Enter",
-    MetaEnter = "Meta + Enter",
-}
-
-export type ModelType = (typeof DEFAULT_MODELS)[number]["name"];
+    models: DEFAULT_MODELS.map(model => ({ ...model })) as LLMModel[],
+    modelConfig: {
+        model: "gpt-3.5-turbo" as ModelType,
+        temperature: 0.5,
+        top_p: 1,
+        max_tokens: 1444,
+        presence_penalty: 0,
+        frequency_penalty: 0,
+        sendMemory: true,
+        historyMessageCount: 4,
+        compressMessageLengthThreshold: 1000,
+        template: DEFAULT_INPUT_TEMPLATE,
+    },
+};

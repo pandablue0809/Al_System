@@ -13,7 +13,6 @@ import CopyIcon from '../../../assets/images/dashboard/userdashboard/aiservice/s
 import { DEFAULT_MASK_AVATAR, } from '../../../store/slices/mask';
 
 // import { ChatMessage } from '../../../store/slices/chatSlice';
-import { ModelConfig } from '../../../store/slices/configSlice';
 
 
 
