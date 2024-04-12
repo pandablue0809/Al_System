@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
 import { API_URL } from '../../config';
-import { deleteToken, deleteUser, persistToken, persistUser } from '../../services/localStorage.service';
-import { setUser } from './userSlice';
+import { deleteToken, deleteUser, persistToken, persistUser, readToken, deletePermission, persistPermission } from '../../services/localStorage.service';
+import { setUser, setPermission } from './userSlice';
 
 export type AuthSliceData = {
+    token: string | null;
     isAuthenticated: boolean;
     errorMessage: string | unknown;
     verifying: boolean;
@@ -15,6 +16,7 @@ export type AuthSliceData = {
 }
 
 const initialState: AuthSliceData = {
+    token: readToken(),
     isAuthenticated: false,
     errorMessage: '',
     verifying: false,
@@ -97,7 +99,9 @@ export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: Log
 
         if (res.status === 200) {
             persistToken(data.result.token);
+            persistPermission(data.result.user.permission);
             dispatch(setUser(data.result.user.username));
+            dispatch(setPermission(data.result.user.permission));
             persistUser(data.result.user);
         } else {
             return rejectWithValue(data.message || 'Login failed');
@@ -138,6 +142,7 @@ export const doLogout = createAsyncThunk('auth/doLogout', async (_, { dispatch }
     deleteToken();
     deleteUser();
     dispatch(setUser(null));
+    deletePermission();
 });
 
 const authSlice = createSlice({

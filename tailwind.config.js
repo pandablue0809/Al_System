@@ -44,7 +44,7 @@ module.exports = {
         "introdashboard-card3": "url('../images/_intro/introdashboard/card3.png')",
         "introdashboard-maccom": "url('../images/_intro/introdashboard/MacStudio.png')",
         "introdashboard-phone-photo-mobile": "url('../images/_intro/introdashboard/phone-photo-mobile.png')",
-        "introdashboard-section1-bg":"url('../images/_intro/introdashboard/section1_bg.gif')",
+        "introdashboard-section1-bg": "url('../images/_intro/introdashboard/section1_bg.gif')",
         //intro earn
         "introearn-starsstart": "url('../images/_intro/introearn/StarsStart.png')",
         "introearn-earth": "url('../images/_intro/introearn/earth.gif')",
@@ -132,6 +132,8 @@ module.exports = {
         'main-card-borrow-banner': "url('../images/dashboard/card-borrow-banner.jpg')",
         'main-card-cards-banner': "url('../images/dashboard/card-cards-banner.png')",
         'main-card-stocks-banner': "url('../images/dashboard/card-stocks-banner.jpg')",
+        'contact-map': "url('../images/map.png')",
+
         // borrow
         'borrow-left': "url('../images/borrow/left.png')",
         'borrow-righttop': "url('../images/borrow/righttop.png')",
@@ -184,6 +186,12 @@ module.exports = {
         'deposit-transfer-from': "url('../images/deposit/transfer-from.png')",
         'deposit-tab-inactive': 'linear-gradient(180deg, #DEE2E8 0%, #EFF1F3 100%)',
         'deposit-tab-inactive-dark': 'linear-gradient(180deg, #393140 0%, #393141 100%)',
+        //card
+        'card-back1': "url('../images/creditCard/back.png')",
+        'card-back2': "url('../images/creditCard/back2.png')",
+        'card-back3': "linear-gradient(to right, #ff00cc, #333399)",
+        'chip': "url('../images/creditCard/chip.png')",
+
         // earn
         'earn-rightbottom': "url('../images/earn/rightbottom.png')",
         'earn-banner': "url('../images/earn/banner.jpg')",
@@ -257,7 +265,7 @@ module.exports = {
       display1: 'keyframe4 3s linear forwards',
       move2: 'keyframe5 3s linear forwards',
       move3: 'keyframe6 3s linear forwards',
-      move4: 'keyframe7 3s linear forwards'
+      move4: 'keyframe7 3s linear forwards',
     },
     keyframes: {
       keyframe1: {

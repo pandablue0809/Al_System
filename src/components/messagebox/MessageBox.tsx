@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-export type ChatMessage = {
+type ChatMessage = {
   user: string;
   message: string;
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useWindowSize from '../utils/useWindowSize';
+import { useWindowSize } from '../utils/useWindowSize';
 import ThreeCard from '../components/animation/card/ThreeCard';
 import CEOImage from '../assets/images/_intro/introdashboard/CEO.png';
 import CTOImage from '../assets/images/_intro/introdashboard/CTO.png';
@@ -33,16 +33,11 @@ const Introdashboard: React.FC = () => {
   }, [size]);
 
   return (
-    <div className='bg-[#3C414A]'>
+    <div className='bg-[#10213f]'>
       <div className='relative w-full h-screen bg-introdashboard-section1-bg bg-no-repeat bg-cover'>
         <div className='invisible md:visible md:pt-[26vh] md:mx-[14.61%] md:text-[24px] text-white md:leading-[29px] md:font-[400]'>
           Welcome to the SoTru
         </div>
-        {/* <ImageSlider>
-        {images.map((image, index) => {
-          return <img key={index} src={image.imgURL} alt={image.imgAlt} />;
-        })}
-      </ImageSlider> */}
       </div>
       <div className='relative w-full md:leading-[116px] overflow-hidden'>
         <div className='absolute'>
@@ -182,13 +177,6 @@ const Introdashboard: React.FC = () => {
                 style={{ marginBlockStart: '1em', marginBlockEnd: '1em', marginInlineStart: 0, marginInlineEnd: 0 }}>
                 In 2023, before &apos;generative AI&apos; was a buzzword, Alexandru and Tahara were grinding through the world of AI. Frustrated by
                 the slow, painstaking process of traditional...
-                {/* 
-                 methods and uninspired by the soulless automation available, they teamed up.  */}
-                {/* Their mission: to use AI not just to make his work faster, but to make them matter—
-                to ensure every second a viewer spent working was a second well spent.
-                They wanted to help marketers not just catch eyes, but spark action. Alexandru brought a knack for storytelling coupled with the
-                hard-earned wisdom of a serial founder in AI. Tahara brought a decade of deep learning and computer vision expertise from the trenches
-                of Amazon's AI initiatives. */}
               </p>
               <button
                 className='text-white block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-10 py-4 text-center mt-0 md:mt-8 mb-2 mx-auto cursor-pointer z-10'

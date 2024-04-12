@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
-import 'react-phone-number-input/style.css';
 import { Checkbox, Button } from '@mui/material';
 import { toast } from 'react-toastify';
-
-import PasswordInput from '../../input/passwordInput';
-import PasswordConfirm from '../../input/PasswordConfirm';
-import EmailInput from '../../input/EmailInput';
-import PhoneNumberInput from '../../input/PhoneNumberInput';
-import RoleSelect from '../../input/RoleSelect';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/useReduxHooks';
 import { doSignUp } from '../../../store/slices/authSlice';
 
+import PasswordInput from '../../common/input/PasswordInput';
+import PasswordConfirm from '../../common/input/PasswordConfirm';
+import EmailInput from '../../common/input/EmailInput';
+import PhoneNumberInput from '../../common/input/PhoneNumberInput';
+import RoleSelect from '../../common/input/RoleSelect';
+
 import { IoMailOpenOutline } from 'react-icons/io5';
+
+import 'react-phone-number-input/style.css';
 
 type Error = {
   firstName?: string;
@@ -91,24 +93,28 @@ const SignUpForm: React.FC = () => {
   };
 
   const unregisteredComponent = (
-    <div className='relative w-full pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000 flex flex-col h-screen justify-center flex-wrap content-center'>
+    <div className='relative w-full bg-gray-200 pb-[110px] md:pb-[40px] md:pt-0 bg-main-background dark:bg-main-background-dark bg-center bg-cover transition-all duration-1000 flex flex-col h-screen justify-center flex-wrap content-center'>
       <div
         id='main-lefttop'
-        className='absolute top-[100px] right-0 w-[232px] h-[130px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover'></div>
+        className='absolute top-[100px] right-0 w-[232px] h-[130px] md:top-[210px] md:left-[10%] md:w-[464px] md:h-[260px] bg-main-lefttop dark:bg-main-lefttop-dark bg-center bg-cover'
+      />
       <div
         id='main-leftbottom'
-        className='absolute top-[10%] right-0 w-[300px] h-[290px] md:bottom-0 md:left-[10%] md:w-[672px] md:h-[633px] bg-main-leftbottom dark:bg-main-leftbottom-dark bg-center bg-cover'></div>
+        className='absolute top-[10%] right-0 w-[300px] h-[290px] md:bottom-0 md:left-[10%] md:w-[672px] md:h-[633px] bg-main-leftbottom dark:bg-main-leftbottom-dark bg-center bg-cover'
+      />
       <div
         id='main-righttop'
-        className='absolute bottom-0 right-0 w-[300px] h-[325px] md:top-[71px] md:right-[12px] md:w-[750px] md:h-[797px] bg-main-righttop dark:bg-main-righttop-dark bg-center bg-cover'></div>
+        className='absolute top-0 right-0 w-[300px] h-[325px] md:top-4 md:right-[12px] md:w-[750px] md:h-[49rem] bg-main-righttop dark:bg-main-righttop-dark bg-center bg-cover'
+      />
       <div
         id='main-center'
-        className='absolute left-[-70px] top-[20%] w-[275px] h-[225px] xl:left-[calc(50%-100px)] md:left-[calc(55%-800px)] md:top-[calc(50%-170px)] md:w-[550px] md:h-[450px] bg-main-center dark:bg-main-center-dark bg-center bg-cover pointer-events-none z-20'></div>
+        className='absolute left-[-70px] top-[20%] w-[275px] h-[225px] xl:left-[calc(50%-100px)] md:left-[calc(55%-800px)] md:top-[calc(50%-170px)] md:w-[550px] md:h-[450px] bg-main-center dark:bg-main-center-dark bg-center bg-cover pointer-events-none z-20'
+      />
 
-      <div className='first-line:items-center xl:mr-[36rem] z-10 xl:pt-10 lg:pt-20 pt-[100px]'>
-        <h1 className="md:text-left mb-3 text-white text-center text-[24px] font-semibold style={{fontFamily: 'Poppins'}}">
+      <div className='first-line:items-center xl:mr-[36rem] z-10 xl:pt-10 lg:pt-20 pt-16'>
+        <h1 className="md:text-left mb-3 text-white text-center text-xl font-semibold" style={{fontFamily: 'Poppins'}}>
           Sign up to
-          <span className='text-[#ff69a5]'> Admin</span>
+          <span className='text-[#ff69a5] text-xl'> Admin</span>
         </h1>
         <div className='items-center flex justify-center bg-black bg-opacity-60 rounded-lg shadow-orange-200 lg:px-20 md:px-10 px-4 xl:px-24 py-10 align-middle'>
           <div>
@@ -117,14 +123,14 @@ const SignUpForm: React.FC = () => {
               <input
                 type='text'
                 placeholder='First Name'
-                className={`col-span-5 relative px-4 border py-[8px] border-gray-300 rounded-md focus:outline-none focus:border-[#8c94ff]`}
+                className={`col-span-5 relative px-4 border py-1/2 border-gray-300 rounded-md focus:outline-none focus:border-[#8c94ff]`}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <div className='col-span-1' />
               <input
                 type='text'
                 placeholder='Last Name'
-                className={`col-span-5 relative px-4 border py-[8px] border-gray-300 rounded-md focus:outline-none focus:border-[#8c94ff]`}
+                className={`col-span-5 relative px-4 border py-1/2 border-gray-300 rounded-md focus:outline-none focus:border-[#8c94ff]`}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>

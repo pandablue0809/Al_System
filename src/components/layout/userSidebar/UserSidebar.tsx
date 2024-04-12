@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography } from '@mui/material';
 
-// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PermPhoneMsgOutlinedIcon from '@mui/icons-material/PermPhoneMsgOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
@@ -53,8 +52,8 @@ const UserSidebar = () => {
       sx={{
         position: 'sticky',
         display: 'flex',
-        height: '100vh',
-        top: 0,
+        height: 'calc(100vh - 2.5rem)',
+        top: '2.5rem',
         bottom: 0,
         zIndex: 10000,
         '& .sidebar': { border: 'none' },
@@ -64,7 +63,7 @@ const UserSidebar = () => {
         '& .menu-item:hover': { backgroundColor: 'transparent !important' },
         '& .menu-item.active': { backgroundColor: 'transparent !important' },
       }}>
-      <Sidebar className='sidebar' collapsed={isCollapsed} breakPoint='md' backgroundColor='#2b2c40'>
+      <Sidebar className='sidebar' collapsed={isCollapsed} breakPoint='md' backgroundColor='#30353c'>
         <Menu>
           <MenuItem
             className='menu-item'
@@ -112,7 +111,7 @@ const UserSidebar = () => {
               setSelected={setSelected}
             />
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              AI Service
+              AI
             </Typography>
             <Item
               className='menu-item'
@@ -124,7 +123,7 @@ const UserSidebar = () => {
             />
             <Item title='Invoices' to='/dashboard/user/invoice' icon={<ReceiptOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Community Service
+              Chat
             </Typography>
             <Item
               className='menu-item'
@@ -140,16 +139,22 @@ const UserSidebar = () => {
             </Typography>
             <Item title='Inventory List' to='' icon={<StorageOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Item title='Team List' to='/dashboard/user/team' icon={<PeopleOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item title='Paid List' to='/dashboard/user/paid-history' icon={<ManageSearchOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item
+              title='Paid List'
+              to='/dashboard/user/paid-history'
+              icon={<ManageSearchOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              My Setting
+              Info
             </Typography>
             <Item title='My Info' to='/dashboard/user/setting' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Item title='Schedule' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
-              Configuration
+              Config
             </Typography>
 
             <Item title='My API' to='' icon={<ApiOutlinedIcon />} selected={selected} setSelected={setSelected} />
