@@ -1,36 +1,67 @@
-import { DEFAULT_MODELS, DEFAULT_INPUT_TEMPLATE, StoreKey } from "../../constants/constant";
-import { LLMModel, SubmitKey, ModelType } from "../../constants/constant";
+/**
+ * @author Tahara Kazuki
+ * @created 04/08/2024
+ * @lastModified 04/11/2024
+ * @description Types list in Config Store
+ * @copyright SoTru
+ */
 
+import { createSlice, createAction, PrepareAction } from "@reduxjs/toolkit";
 
+import { DEFAULT_CONFIG } from "../../constants/configConstant";
+import type { ChatConfig } from "../../types/ConfigTypes";
+//use localstorage service
+import { persistConfig, readConfig } from "../../services/localStorage.service";
+import { LLMModel } from "../../types/modelTypes";
 
+const initialState: ChatConfig = readConfig();
+//Updating set props variable into default state thru setting panel
+export const resetConfig = createAction('config/resetConfig', () => {
+    persistConfig(DEFAULT_CONFIG);
+    return {
+        payload: DEFAULT_CONFIG,
+    }
+});
+//Updating set props variable thru setting panel
+export const setConfig = createAction<PrepareAction<ChatConfig>>('config/setConfig', (UpdatePayload) => {
+    persistConfig(UpdatePayload);
+    return {
+        payload: UpdatePayload,
+    }
+})
+// Adding new model to default model list
+export const mergeModelsConfig = createAction<PrepareAction<LLMModel[]>>('config/mergeModelsConfig', (newModel) => {
+    return {
+        payload: newModel,
+    }
+})
 
+const configSlice = createSlice({
+    name: 'config',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(resetConfig, (state, action) => {
+            state = action.payload;
+        });
+        builder.addCase(setConfig, (state, action) => {
+            state = action.payload
+        });
+        builder.addCase(mergeModelsConfig, (state, action) => {
+            const modelMap: Record<string, LLMModel> = {};
+            // Mark old models as unavailable
+            for (const model of state.models) {
+                model.available = false;
+                modelMap[model.name] = model;
+            }
+            // Mark new models as available and merge
+            for (const model of action.payload) {
+                model.available = true;
+                modelMap[model.name] = model;
+            }
+            state.models = Object.values(modelMap);
+        });
+    }
+})
 
-export const DEFAULT_CONFIG = {
-    submitKey: SubmitKey.CtrlEnter as SubmitKey,
-    avatar: "1f603",
-    fontSize: 14,
-    sendPreviewBubble: true,
-    sidebarWidth: 300,
-
-    disablePromptHint: false,
-
-    dontShowMaskSplashScreen: false, // dont show splash screen when create chat
-    hideBuiltinMasks: false, // dont add builtin masks
-
-    models: DEFAULT_MODELS as any as LLMModel[],
-
-    modelConfig: {
-        model: "gpt-3.5-turbo" as ModelType,
-        temperature: 0.5,
-        top_p: 1,
-        max_tokens: 1444,
-        presence_penalty: 0,
-        frequency_penalty: 0,
-        sendMemory: true,
-        historyMessageCount: 4,
-        compressMessageLengthThreshold: 1000,
-        template: DEFAULT_INPUT_TEMPLATE,
-    },
-};
-export type ChatConfig = typeof DEFAULT_CONFIG;
-export type ModelConfig = ChatConfig["modelConfig"];
+export default configSlice.reducer;
