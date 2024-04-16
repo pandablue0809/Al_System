@@ -10,4 +10,3 @@ import CloseIcon from '../../../assets/images/dashboard/userdashboard/aiservice/
 import MaskIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/mask.svg';
 //resposive
 import { useMobileScreen } from '../../../utils/useWindowSize';
-

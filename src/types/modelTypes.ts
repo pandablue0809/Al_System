@@ -5,11 +5,11 @@
  * @description Types list in Config Store
  * @copyright SoTru
  */
-import { DEFAULT_MODELS } from "../constants/configConstant";
+import { DEFAULT_MODELS } from '../constants/configConstant';
 
 export type ModelType = (typeof DEFAULT_MODELS)[number]['name'];
 
 export type LLMModel = {
-    name: string;
-    available: boolean;
-}
+  name: string;
+  available: boolean;
+};

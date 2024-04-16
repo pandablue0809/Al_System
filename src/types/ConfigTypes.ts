@@ -6,24 +6,24 @@
  * @copyright SoTru
  */
 
-import { DEFAULT_CONFIG } from "../constants/configConstant";
+import { DEFAULT_CONFIG } from '../constants/configConstant';
 
 export enum SubmitKey {
-    Enter = "Enter",
-    CtrlEnter = "Ctrl + Enter",
-    ShiftEnter = "Shift + Enter",
-    AltEnter = "Alt + Enter",
-    MetaEnter = "Meta + Enter",
+  Enter = 'Enter',
+  CtrlEnter = 'Ctrl + Enter',
+  ShiftEnter = 'Shift + Enter',
+  AltEnter = 'Alt + Enter',
+  MetaEnter = 'Meta + Enter',
 }
 
 export enum StorageKey {
-    Chat = "chat-next-web-store",
-    Access = "access-control",
-    Config = "app-config",
-    Mask = "mask-store",
-    Prompt = "prompt-store",
-    Update = "chat-update",
-    Sync = "sync",
+  Chat = 'chat-next-web-store',
+  Access = 'access-control',
+  Config = 'app-config',
+  Mask = 'mask-store',
+  Prompt = 'prompt-store',
+  Update = 'chat-update',
+  Sync = 'sync',
 }
 
 export type ChatConfig = typeof DEFAULT_CONFIG;

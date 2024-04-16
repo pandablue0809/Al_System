@@ -50,7 +50,7 @@ const AboutUsPage = () => {
             <div className='text-[40px] md:text-[60px] leading-[24px] md:leading-[48px] font-[500] md:font-[600] text-[#FFF] text-center'>
               About Us
             </div>
-            <div className="text-transparent text-[50px] md:text-[250px] leading-[79px] md:leading-[300px] text-center font-[600] md:bg-introearn-title-gradient md:bg-clip-text">
+            <div className='text-transparent text-[50px] md:text-[250px] leading-[79px] md:leading-[300px] text-center font-[600] md:bg-introearn-title-gradient md:bg-clip-text'>
               SoTru
             </div>
             <div className='w-[70%] mx-auto md:text-[26px] md:leading-[34px] md:font-[500] text-[#FFF] text-center'>

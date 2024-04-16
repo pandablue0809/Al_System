@@ -1,33 +1,30 @@
-import { createAction, createSlice, PrepareAction } from "@reduxjs/toolkit";
-import { readPermission, readUser } from "../../services/localStorage.service";
+import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
+import { readPermission, readUser } from '../../services/localStorage.service';
 
 export type UserState = {
   user: string | null;
   permission: string | null;
-}
+};
 
 const initialState: UserState = {
   user: readUser()?.username ?? null,
   permission: readPermission(),
 };
 
-export const setUser = createAction<PrepareAction<string>>(
-  "user/setUser",
-  (newUser) => {
-    return {
-      payload: newUser,
-    };
-  },
-);
-
-export const setPermission = createAction<PrepareAction<string>>("user/setPermission", (newPermission,) => {
+export const setUser = createAction<PrepareAction<string>>('user/setUser', (newUser) => {
   return {
-    payload: newPermission
-  }
-})
+    payload: newUser,
+  };
+});
+
+export const setPermission = createAction<PrepareAction<string>>('user/setPermission', (newPermission) => {
+  return {
+    payload: newPermission,
+  };
+});
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -36,7 +33,7 @@ const userSlice = createSlice({
     });
     builder.addCase(setPermission, (state, action) => {
       state.permission = action.payload;
-    })
+    });
   },
 });
 

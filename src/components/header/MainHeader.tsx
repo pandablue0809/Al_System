@@ -176,7 +176,7 @@ export const MainHeader: React.FC = () => {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               sx={{ top: 10 }}>
               <Box sx={{ paddingTop: 2, paddingLeft: 2, paddingRight: 2, width: 260 }}>
-                <Grid container item rowSpacing={1} columnSpacing={1}>               
+                <Grid container item rowSpacing={1} columnSpacing={1}>
                   <Grid item md={4}>
                     <MenuItem onClick={handleCloseTuen}>
                       <div className='text-center'>

@@ -112,7 +112,7 @@ const SignUpForm: React.FC = () => {
       />
 
       <div className='first-line:items-center xl:mr-[36rem] z-10 xl:pt-10 lg:pt-20 pt-16'>
-        <h1 className="md:text-left mb-3 text-white text-center text-xl font-semibold" style={{fontFamily: 'Poppins'}}>
+        <h1 className='md:text-left mb-3 text-white text-center text-xl font-semibold' style={{ fontFamily: 'Poppins' }}>
           Sign up to
           <span className='text-[#ff69a5] text-xl'> Admin</span>
         </h1>
