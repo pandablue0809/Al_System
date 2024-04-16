@@ -10,10 +10,4 @@ import DeleteIcon from '../../../assets/images/dashboard/userdashboard/aiservice
 import EyeIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/eye.svg';
 import CopyIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/copy.svg';
 
-import { DEFAULT_MASK_AVATAR, } from '../../../store/slices/mask';
-
 // import { ChatMessage } from '../../../store/slices/chatSlice';
-
-
-
-
