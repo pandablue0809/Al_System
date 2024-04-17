@@ -187,10 +187,10 @@ module.exports = {
         'deposit-tab-inactive': 'linear-gradient(180deg, #DEE2E8 0%, #EFF1F3 100%)',
         'deposit-tab-inactive-dark': 'linear-gradient(180deg, #393140 0%, #393141 100%)',
         //card
-        'card-back1': "url('../images/card/creditCard/back.png')",
-        'card-back2': "url('../images/card/creditCard/back2.png')",
+        'card-back1': "url('../images/creditCard/back.png')",
+        'card-back2': "url('../images/creditCard/back2.png')",
         'card-back3': "linear-gradient(to right, #ff00cc, #333399)",
-        'chip': "url('../images/card/creditCard/chip.png')",
+        'chip': "url('../images/creditCard/chip.png')",
 
         // earn
         'earn-rightbottom': "url('../images/earn/rightbottom.png')",
