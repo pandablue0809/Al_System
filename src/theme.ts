@@ -21,7 +21,4 @@ export const themeSettings = (mode: PaletteMode) => {
   };
 };
 
-export const useMode = () => {
-  const theme = () => createTheme(themeSettings('dark'));
-  return theme;
-};
+export const theme = createTheme(themeSettings('dark'));

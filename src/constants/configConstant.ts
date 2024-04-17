@@ -1,7 +1,7 @@
 /**
  * @author Tahara Kazuki
  * @created 04/11/2024
- * @lastModified 04/11/2024
+ * @lastModified 04/16/2024
  * @description Types list in Config Store
  * @copyright SoTru
  */
@@ -11,6 +11,15 @@ import { LLMModel, ModelType } from '../types/modelTypes';
 export const MAX_SIDEBAR_WIDTH = 500;
 export const MIN_SIDEBAR_WIDTH = 230;
 export const NARROW_SIDEBAR_WIDTH = 100;
+
+export enum Path {
+  Home = '/',
+  Chat = '/chat',
+  Settings = '/settings',
+  NewChat = '/new-chat',
+  Masks = '/masks',
+  Auth = '/auth',
+}
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`;
 export const DEFAULT_MODELS = [
