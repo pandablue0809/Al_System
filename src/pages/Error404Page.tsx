@@ -5,7 +5,7 @@ import { PageTitle } from '../components/common/pageTitle/PageTitle';
 const Error404Page: React.FC = () => {
   return (
     <>
-    <PageTitle>{'Error 404'}</PageTitle>
+      <PageTitle>{'Error 404'}</PageTitle>
       <ClientError />
     </>
   );

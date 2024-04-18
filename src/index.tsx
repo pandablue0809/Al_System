@@ -4,7 +4,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 import { store } from './store/store';
-import './assets/css/tailwind.css'
+import './assets/css/tailwind.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
