@@ -7,21 +7,20 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useMode } from './theme';
+import { theme } from './theme';
 import Header from './components/header';
 import AIService from './pages/dashboard/user/AIService';
 
 const App: React.FC = () => {
-  const theme = useMode();
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <Router>
-          <Header />
-          <AppRouter />
-        </Router> */}
-        <AIService />
+        <Router>
+          {/* <Header /> */}
+          {/* <AppRouter /> */}
+          <AIService />
+        </Router>
         <ToastContainer />
       </ThemeProvider>
     </HelmetProvider>

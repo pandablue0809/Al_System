@@ -1,17 +1,15 @@
-import React, { useState, useEffect, HTMLProps } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-//import mui iconbutton
-import { IconButton } from '@mui/material';
 // import image for image button
-import LoadingIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/three-dots.svg';
-import CloseIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/close.svg';
-import EyeIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/eye.svg';
-import EyeOffIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/eye-off.svg';
-import DownIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/down.svg';
-import ConfirmIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/confirm.svg';
-import CancelIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/cancel.svg';
-import MaxIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/max.svg';
-import MinIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/min.svg';
+// import LoadingIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/three-dots.svg';
+// import CloseIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/close.svg';
+// import EyeIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/eye.svg';
+// import EyeOffIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/eye-off.svg';
+// import DownIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/down.svg';
+// import ConfirmIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/confirm.svg';
+// import CancelIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/cancel.svg';
+// import MaxIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/max.svg';
+// import MinIcon from '../../../assets/images/dashboard/userdashboard/aiservice/sidebar/min.svg';
 
 export type ToastProps = {
   content: string;
