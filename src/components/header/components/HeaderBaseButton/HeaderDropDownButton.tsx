@@ -32,7 +32,9 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
           className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
           onClick={() => {
             if (onClick) {
-              onClick(subMenuItem.title);
+              if (subMenuItem.pathname) {
+                onClick(subMenuItem?.pathname);
+              }
             }
             return;
           }}>

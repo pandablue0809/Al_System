@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from '../utils/useWindowSize';
+
+import SliderClip from '../components/slide/SliderClip';
+
 import ThreeCard from '../components/animation/card/ThreeCard';
 import CEOImage from '../assets/images/_intro/introdashboard/CEO.png';
 import CTOImage from '../assets/images/_intro/introdashboard/CTO.png';
@@ -34,11 +37,12 @@ const Introdashboard: React.FC = () => {
 
   return (
     <div className='bg-[#10213f]'>
-      <div className='relative w-full h-screen bg-introdashboard-section1-bg bg-no-repeat bg-cover'>
+      {/* <div className='relative w-full h-screen bg-introdashboard-section1-bg bg-no-repeat bg-cover'>
         <div className='invisible md:visible md:pt-[26vh] md:mx-[14.61%] md:text-[24px] text-white md:leading-[29px] md:font-[400]'>
           Welcome to the SoTru
         </div>
-      </div>
+      </div> */}
+      <SliderClip />
       <div className='relative w-full md:leading-[116px] overflow-hidden'>
         <div className='absolute'>
           <div className='relative w-[50px] h-[50px] rotate-[45deg]'>

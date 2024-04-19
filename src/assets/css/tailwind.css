@@ -178,6 +178,7 @@
   --secondary: #000a17;
   --default_font: 'Ysabeau Infant', sans-serif;
   --title_font: 'Outfit', sans-serif;
+  --sidebar-width: 300px;
 }
 
 body {
