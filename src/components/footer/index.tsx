@@ -4,7 +4,7 @@ import FooterContent from './FooterContent';
 
 const Footer: React.FC = () => {
   const location = useLocation();
-  const paths = ['/', '/auth/login', '/auth/sign-up', '/auth/forgot-password'];
+  const paths = ['/', '/auth/login', '/auth/sign-up', '/auth/forgot-password', '/dashboard/user', '/dashboard', '/dashboard/user/work'];
 
   return paths.includes(location.pathname) ? null : <FooterContent />;
 };

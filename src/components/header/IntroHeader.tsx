@@ -17,14 +17,6 @@ const MENU_DATA: HeaderDropDownMenuItem = {
       pathname: '/resources/case-studies',
     },
     {
-      title: 'Synthesia Academy',
-      pathname: '/resources/synthesia-academy',
-    },
-    {
-      title: 'Webinars',
-      pathname: '/resources/webinars',
-    },
-    {
       title: 'Help Center',
       pathname: '/resources/help-center',
     },
@@ -45,7 +37,7 @@ const company_menu_data: HeaderDropDownMenuItem = {
   subMenus: [
     {
       title: 'About us',
-      pathname: '/company/about',
+      pathname: '/about',
     },
     {
       title: 'AI Research',
@@ -79,7 +71,7 @@ export const IntroHeader: React.FC = () => {
   const navigate = useNavigate();
 
   const handleClick = (state: string) => {
-    setStatus(state);
+    navigate(state);
   };
 
   return (
@@ -93,13 +85,17 @@ export const IntroHeader: React.FC = () => {
             <div className='justify-between w-full flex'>
               <ul className='gap-x-6 my-0 mx-auto px-0 flex list-none'>
                 <li>
-                  <button className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'>
+                  <button
+                    className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
+                    onClick={() => navigate('/introdashboard')}>
                     Home
                   </button>
                 </li>
                 <li>
-                  <button className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'>
-                    Resources
+                  <button
+                    className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
+                    onClick={() => navigate('/service/intro')}>
+                    Service
                   </button>
                 </li>
                 <li>

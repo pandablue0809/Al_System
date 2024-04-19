@@ -182,6 +182,7 @@
   --secondary: #000a17;
   --default_font: 'Ysabeau Infant', sans-serif;
   --title_font: 'Outfit', sans-serif;
+  --sidebar-width: 300px;
   --card-height: 300px;
   --card-width: calc(var(--card-height) / 1.5);
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Box,
@@ -62,10 +63,15 @@ const StyledBadge = styled(Badge)(() => ({
 export const MainHeader: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorAccount, setAnchorAccont] = useState<null | HTMLElement>(null);
+  const openTuen = Boolean(anchorEl);
+  const openAccount = Boolean(anchorAccount);
 
   useEffect(() => {
     const username = readUser()?.username;
@@ -85,10 +91,6 @@ export const MainHeader: React.FC = () => {
   const loadUser = async (user: string) => {
     await dispatch(setUser(user));
   };
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [anchorAccount, setAnchorAccont] = useState<null | HTMLElement>(null);
-  const openTuen = Boolean(anchorEl);
-  const openAccount = Boolean(anchorAccount);
 
   const handleClickTuen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -120,6 +122,11 @@ export const MainHeader: React.FC = () => {
 
   const handleEditModalClose = () => {
     setIsEditModalOpen(false);
+  };
+
+  const logoutHandler = () => {
+    handleCloseAccount();
+    navigate('/logout');
   };
 
   return (
@@ -400,7 +407,7 @@ export const MainHeader: React.FC = () => {
                     <span className='text-[13px] font-thin text-[#D5D6D7]'>FAQ</span>
                   </MenuItem>
                   <Divider />
-                  <MenuItem sx={{ pt: '5px !important', pb: '3px !important' }} onClick={handleCloseAccount}>
+                  <MenuItem sx={{ pt: '5px !important', pb: '3px !important' }} onClick={logoutHandler}>
                     <ListItemIcon>
                       <GoSignOut style={{ width: 15, height: 15, color: '#87909e' }} />
                     </ListItemIcon>

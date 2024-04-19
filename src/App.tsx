@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { theme } from './theme';
 import Header from './components/header';
 import AIService from './pages/dashboard/user/AIService';
+import Footer from './components/footer';
 
 const App: React.FC = () => {
   return (
@@ -17,9 +18,10 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          {/* <Header /> */}
-          {/* <AppRouter /> */}
-          <AIService />
+          <Header />
+          <AppRouter />
+          <Footer />
+          {/* <AIService /> */}
         </Router>
         <ToastContainer />
       </ThemeProvider>
