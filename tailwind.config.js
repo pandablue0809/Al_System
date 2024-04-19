@@ -163,14 +163,14 @@ module.exports = {
         'stocks-availablesoon': "url('../images/stocks/availablesoon.png')",
         'stocks-availablesoon-dark': "url('../images/stocks/availablesoon-dark.png')",
         // cards
-        'cards-leftmiddle': "url('../images/cards/leftmiddle.png')",
-        'cards-leftbottom': "url('../images/cards/leftbottom.png')",
-        'cards-rightmiddle': "url('../images/cards/rightmiddle.png')",
-        'cards-rightbottom': "url('../images/cards/rightbottom.png')",
-        'cards-cardtop': "url('../images/cards/cardtop.png')",
-        'cards-cardbottom': "url('../images/cards/cardbottom.png')",
-        'cards-arrowhead-down': "url('../images/cards/arrowhead-down.svg')",
-        'cards-availablesoon': "url('../images/cards/availablesoon.png')",
+        'cards-leftmiddle': "url('../images/card/leftmiddle.png')",
+        'cards-leftbottom': "url('../images/card/leftbottom.png')",
+        'cards-rightmiddle': "url('../images/card/rightmiddle.png')",
+        'cards-rightbottom': "url('../images/card/rightbottom.png')",
+        'cards-cardtop': "url('../images/card/cardtop.png')",
+        'cards-cardbottom': "url('../images/card/cardbottom.png')",
+        'cards-arrowhead-down': "url('../images/card/arrowhead-down.svg')",
+        'cards-availablesoon': "url('../images/card/availablesoon.png')",
         // deposit
         'deposit-card': 'linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)',
         'deposit-card-dark': 'linear-gradient(160.71deg, #393040 9.07%, #35303C 92.22%)',
@@ -184,10 +184,12 @@ module.exports = {
         'deposit-tab-inactive': 'linear-gradient(180deg, #DEE2E8 0%, #EFF1F3 100%)',
         'deposit-tab-inactive-dark': 'linear-gradient(180deg, #393140 0%, #393141 100%)',
         //card
-        'card-back1': "url('../images/creditCard/back.png')",
-        'card-back2': "url('../images/creditCard/back2.png')",
-        'card-back3': 'linear-gradient(to right, #ff00cc, #333399)',
-        chip: "url('../images/creditCard/chip.png')",
+
+        'card-back1': "url('../images/card/creditCard/back.png')",
+        'card-back2': "url('../images/card/creditCard/back2.png')",
+        'card-back3': "linear-gradient(to right, #ff00cc, #333399)",
+        'chip': "url('../images/card/creditCard/chip.png')",
+
 
         // earn
         'earn-rightbottom': "url('../images/earn/rightbottom.png')",
