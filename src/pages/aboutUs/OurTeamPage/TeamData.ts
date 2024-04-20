@@ -9,21 +9,21 @@ import bannerCTO from '../../../assets/images/card/3DCard/bannerCTO.png';
 import bannerBOT from '../../../assets/images/card/3DCard/bannerBOT.png';
 
 const TeamData = [
-    {
-        bgImg:CEO,
-        character:characterCEO,
-        banner:bannerCEO,
-    },
-    {
-        bgImg:CTO,
-        character:characterCTO,
-        banner:bannerCTO,
-    },
-    {
-        bgImg:BOT,
-        character:characterBOT,
-        banner:bannerBOT,
-    }
-]
+  {
+    bgImg: CEO,
+    character: characterCEO,
+    banner: bannerCEO,
+  },
+  {
+    bgImg: CTO,
+    character: characterCTO,
+    banner: bannerCTO,
+  },
+  {
+    bgImg: BOT,
+    character: characterBOT,
+    banner: bannerBOT,
+  },
+];
 
 export default TeamData;

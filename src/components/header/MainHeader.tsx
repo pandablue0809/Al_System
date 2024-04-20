@@ -129,6 +129,11 @@ export const MainHeader: React.FC = () => {
     navigate('/logout');
   };
 
+  const settingHandler = () => {
+    handleCloseAccount();
+    navigate('/dashboard/user/profile');
+  };
+
   return (
     <nav className='fixed top-0 z-50 bottom-auto left-0 right-0 bg-[#3c414a]'>
       <div className='container mx-auto'>
@@ -369,7 +374,7 @@ export const MainHeader: React.FC = () => {
                     <span className='text-green-400 text-sm'>Sotru member since</span>
                     <p className='text-[11px] ml-2'>Dec 4, 2024</p>
                   </div>
-                  <MenuItem sx={{ display: 'block', pt: '5px !important', pb: '3px !important' }} onClick={handleCloseAccount}>
+                  <MenuItem sx={{ display: 'block', pt: '5px !important', pb: '3px !important' }} onClick={settingHandler}>
                     <ListItemIcon>
                       <BiUser style={{ width: 15, height: 15, color: '#87909e' }} />
                     </ListItemIcon>

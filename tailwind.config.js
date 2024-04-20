@@ -187,9 +187,8 @@ module.exports = {
 
         'card-back1': "url('../images/card/creditCard/back.png')",
         'card-back2': "url('../images/card/creditCard/back2.png')",
-        'card-back3': "linear-gradient(to right, #ff00cc, #333399)",
-        'chip': "url('../images/card/creditCard/chip.png')",
-
+        'card-back3': 'linear-gradient(to right, #ff00cc, #333399)',
+        chip: "url('../images/card/creditCard/chip.png')",
 
         // earn
         'earn-rightbottom': "url('../images/earn/rightbottom.png')",
