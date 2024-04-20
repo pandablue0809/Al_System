@@ -150,7 +150,7 @@ const UserSidebar = () => {
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>
               Info
             </Typography>
-            <Item title='My Info' to='/dashboard/user/setting' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
+            <Item title='My Info' to='/dashboard/user/profile' icon={<ContactsOutlinedIcon />} selected={selected} setSelected={setSelected} />
             <Item title='Schedule' to='' icon={<CalendarTodayOutlinedIcon />} selected={selected} setSelected={setSelected} />
 
             <Typography fontSize={14} color='#a3a3a3' sx={{ m: '15px 20px 5px 20px' }}>

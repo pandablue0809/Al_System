@@ -5,7 +5,7 @@
  * @description Types list in Config Store
  * @copyright SoTru
  */
-import React, { useEffect, useRef, Suspense } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHooks';
 import { nextSession, deleteSession } from '../../../store/slices/chatSlice';

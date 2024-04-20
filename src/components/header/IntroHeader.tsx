@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LOGO from '../../assets/images/logo/logo.svg';
 import type { HeaderDropDownMenuItem } from './components/HeaderBaseButton/HeaderDropDownButton';
@@ -67,7 +67,6 @@ const company_menu_data: HeaderDropDownMenuItem = {
 };
 
 export const IntroHeader: React.FC = () => {
-  const [status, setStatus] = useState('');
   const navigate = useNavigate();
 
   const handleClick = (state: string) => {

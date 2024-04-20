@@ -12,8 +12,8 @@ import { DragDropContext, Droppable, Draggable, OnDragEndResponder } from '@hell
 import { useAppDispatch, useAppSelector } from '../../../../hooks/useReduxHooks';
 import { selectSession, moveSession, deleteSession } from '../../../../store/slices/chatSlice';
 
-import ChatConstant from '../../../../constants/chatConstant';
 import { Path } from '../../../../constants/configConstant';
+import ChatConstant from '../../../../constants/chatConstant';
 
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
