@@ -5,7 +5,7 @@
  * @description Types list in Config Store
  * @copyright SoTru
  */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useReduxHooks';
 import { nextSession, deleteSession } from '../../../store/slices/chatSlice';
@@ -44,12 +44,13 @@ const useHotKey = () => {
   });
 };
 
-const useDragSideBar = () => {
+function useDragSideBar () {
   const config = useAppSelector((state) => state.config);
   const limit = (x: number) => Math.min(MAX_SIDEBAR_WIDTH, x);
   const startX = useRef(0);
   const startDragWidth = useRef(config.sidebarWidth ?? 300);
   const lastUpdateTime = useRef(Date.now());
+  const [localSidebar, setLocalSidebar] = useState(config.sidebarWidth);
   const dispatch = useAppDispatch();
 
   const handleMouseMove = useRef((e: MouseEvent) => {
@@ -59,6 +60,7 @@ const useDragSideBar = () => {
     lastUpdateTime.current = Date.now();
     const d = e.clientX - startX.current;
     const nextWidth = limit(startDragWidth.current + d);
+    setLocalSidebar(nextWidth);
     dispatch(setConfig({ ...config, sidebarWidth: nextWidth }));
   });
 
@@ -70,18 +72,18 @@ const useDragSideBar = () => {
 
   const onDragMouseDown = (e: MouseEvent) => {
     startX.current = e.clientX;
-
     window.addEventListener('mousemove', handleMouseMove.current);
     window.addEventListener('mouseup', handleMouseUp.current);
   };
+
   const isMobileScreen = useMobileScreen();
-  const shouldNarrow = !isMobileScreen && config.sidebarWidth < MIN_SIDEBAR_WIDTH;
+  const shouldNarrow = !isMobileScreen && localSidebar < MIN_SIDEBAR_WIDTH;
 
   useEffect(() => {
-    const barWidth = shouldNarrow ? NARROW_SIDEBAR_WIDTH : limit(config.sidebarWidth ?? 300);
+    const barWidth = shouldNarrow ? NARROW_SIDEBAR_WIDTH : limit(localSidebar ?? 300);
     const sideBarWidth = isMobileScreen ? '100vw' : `${barWidth}px`;
     document.documentElement.style.setProperty('--sidebar-width', sideBarWidth);
-  }, [config.sidebarWidth, isMobileScreen, shouldNarrow]);
+  }, [localSidebar, isMobileScreen, shouldNarrow]);
 
   return { onDragMouseDown, shouldNarrow };
 };
@@ -100,20 +102,11 @@ export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
     <div
       className={`top-0 w-[var(--sidebar-width)] box-border p-[20px] bg-gray-600 flex flex-col shadow-inner drop-shadow-[-2px_0px_2px_0px_rgb(0, 0, 0, 0.05)] relative ${props.className}`}>
       <div className='relative py-[20px]'>
-        <div className='text-[20px] font-bold ease-in-out delay-300'>ChatGPT Ultimate</div>
-        <div className='text-[12px] font-normal ease-in-out delay-200'>Unlock The Ultimate Power of ChatGPT</div>
+        <div className='text-[20px] font-bold ease-in-out delay-300'>SoTru Service</div>
+        <div className='text-[12px] font-normal ease-in-out delay-200'>Unlock The Ultimate Power of SoTru</div>
         <div className='absolute right-0 bottom-[18px]'>
           <GiArtificialHive />
         </div>
-      </div>
-
-      <div className='flex mb-[20px]'>
-        <IconButton sx={{ flexGrow: 1, marginLeft: '10px' }} onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}>
-          <CgEditUnmask />
-        </IconButton>
-        <IconButton sx={{ flexGrow: 1, marginLeft: '10px' }} onClick={() => showToast(ChatConstant.WIP)}>
-          <IoSettingsOutline />
-        </IconButton>
       </div>
 
       <div
