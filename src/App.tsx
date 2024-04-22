@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './router/AppRouter';
@@ -13,15 +13,25 @@ import AIService from './pages/dashboard/user/AIService';
 import Footer from './components/footer';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => {
+          caches.delete(name);
+        });
+      });
+    }
+  }, []);
+
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <Header />
+          {/* <Header />
           <AppRouter />
-          <Footer />
-          {/* <AIService /> */}
+          <Footer /> */}
+          <AIService />
         </Router>
         <ToastContainer />
       </ThemeProvider>
