@@ -18,11 +18,11 @@ export interface RequestMessage {
 }
 
 export type ChatMessage = RequestMessage & {
-  date: string;
-  streaming?: boolean;
-  isError?: boolean;
   id?: number;
   model?: ModelType;
+  streaming?: boolean;
+  isError?: boolean;
+  date: string;
 };
 
 export const createMessage = (override: Partial<ChatMessage>): ChatMessage => {
@@ -83,6 +83,14 @@ const initialState: ChatStore = {
   globalId: 0,
 };
 
+
+
+export const newSession = createAction<PrepareAction<number>>('chat/newSession', (index) => {
+  return {
+    payload: index,
+  }
+})
+
 export const nextSession = createAction<PrepareAction<number>>('chat/nextSession', (delta) => {
   return {
     payload: delta,
@@ -112,6 +120,9 @@ const chatSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(newSession, (state, action) => {
+      const session  = createEmptySession();
+    });
     builder.addCase(nextSession, (state, action) => {
       const n = state.sessions.length;
       const limit = (x: number) => (x + n) % n;

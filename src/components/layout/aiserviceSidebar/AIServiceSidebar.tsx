@@ -44,7 +44,7 @@ const useHotKey = () => {
   });
 };
 
-function useDragSideBar () {
+function useDragSideBar() {
   const config = useAppSelector((state) => state.config);
   const limit = (x: number) => Math.min(MAX_SIDEBAR_WIDTH, x);
   const startX = useRef(0);
@@ -86,7 +86,7 @@ function useDragSideBar () {
   }, [localSidebar, isMobileScreen, shouldNarrow]);
 
   return { onDragMouseDown, shouldNarrow };
-};
+}
 
 export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
   const { currentSessionIndex } = useAppSelector((state) => state.chat);
@@ -119,24 +119,17 @@ export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
         <ChatList narrow={shouldNarrow} />
       </div>
 
-      <div className='flex flex-col-reverse items-center'>
-        <div className='flex flex-col-reverse items-center'>
-          <div className='mr-0 mt-4'>
+      <div className='flex justify-between pt-20px'>
+        <div className='inline-flex'>
+          <div className='mr-[15px]'>
             <IconButton
-              onClick={async () => {
+              onClick={() => {
                 dispatch(deleteSession(currentSessionIndex));
               }}>
               <AiOutlineCloseCircle />
             </IconButton>
           </div>
-          <div className='mr-0 mt-4'>
-            <Link to={Path.Settings}>
-              <IconButton>
-                <IoSettingsOutline />
-              </IconButton>
-            </Link>
-          </div>
-          <div className='mr-0 mt-4'>
+          <div className='mr-[15px]'>
             <Link to={Path.Settings}>
               <IconButton>
                 <IoSettingsOutline />
@@ -154,14 +147,15 @@ export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
                 navigate(Path.NewChat);
               }
             }}>
-            <CgAdd />
+            <CgAdd /> 
           </IconButton>
+          
         </div>
       </div>
 
       <div
         className='w-[10px] absolute top-0 right-0 h-full bg-black cursor-e-resize opacity-0 transition-all ease-in-out delay-300 hover:opacity-20 active:opacity-20'
-        onMouseDown={(e) => onDragMouseDown(e as any)}></div>
+        onMouseDown={(e) => onDragMouseDown(e as any)} />
     </div>
   );
 };
