@@ -87,7 +87,6 @@ export const DEFAULT_MODELS = [
 
 export const DEFAULT_CONFIG = {
   submitKey: SubmitKey.CtrlEnter as SubmitKey,
-  avatar: '1f603',
   fontSize: 14,
   sendPreviewBubble: true,
   sidebarWidth: 300,
