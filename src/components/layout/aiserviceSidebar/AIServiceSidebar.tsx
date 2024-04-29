@@ -98,6 +98,8 @@ export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
 
   useHotKey();
 
+  const creatNewWork = () => {};
+
   return (
     <div
       className={`top-0 w-[var(--sidebar-width)] box-border p-[20px] bg-gray-600 flex flex-col shadow-inner drop-shadow-[-2px_0px_2px_0px_rgb(0, 0, 0, 0.05)] relative ${props.className}`}>
@@ -147,15 +149,15 @@ export const AIServiceSideBar: React.FC = (props: { className?: string }) => {
                 navigate(Path.NewChat);
               }
             }}>
-            <CgAdd /> 
+            <CgAdd />
           </IconButton>
-          
         </div>
       </div>
 
       <div
         className='w-[10px] absolute top-0 right-0 h-full bg-black cursor-e-resize opacity-0 transition-all ease-in-out delay-300 hover:opacity-20 active:opacity-20'
-        onMouseDown={(e) => onDragMouseDown(e as any)} />
+        onMouseDown={(e) => onDragMouseDown(e as any)}
+      />
     </div>
   );
 };

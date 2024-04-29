@@ -9,8 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { theme } from './theme';
 import Header from './components/header';
-import AIService from './pages/dashboard/user/AIService';
 import Footer from './components/footer';
+import AIServiceLayout from './components/layout/aiserviceLayout/AIServiceLayout';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -31,7 +31,7 @@ const App: React.FC = () => {
           {/* <Header />
           <AppRouter />
           <Footer /> */}
-          <AIService />
+          <AIServiceLayout />
         </Router>
         <ToastContainer />
       </ThemeProvider>

@@ -1221,3 +1221,22 @@ a.current_dot {
   opacity: 1;
   transform: translate3d(0%, -30%, 100px);
 }
+
+.window-action-button:not(:first-child) {
+  margin-left: 10px;
+}
+
+.icon-button-text {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-button-text:not(:first-child) {
+  margin-left: 5px;
+}
+
+.window-action-button:not(:first-child) {
+  margin-left: 10px;
+}
