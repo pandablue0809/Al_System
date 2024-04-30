@@ -83,13 +83,11 @@ const initialState: ChatStore = {
   globalId: 0,
 };
 
-
-
 export const newSession = createAction<PrepareAction<number>>('chat/newSession', (index) => {
   return {
     payload: index,
-  }
-})
+  };
+});
 
 export const nextSession = createAction<PrepareAction<number>>('chat/nextSession', (delta) => {
   return {
@@ -121,7 +119,7 @@ const chatSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(newSession, (state, action) => {
-      const session  = createEmptySession();
+      const session = createEmptySession();
     });
     builder.addCase(nextSession, (state, action) => {
       const n = state.sessions.length;

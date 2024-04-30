@@ -50,7 +50,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
   };
 
   return (
-    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 content-center pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent w-[60%]'>
+    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 content-center pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent w-[70%]'>
       <div className='mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl w-full'>
         <div className='relative flex h-full flex-1 flex-col'>
           <div className='flex w-full items-center'>

@@ -23,7 +23,7 @@ const IntroDashboardPage = React.lazy(() => import('../pages/IntroDashBoard'));
 const AboutUsFirstPage = React.lazy(() => import('../pages/aboutUs/index'));
 const AboutUsSecondPage = React.lazy(() => import('../pages/aboutUs/AboutUsPage'));
 //authenticated page
-const AIService = React.lazy(() => import('../pages/dashboard/user/AIService'));
+// const AIService = React.lazy(() => import('../pages/dashboard/user/AIService'));
 const TeamPage = React.lazy(() => import('../pages/aboutUs/OurTeamPage'));
 const ProgilePage = React.lazy(() => import('../components/profile'));
 // market page
@@ -44,7 +44,7 @@ const IntroDashboardFallback = withLoading(IntroDashboardPage);
 const AboutUsFirstFallback = withLoading(AboutUsFirstPage);
 const AboutUsSecondFallback = withLoading(AboutUsSecondPage);
 //authenticated page
-const AIServiceFallback = withLoading(AIService);
+// const AIServiceFallback = withLoading(AIService);
 const TeamFallback = withLoading(TeamPage);
 const ProgileFallback = withLoading(ProgilePage);
 // market
@@ -64,7 +64,7 @@ const AppRouter: React.FC = () => {
       <Route path='/dashboard' element={protectLayout}>
         {permission === 'User' ? (
           <Route path='user'>
-            <Route path='work' element={<AIServiceFallback />} />
+            {/* <Route path='work' element={<AIServiceFallback />} /> */}
             <Route path='team' element={<TeamFallback />} />
             <Route path='profile' element={<ProgileFallback />} />
           </Route>
