@@ -5,7 +5,7 @@
  * @description Types list in Config Store
  * @copyright SoTru
  */
-import { createSlice, createAction, PrepareAction } from '@reduxjs/toolkit';
+import { createSlice, createAction, PrepareAction, createAsyncThunk } from '@reduxjs/toolkit';
 import type { ModelType } from '../../types/modelTypes';
 import ChatConstant from '../../constants/chatConstant';
 
@@ -75,6 +75,16 @@ export type ChatStore = {
   sessions: ChatSession[];
   currentSessionIndex: number;
   globalId: number;
+};
+
+export type MessagesType = {
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+export type ChatRequest = {
+  model: ModelType;
+  messages: Array<MessagesType>;
 };
 
 const initialState: ChatStore = {

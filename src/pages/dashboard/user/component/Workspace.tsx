@@ -21,8 +21,15 @@ import { TfiExport } from 'react-icons/tfi';
 import ChatInput from '../../../../components/common/input/ChatInput';
 
 export const Workspace: React.FC = () => {
+  const [messages, setMessages] = useState([]);
+
   const isMobileScreen = useMobileScreen();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleFormSubmit = async (value: string) => {
+    let userInput = value.trim();
+    let newMessage = [...messages, { role: 'user', content: userInput }];
+  };
 
   return (
     <div className='flex flex-col relative h-full'>
@@ -52,14 +59,13 @@ export const Workspace: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* chat-wrapper */}
-      <div className='flex flex-1 overflow-auto overflow-x-hidden relative'>
-        {/* chat-body */}
-        <div className='overflow-auto overflow-x-hidden p-[20px] pb-[40px] relative' ref={scrollRef}></div>
-        {/* chat-input-panel */}
-        <div className='relative w-full p-[20px] box-border'>
-          <ChatInput />
-        </div>
+      {/* chat-body */}
+      <div className='flex flex-1 overflow-auto overflow-x-hidden p-[20px] pb-[40px] relative' ref={scrollRef}>
+        <div id='chat-messages' className='grow w-full overflow-auto'></div>
+      </div>
+      {/* chat-input-panel */}
+      <div className='relative w-full h-full p-[20px] pt-[10px] border-t-[#bbbbbb] box-border'>
+        <ChatInput />
       </div>
     </div>
   );
