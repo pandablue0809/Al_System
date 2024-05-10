@@ -1,5 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+
 import { MdOutlineSend } from 'react-icons/md';
 import { MdKeyboardVoice } from 'react-icons/md';
 
@@ -8,7 +17,17 @@ export type ChatInputProps = {
   onSendMsg?: (newValue: string) => void;
 };
 
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
+
 const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
+  const [open, setOpen] = React.useState(false);
   const [chatContent, setChatContent] = useState(value || '');
   const [isEmpty, setIsEmpty] = useState(true);
   const [rows, setRows] = useState<number>(1);
@@ -40,12 +59,24 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
 
   const getInputAudios = async () => {
     const audios = await getConnectedDevices('audioinput');
-    setInputAudios(audios);
+    if (audios.length !== 0) {
+      setInputAudios(audios);
+    } else {
+      setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   useEffect(() => {
-    console.log("this is voice device=====>", inputAudios[0]?.deviceId);
-  }, [])
+    if (inputAudios?.length !== 0) {
+      console.log('this is voice device=====>', inputAudios[0]?.deviceId);
+    } else {
+      console.log('this is error');
+    }
+  }, [inputAudios]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     setIsKeyDownEnter(false);
@@ -88,11 +119,30 @@ const ChatInput: React.FC<ChatInputProps> = ({ value, onSendMsg }) => {
                   <MdOutlineSend className='text-[20px] transition-opacity delay-200 ease-in-out' />
                 </button>
               ) : (
-                <button
-                  color='white'
-                  className='md:bottom-3 bottom-1.5 right-3 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10'>
-                  <MdKeyboardVoice className='text-[22px] transition-all delay-200 ease-in-out' />
-                </button>
+                <div>
+                  <button
+                    color='white'
+                    className='md:bottom-3 bottom-1.5 right-3 text-lg p-1 rounded-lg hover:bg-primary absolute py-0.5 disabled:bg-inherit  disabled:text-gray-400 disabled:opacity-10'
+                    onClick={getInputAudios}>
+                    <MdKeyboardVoice className='text-[22px] transition-all delay-200 ease-in-out' />
+                  </button>
+                  <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-describedby='alert-dialog-slide-description'>
+                    <DialogTitle>{"Can't find out connected Microphone"}</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id='alert-dialog-slide-description'>
+                      There are no devices connected. Go ahead and connect your devices
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose}>Cancel</Button>
+                    </DialogActions>
+                  </Dialog>
+                </div>
               )}
             </div>
           </div>
