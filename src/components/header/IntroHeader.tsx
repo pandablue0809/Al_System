@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LOGO from '../../assets/images/logo/logo.svg';
 import type { HeaderDropDownMenuItem } from './components/HeaderBaseButton/HeaderDropDownButton';
@@ -15,14 +15,6 @@ const MENU_DATA: HeaderDropDownMenuItem = {
     {
       title: 'Case Studies',
       pathname: '/resources/case-studies',
-    },
-    {
-      title: 'Synthesia Academy',
-      pathname: '/resources/synthesia-academy',
-    },
-    {
-      title: 'Webinars',
-      pathname: '/resources/webinars',
     },
     {
       title: 'Help Center',
@@ -45,7 +37,7 @@ const company_menu_data: HeaderDropDownMenuItem = {
   subMenus: [
     {
       title: 'About us',
-      pathname: '/company/about',
+      pathname: '/about',
     },
     {
       title: 'AI Research',
@@ -75,11 +67,10 @@ const company_menu_data: HeaderDropDownMenuItem = {
 };
 
 export const IntroHeader: React.FC = () => {
-  const [status, setStatus] = useState('');
   const navigate = useNavigate();
 
   const handleClick = (state: string) => {
-    setStatus(state);
+    navigate(state);
   };
 
   return (
@@ -93,13 +84,17 @@ export const IntroHeader: React.FC = () => {
             <div className='justify-between w-full flex'>
               <ul className='gap-x-6 my-0 mx-auto px-0 flex list-none'>
                 <li>
-                  <button className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'>
+                  <button
+                    className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
+                    onClick={() => navigate('/introdashboard')}>
                     Home
                   </button>
                 </li>
                 <li>
-                  <button className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'>
-                    Resources
+                  <button
+                    className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
+                    onClick={() => navigate('/service/intro')}>
+                    Service
                   </button>
                 </li>
                 <li>

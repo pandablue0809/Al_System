@@ -32,7 +32,9 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
           className='text-white hover:text-[#696CFF] transition duration-1000 delay-100 px-2.5 py-2.5 text-center inline-flex items-center'
           onClick={() => {
             if (onClick) {
-              onClick(subMenuItem.title);
+              if (subMenuItem.pathname) {
+                onClick(subMenuItem?.pathname);
+              }
             }
             return;
           }}>
@@ -63,7 +65,7 @@ export const HeaderDropDownButton: React.FC<HeaderDropDownButtonData> = ({ title
       {menuShowingDropdown === title && (
         <div
           className='w-max flex flex-col drop-shadow-md pt-4 pb-8 px-8 rounded-lg transition ease-in-out duration-300 shadow-xl absolute z-10'
-          style={{backgroundImage: 'linear-gradient(123deg, #4b4d63, rgba(19, 24, 32, 1))'}}
+          style={{ backgroundImage: 'linear-gradient(123deg, #4b4d63, rgba(19, 24, 32, 1))' }}
           onMouseLeave={() => {
             closeSubMenu();
           }}

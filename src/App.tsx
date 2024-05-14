@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './router/AppRouter';
@@ -7,21 +7,32 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useMode } from './theme';
+import { theme } from './theme';
 import Header from './components/header';
-import AIService from './pages/dashboard/user/AIService';
+import Footer from './components/footer';
+import AIServiceLayout from './components/layout/aiserviceLayout/AIServiceLayout';
 
 const App: React.FC = () => {
-  const theme = useMode();
+  useEffect(() => {
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => {
+          caches.delete(name);
+        });
+      });
+    }
+  }, []);
+
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <Router>
-          <Header />
+        <Router>
+          {/* <Header />
           <AppRouter />
-        </Router> */}
-        <AIService />
+          <Footer /> */}
+          <AIServiceLayout />
+        </Router>
         <ToastContainer />
       </ThemeProvider>
     </HelmetProvider>

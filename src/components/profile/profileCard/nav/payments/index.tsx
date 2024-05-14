@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 import CreditCardForm from './CreditCardForm';
-import card1 from '../../../../../assets/images/creditCard/1.png';
-import card2 from '../../../../../assets/images/creditCard/2.png';
-import card3 from '../../../../../assets/images/creditCard/3.png';
-import card4 from '../../../../../assets/images/creditCard/4.png';
-import card5 from '../../../../../assets/images/creditCard/5.png';
-import card6 from '../../../../../assets/images/creditCard/6.png';
+import card1 from '../../../../../assets/images/card/creditCard/1.png';
+import card2 from '../../../../../assets/images/card/creditCard/2.png';
+import card3 from '../../../../../assets/images/card/creditCard/3.png';
+import card4 from '../../../../../assets/images/card/creditCard/4.png';
+import card5 from '../../../../../assets/images/card/creditCard/5.png';
+import card6 from '../../../../../assets/images/card/creditCard/6.png';
 
 import { Modal, Button } from '@mui/material';
 
